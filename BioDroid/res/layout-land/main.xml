@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="fill_parent" android:layout_height="fill_parent" android:orientation="horizontal">
+  <FrameLayout android:layout_weight="1" android:layout_width="fill_parent" android:layout_height="wrap_content">
+    <de.taytec.biodroid.BioView android:id="@+id/surface" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:padding="5dip">
+      <TextView android:id="@+id/label_birth" android:layout_width="wrap_content" android:layout_height="wrap_content" android:paddingRight="5dip" android:textColor="@color/clr_text_overlay"
+        android:text="@string/label_birthday" />
+      <TextView android:id="@+id/text_birth" android:layout_width="wrap_content" android:layout_toRightOf="@+id/label_birth" android:layout_height="wrap_content" android:textColor="@color/clr_text_overlay" />
+      <TextView android:id="@+id/label_today" android:layout_width="wrap_content" android:layout_height="wrap_content" android:paddingRight="5dip" android:layout_below="@+id/label_birth"
+        android:textColor="@color/clr_text_overlay" android:text="@string/label_today" />
+      <TextView android:id="@+id/text_today" android:layout_width="wrap_content" android:layout_toRightOf="@+id/label_today" android:layout_below="@+id/text_birth" android:layout_height="wrap_content"
+        android:textColor="@color/clr_text_overlay" />
+    </RelativeLayout>
+  </FrameLayout>
+  <TabHost android:id="@android:id/tabhost" android:layout_below="@+id/label" android:layout_weight="1" android:layout_height="fill_parent" android:layout_width="fill_parent"
+    android:paddingLeft="3px">
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
+      <TabWidget android:id="@android:id/tabs" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+      <FrameLayout android:layout_width="wrap_content" android:id="@android:id/tabcontent" android:layout_below="@+id/label" android:layout_height="wrap_content">
+        <ScrollView android:id="@+id/scroll_phy" android:layout_width="fill_parent" android:layout_height="wrap_content">
+          <TextView android:id="@+id/tab_phy" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        </ScrollView>
+        <ScrollView android:id="@+id/scroll_emo" android:layout_width="fill_parent" android:layout_height="wrap_content">
+          <TextView android:id="@+id/tab_emo" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        </ScrollView>
+        <ScrollView android:id="@+id/scroll_int" android:layout_width="fill_parent" android:layout_height="wrap_content">
+          <TextView android:id="@+id/tab_int" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        </ScrollView>
+      </FrameLayout>
+    </LinearLayout>
+  </TabHost>
+</LinearLayout>

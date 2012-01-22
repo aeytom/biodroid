@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="app_name">BioDroid</string>
+  <string name="tab_phy">Physical</string>
+  <string-array name="desc_phy">
+    <item>
+  Your energy, vitality, and strength are at full tide. Your physical system is able to withstand shock, injury, or
+  stress at this time. Sexual drives are above normal. At the same time, physical forces may be overly strong with a
+  danger of overexertion or susceptibility to reckless, aggressive activities.</item>
+    <item>
+  In general, you can tire more easily, quickly. There may be some impairment of your physical control or strength with
+  a potential for accidents or mishaps in the home, office, or car. A lessening of the body\'s protective senses
+  increases the dangers of exertion, exhaustion, and possible injury. Relax, get added rest. Give extra attention to
+  physical comforts and aids, such as proper lighting, frequent relaxation periods, that will make your day easier.
+  Avoid activities where large amounts of energy are required-for most people, not a good day to start spring cleaning,
+  mowing the lawn, or playing a strenuous game of tennis. During health crises, a physical critical can signal a
+  recurrence of problems-a possible heart attack, stroke, etc. If you have a particular health problem, it is a good
+  time to curtail physical activities that require a large expenditure of energy. In extreme cases, sensory deprivation
+  may occur, with a consequent neglect for personal safety as exhibited in acts of either extreme bravery or fool
+  hardiness. For those who participate in sports frequently or for the professional\' athlete, performance hangs in the
+  balance-it can be your best or worst day. Try to be extremely aware of your physical potential during this unstable
+  time; intensify mental concentration to control and extend your physical capabilities for maximum performance and
+  possible outstanding achievement.</item>
+    <item>
+  Your physical forces are at low tide with vitality and energy resources possibly drained. Fatigue is common. Rest,
+  recuperation are important at this time. Your interest in or inclinations to physical, sexual activities are on the
+  wane. In athletic activities, endurance is usually lessened. There is a lack of zest or spirit and a feeling of near
+  exhaustion may follow performance. You may have "worn out" feelings in general during this time. Depressive tendencies
+  may be present and must be resisted. There is a danger of overexertion if highs in the other cycles tend to override
+  your feelings of physical low energy. Watch eating, drinking, as any overindulgence at this time is potentially
+  dangerous.</item>
+  </string-array>
+  <string-array name="desc_emo">
+    <item>
+  Your emotions are keyed to their highest levels. This is the time when you will feel most outwardly directed to
+  others, able to enjoy their company, as well as to give them support, encouragement, and understanding if needed. It
+  is the optimum time for strengthening your relationships with your lover or friends. Your high emotions can also push
+  you to great performances, especially in creative endeavors. On the other hand, depending upon circumstances and your
+  personality, be aware of possible runaways, emotional outbursts or over-doing. Your high emotions could also lead you
+  to impulsive, rash behavior.</item>
+    <item>
+  Either emotional exhaustion or euphoria is possible-from "the skids" (depression) to great heights (elation,
+  outbursts). You may have a "let-down" or tired feeling, since exhaustion is often based on an imbalanced emotional
+  state. You may also experience emotional "flair-ups" or extreme Agitation, anxiety, or frustration. In extreme cases,
+  suicides or attempted suicides have occurred on or very close to emotional critical days. Overexertion and exhaustion
+  due to emotional stress are also potential dangers to health and can trigger a physical crisis such as a heart attack
+  or a stroke. Be particularly alert to health side effects in the day\'s activities. Give extra care and attention to
+  situations where emotions play a key role: driving your automobile in heavy traffic; stress situations at work;
+  dealing with family problems; disciplining and working with young children. In general, forced calmness and mental
+  concentration on control of emotions is advised. Keep in mind the unique opportunity of an emotional critical day-by
+  harnessing your emotional energies at this time you could develop and strengthen a model of emotional self-control and
+  expression which is so important to overall happiness and well-being. This day could give you the opportunity to reach
+  important breakthroughs in your emotional life, as well as present possible new avenues of creativity.</item>
+    <item>
+  Your emotional state is relaxed or below normal. In situations where extreme calm or lack of emotions is required,
+  this may be helpful. In other circumstances, your feelings, sensitivities, and awareness of your environment may be
+  low. lt is a time when you may feel more inwardly directed, less able to extend yourself to others. You may even
+  experience feelings of Depression or loneliness. In general, it is a time of passivity rather than engagement.</item>
+  </string-array>
+  <string-array name="desc_int">
+    <item>
+  Analytical, logistical, and concentrative abilities are at upper levels. This is a prime time for creative thinking,
+  composing, writing, decision-making. This is a good time for abstract reasoning, verbal fluency, understanding new
+  concepts, number ability, memory manipulation, and for facing new challenges, taking on new work assignments. This is
+  also a time of possible frustrations if opportunities for intellectual expansion are limited or missing.</item>
+    <item>
+  On the critical day in the intellectual cycle, there is a tendency to avoid making necessary decisions and to hastily
+  improvise acceptable answers to situations. Mental carelessness can often cause a disregard for personal safety and
+  survival. Mental Depression and a lower threshold to health hazards are also potential dangers. Verbal fluency-an
+  Attribute of intelligence-may be decreased or restricted. The faculties of abstract reasoning, number ability, and
+  memory appear to be lessened. Misplacement of valuables and forgetfulness are common. Often, there is a disregard for
+  consequences: thus, the man who can\'t swim goes boating; the homemaker with a sore back decides to move the piano to
+  another location. lf it is possible to "think before leaping," this is the time to do it. Despite these more frequent
+  negative factors, either success or failure in academic or intellectual pursuits is possible on this day, since one\'s
+  intellectual acuity is alterable in either direction by the imbalanced state. Mental control through awareness and
+  alertness is important at these times. The opportunity to reach new heights, to have a day of intellectual, creative
+  brilliance-to have that one stroke of genius that could change your life, are all entirely possible.</item>
+    <item>
+  Your ability to move into new intellectual fields is lessened at this time. Decision-making, judgments, and
+  concentration on tasks may all be frustrating or difficult during this period. Impulsive, spur-of-the-moment actions
+  with regrettable consequences are possible. Loss or relinquishment of cautions or protective inclinations may occur.
+  Depressed or exhausted mental states are also possible.</item>
+  </string-array>
+  <string name="tab_emo">Emotional</string>
+  <string name="tab_int">Intellectual</string>
+  
+  
+  
+  <string name="About">&lt;h1&gt;BioDroid VERSION&lt;/h1&gt;
+&lt;div&gt;
+by Tom Anheyer
+&lt;/div&gt;
+&lt;p&gt;
+Please use the &lt;b&gt;Menu&lt;/b&gt; key for changing the app settings.
+&lt;/p&gt;</string>
+  <string name="Button_Ok">OK</string>
+  <string name="label_birthday">Birthday:</string>
+  <string name="label_today">For date:</string>
+  <string name="format_date">EEE, MMM d, \'\'yy</string>
+  <string name="language">en</string>
+  <string name="country">US</string>
+  <color name="clr_text_overlay">#ffffff</color>
+  <string name="label_btn_birthday">Birthday</string>
+  <color name="clr_phy">#0000ff</color>
+  <color name="clr_emo">#ff00ff</color>
+  <color name="clr_int">#ffff00</color>
+  <string name="favorite_dialog_title">Pick a birthday</string>
+  
+  <string name="theory">&lt;div style=&quot;font-size:8pt&quot;&gt;&lt;h1&gt;Theory&lt;/h1&gt; &lt;p&gt; In the nineteenth century, studies first began on certain life rhythms or cycles that were later
+    termed &quot;biorhythms&quot;. The word biorhythm is a compound of two Greek words, bios and rhythmos, which mean life and a constant or periodic beat. The theory of biorhythms defines and
+    measures three basic and important life cycles in man: the physical, emotional, and intellectual. &lt;/p&gt; &lt;p&gt; Wilhelm Fliess, a highly respected and prominent doctor in Berlin, did
+    pioneer work on biorhythms in the 1890s. Fliess, who had observed 23- and 28-day rhythms in many of his patients, began to collect statistics on the periodic occurrence of fevers, childhood
+    disease, and the susceptibility to disease and death. With these statistics in hand, Fliess believed he had detected rhythms which were fundamental to man\'s life. &lt;/p&gt; &lt;p&gt; Dr. Fliess
+    later developed two major biorhythm theories: first, that Nature bestows on man &quot;master internal clocks&quot; which begin counting time at birth and continue throughout life; and second, that
+    one of these clocks regulates a 23-day cycle influencing man\'s physical condition and another regulates a 28-day cycle influencing emotions or degree of sensitivity. &lt;/p&gt; &lt;p&gt; A widely
+    read man, Fliess speculated on why these two rhythms should prevail. He believed, much as we do today, that man is essentially bisexual in nature, composed of both male and female elements. Fliess
+    called the 23-day physical cycle the male cycle, since it influenced strength, endurance, and vitality. He considered the 28-day cycle to be representative of the female element in all human
+    beings; it governed sensitivity, intuition, love, and creativity-the entire emotional spectrum. &lt;/p&gt; &lt;p&gt; Subsequent research has reinforced the idea of the 23-day physical and 28-day
+    emotional cycles. Of course, today few would agree with the premise that all physical components are male and all emotional matters female. Instead, both are now considered to be essential
+    characteristics of each sex. &lt;/p&gt; &lt;p&gt; Wilhelm Fliess wrote extensively about the biorhythm theory, but the mathematics and statistics he used to support it were so massive and
+    confusing that few people bothered to closely examine or to understand them. Still, the basic premise of the theory caught on. The idea of periodic rhythms in man created a considerable
+    controversy among his colleagues, one which still exists today. Most scientists have accepted the fact that man\'s physical and emotional states are in constant flux, but many do not agree that
+    these changes are influenced by regular biological cycles that start at birth. &lt;/p&gt; &lt;p&gt; One of Fliess\' contemporaries who kept an open mind to his ideas was Sigmund Freud, a man with
+    extremely revolutionary ideas of his own at the time. Early in his career, Freud showed extreme interest in and admiration for Fliess\' theories, and they soon became very close friends. One
+    hundred and eighty-four letters from Freud to Fliess have been published; unfortunately, the replies from Fliess have been lost. &lt;/p&gt; &lt;p&gt; Important ideas tend to spread rapidly in the
+    scientific community. Dr. Hermann Swoboda, Professor of psychology at the University of Vienna, read Fliess\' work while still a young man, and by the turn of the century was himself researching,
+    lecturing, and writing on biorhythms. Swoboda, who detected a periodicity in the occurrence of dreams and thinking processes, and in fevers, asthma, heart attacks, and the outbreak of illness,
+    believed his own investigations confirmed Fliess\' observations on the 23-day and 28-day cycles. Swoboda contributed to the theory the notion of the &quot;critical&quot; day, when the cycle shifts
+    from high to low or low to high; a day of instability and usually of some stress for most people. &lt;/p&gt; &lt;p&gt; The third biorhythm cycle, the one associated with the intellect, was not
+    determined until the 1920s. Alfred Teltscher, a doctor of engineering and professor at Innsbruck, Austria, grew curious about the fluctuations in his students\' intellectual performance and
+    capacity. Analyzing the academic and examination records of a large number of students, Teltscher discovered a regular rhythmic cycle that repeated every 33 days. His study suggested that mental
+    powers, ability to concentrate on or to apply new ideas, might also be subject to internal clocks. &lt;/p&gt; &lt;h2&gt;The Three Cycles&lt;/h2&gt; &lt;h3&gt;The Physical Cycle&lt;/h3&gt;
+    &lt;p&gt; THE FLUCTUATIONS of the 23-day physical cycle are thought to influence man\'s strength, endurance, energy, and general physical well-being. We\'re all aware that our energy levels vary.
+    Some mornings we can scarcely pull ourselves out of bed; others, though we don\'t quite wake up somersaulting, we Ire ready to go even before taking a cup of coffee. The biorhythm theory suggests
+    that we can calculate days we might be more likely to zip through and days when we\'11 drag along. &lt;/p&gt; &lt;p&gt; Let\'s use the sample physical curve below to become acquainted with the
+    theory. During the first half of the 23-day cycle (11½ days), one\'s physical well-being is increasing. This portion of the cycle is sometimes referred to as a &quot;discharge period,&quot;
+    analogous to the time when a battery is discharging electrical power, using up its stored energy. During this first half of the cycle, a person is quite vigorous and appears to command a powerful
+    source of energy. Some surgeons who follow the biorhythm theory favor this period, usually the 2nd to 9th or 3rd to 8th days, as the most favorable for elective surgery. &lt;/p&gt; &lt;p&gt; The
+    second half of the 23-day cycle (also 11 days) is a time of reduced vigor, recuperation, and storage of new energy, as when a battery is recharging. These are the days when the curve on the chart
+    is below the base line. To an athlete, this is the time when he is in a slump, and the stay-athome experiences his own kind of slump as well. During this time, man is more content to rest and
+    regain his strength. That\'s not to say that work, tennis, and spring cleaning simply cease every other 11 days, but the drive slows down, the time-outs become a little more frequent, a good book
+    and a catnap begin to look more attractive. Doctors who follow the theory find this time ideal for a patient\'s recuperation or therapy. &lt;/p&gt; &lt;p&gt; It is important to emphasize that the
+    curve does not divide into a &quot;good&quot; half and a &quot;bad&quot; half. Neither portion is necessarily better or worse than the other-fortunately, since each adds up to half a lifetime! The
+    theory of biorhythms aims to alert you to your capacities and potentials, the days when your basic drives (in this case physical) are at high, low, or critical tide. A low period is no more evil
+    than a low gas tank in your car. lf you read the gauge properly, you won\'t plan to drive 500 miles that day. You\'11 add more fuel-for the human machine, this means a little rest, a little bit of
+    being good to yourself. A low period that is observed and used wisely can nourish the body. An athlete, for instance, might adjust his training schedule to provide for more rest or less intense
+    concentration during the second half of his cycle. &lt;/p&gt; &lt;p&gt; Properly used, a low period can give the same benefit as sleep to an exhausted man. &lt;/p&gt; &lt;p&gt; A high day may not
+    be an unadulterated blessing, either. Although more can be accomplished in the first half of the cycle, the physical plant can be tuned so high that a man might over-exert or try to go beyond his
+    physical potential, ending up with a pulled muscle on the fifteenth hole of the golf course. A lot depends on individual condition. Professional athletes have often hit home runs, caught long
+    passes, and broken records at the peak of their physical cycles. &lt;/p&gt; &lt;p&gt; There are two &quot;critical&quot; or &quot;cautionary&quot; days in every complete 23-day physical cycle.
+    These are the first day, when each new cycle begins, and the halfway mark, between the 11th and 12th days, when energy switches into the recharge period. The body is relatively unstable and less
+    resistant to stress on these days; heart attacks, for example, apparently tend to fall on critical days of this curve. Again, it is important to note that the days in themselves are not critical.
+    The person\'s condition on that day may bear watching; he might react badly to strain imposed by the outside world or by his own body. There is no magical hex or voodoo spell that will make a heart
+    fail at the &quot;critical&quot; or &quot;cautionary&quot; point of the physical cycle, but a man who has recently had a heart attack might take extra precautions on such a day. A taxi driver
+    might be extra careful too. Or someone working in a machine shop. Or someone shepherding fifteen pre-school children out to the playground. &lt;/p&gt; &lt;h3&gt;The Emotional Cycle&lt;/h3&gt;
+    &lt;p&gt; The 28-day emotional cycle has a curve similar to that of the physical cycle, with the curve rising in the first half (14 days), or discharge phase, and falling in the second half (also
+    14 days), or recharge phase. The sample below will help you to fix its main characteristics in mind. Since this cycle probably influences sensitivity and creativity as well as feelings of love and
+    cooperativeness, artists and writers may find their muses visiting them more often and their tempers sweeter in the first two weeks of this cycle. During the first 14 days, one is likely to be
+    cheerier and more optimistic; during the second 14 days a little less open, friendly and hopeful; and on critical days, decidedly grumpy and irritable. &lt;/p&gt; &lt;p&gt; The individual pattern
+    will no doubt vary with individual Temperament. Someone with a sunny and very calm disposition may seem a bit cloudy at the low point of the cycle but is unlikely to storm a lot at any time. A
+    more passionate and erratic type can swing through periods of bliss and then astonish us with an outburst of anger three days later. It seems quite likely that some people would experience their
+    biorhythmic fluctuations more strongly than others. &lt;/p&gt; &lt;p&gt; An interesting Condition exists with respect to the 28-day cycle which is not true of the other two. Since 28 days make up
+    four seven-day weeks, the important days of this cycle always fall on the same day of the week, the day of the week on which one was born. A person born on a Monday will know that every other
+    Monday will be a critical day. Whereas &quot;blue Mondays&quot; are traditional, Monday\'s child will have a critical day one Monday, a high day the next Monday, another critical, and then a low,
+    and so on throughout the year. This same-day syndrome provides a means of testing the biorhythm theory for yourself. Does experience tell you that your emotionally shaky days are almost always on
+    the same days of the week? It\'s best to test this out over a period of several months; there are always other elements to account for. Bad news can bring you down even on a high day, but you\'11
+    probably be able to handle it better. &lt;/p&gt; &lt;h3&gt;The Intellectual Cycle&lt;/h3&gt; &lt;p&gt; The 33-day cycle is representative of man\'s intellectual fluctuations. To date, researchers
+    have focused somewhat less on the intellectual than on the other two cycles, which is understandable since much remains to be done in aiding man to understand and use his mental powers. Some
+    doctors claim this cycle is closely related to secretions of the thyroid. Independent medical studies have pointed out correlation\'s between variations in intellectual performance and hormone
+    levels; again, this is an area which has not been thoroughly explored. &lt;/p&gt; &lt;p&gt; The first half of this cycle (16½ days) is the time when students and others engaged in intellectual
+    pursuits are more able to absorb new concepts, be more creative, make notable progress. We all know that studying is a breeze at some times, a drag at others. The first half of the cycle is
+    considered prime time for creative thinking, for progress in new subject areas, for mental successes when memory is at a premium, and for work which demands accurate and immediate mental
+    responses. Since the mind responds most rapidly to new challenges during this period, it would probably be the best time to be in a new assignment or a new job. &lt;/p&gt; &lt;p&gt; The second
+    half of this 33-day cycle (also 16½ days) is a time when one\'s ability to think logically is somewhat reduced. The IQ doesn\'t automatically lose 10 points; the brain just says it isn\'t quite so
+    happy with a heavy load of new stimulation. Remember that energies have been discharged in the first half of the cycle. Now the mind wants a little rest, in order to store up energy again. During
+    this time, it is somewhat more difficult to absorb new ideas, to do creative thinking, or to perform mental exercises where concentration, memory, and quick mental response are required. This time
+    is probably best suited to review of previously learned concepts, to practice of lessons which should be learned by rote, to absorption and consolidation of prior gains. The second half of the
+    intellectual cycle seems to be the best time to practice your lines, go over your French verb endings, and edit the paper you wrote. The critical days in the 33-day intellectual cycle are the 1st
+    and 17th days. These may be days when important decisions could best be delayed. If you know that a major matter must be resolved on one of those days, it might be a good idea to try to see all
+    sides of the question beforehand. But we all have to face some problems without any warning. Take a little extra time to think it over; it could be helpful. Also, as you will discover in a later
+    chapter, the circumstances under which these critical days occur will make a difference. No part of life needs to grind to a halt just because it\'s a critical day or the low part of the cycle. A
+    big exam or a big interview can be handled well even on the least promising day; most of us have taken one or the other with a cold and still scored high. We\'re a little cautious, or we work extra
+    hard beforehand, or we make a special effort to get the adrenaline flowing. lf we know in advance that a task will be more difficult than usual, we can be properly prepared, and this is where the
+    biorhythm theory can be most useful. &lt;/p&gt; &lt;p&gt; These are the three basic biorhythm cycles-their monthly cyclical lengths and variations. But keep in mind that each person\'s cycles will
+    be individual. Though everyone born on the same day in the same year will have identical cycles, they will obviously not have identical lives. Not only will their circumstances be different, but
+    their income and learned reactions to events will also differ sharply. All three cycles will change with age: a young person\'s are likely to peak more sharply, an older person\'s to flatten out.
+    Health, Temperament, character, and probably heredity will influence the steepness of the curve and the way one responds to fluctuations in his potential. Awareness of where you stand in each of
+    your life cycles at a particular time, and how you function while being at various points in each of the three cycles will help you determine the best coping mechanisms for your particular life
+    style. &lt;/p&gt; &lt;/div&gt;</string>
+
+<string name="contactPickerTitle">choose Contact</string>
+</resources>
