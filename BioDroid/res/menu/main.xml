@@ -3,7 +3,6 @@
   <item android:numericShortcut="1" android:title="Birthday" android:alphabeticShortcut="b" android:id="@+id/menuBirthday"></item>
   <item android:id="@+id/menuForDay" android:alphabeticShortcut="d" android:title="For day" android:numericShortcut="2"></item>
   <item android:id="@+id/menuHistory" android:title="History" android:alphabeticShortcut="h" android:numericShortcut="3"></item>
-  <item android:alphabeticShortcut="c" android:id="@+id/menuContacts" android:title="Contacts" android:numericShortcut="4"></item>
   <item android:id="@+id/menuTheory" android:alphabeticShortcut="t" android:title="Theory" android:numericShortcut="5"></item>
   <item android:id="@+id/menuAbout" android:alphabeticShortcut="a" android:numericShortcut="0" android:title="About"></item>
 

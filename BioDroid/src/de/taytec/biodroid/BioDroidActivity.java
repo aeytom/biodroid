@@ -25,6 +25,7 @@ import android.view.MenuItem;
 import android.widget.DatePicker;
 import android.widget.TabHost;
 import android.widget.TextView;
+import android.text.format.*;
 
 public class BioDroidActivity extends TabActivity  implements BioView.BioHolder {
     
@@ -245,16 +246,6 @@ public class BioDroidActivity extends TabActivity  implements BioView.BioHolder 
 	return alert;
     }
 
-    /* (non-Javadoc)
-     * @see android.app.Activity#onSearchRequested()
-     */
-    @Override
-    public boolean onSearchRequested() {
-	Intent intent = new Intent(Intent.ACTION_PICK, Uri
-		.parse("content://birthdays"));
-	startActivityForResult(intent, PICK_BIRTHDAY_SUBACTIVITY);
-	return true;
-    }
 
     /**
      * 
@@ -451,10 +442,6 @@ public class BioDroidActivity extends TabActivity  implements BioView.BioHolder 
 	    return true;
 	case R.id.menuTheory:
 	    showDialog(DIALOG_THEORY);
-	    return true;
-	case R.id.menuContacts:
-	    Intent intent = new Intent(Intent.ACTION_PICK, Uri.parse("content://birthdays"));
-	    startActivityForResult(intent, PICK_BIRTHDAY_SUBACTIVITY);
 	    return true;
 	}
 	return false;

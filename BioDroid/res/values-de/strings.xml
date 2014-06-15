@@ -100,7 +100,7 @@ Benutze die &lt;b&gt;Menü&lt;/b&gt; Taste, um die Einstellungen zu verändern.
   <string name="Button_Ok">OK</string>
   <string name="label_birthday">Geburtstag:</string>
   <string name="label_today">Für Tag:</string>
-  <string name="format_date">d. MMMMM yy</string>
+  <string name="format_date">d. MMMM yy</string>
   <string name="language">de</string>
   <string name="country">DE</string>
   <string name="label_btn_birthday">Geburtstag</string>
