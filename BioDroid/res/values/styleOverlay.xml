@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <style name="Overlay" parent="@style/Normal">
+	<item name="android:textColor">@color/clr_text_overlay</item>
+  </style>
+</resources>

@@ -1,8 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
-  <item android:id="@+id/menuBirthday" android:numericShortcut="1" android:alphabeticShortcut="g" android:title="Geburtstag"></item>
-  <item android:id="@+id/menuForDay" android:numericShortcut="2" android:alphabeticShortcut="d" android:title="Datum"></item>
-  <item android:numericShortcut="3" android:title="Verlauf" android:alphabeticShortcut="v" android:id="@+id/menuHistory"></item>
-  <item android:id="@+id/menuTheory" android:alphabeticShortcut="t" android:numericShortcut="5" android:title="Theorie"></item>
-  <item android:id="@+id/menuAbout" android:alphabeticShortcut="a" android:numericShortcut="0" android:title="Über"></item>
+<menu 
+  xmlns:android="http://schemas.android.com/apk/res/android">
+  <item android:id="@+id/menuHistory"
+	android:numericShortcut="3" 
+	android:title="Verlauf" 
+	android:alphabeticShortcut="v"
+	android:showAsAction="withText"></item>
+  <item android:id="@+id/menuTheory" 
+	android:alphabeticShortcut="t" 
+	android:numericShortcut="5" 
+	android:title="Theorie"
+	android:showAsAction="withText"></item>
+  <item android:id="@+id/menuAbout" 
+	android:alphabeticShortcut="a" 
+	android:numericShortcut="0" 
+	android:title="Über"
+	android:showAsAction="withText"></item>
+  <item android:id="@+id/menuBirthday" 
+	android:numericShortcut="1" 
+	android:alphabeticShortcut="g" 
+	android:title="Geburtstag"></item>
+  <item android:id="@+id/menuForDay" 
+	android:numericShortcut="2" 
+	android:alphabeticShortcut="d" 
+	android:title="Datum"></item>
 </menu>
