@@ -3,10 +3,13 @@ package de.taytec.biodroid;
 
 
 import android.app.*;
+import android.app.ActionBar.Tab;
+import android.app.FragmentTransaction;
 import android.content.*;
 import android.content.pm.*;
 import android.content.pm.PackageManager.*;
 import android.content.SharedPreferences.*;
+import android.graphics.drawable.Drawable;
 import android.os.*;
 import android.support.v4.app.*;
 import android.support.v4.view.*;
@@ -14,6 +17,7 @@ import android.util.*;
 import android.view.*;
 import android.widget.*;
 import de.taytec.biodroid.*;
+
 import java.text.*;
 import java.util.*;
 
@@ -22,7 +26,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.app.ActionBar.*;
 
-public class BioDroidActivity extends FragmentActivity implements BioView.BioHolder
+public class BioDroidActivity extends FragmentActivity implements BioView.BioHolder, TabListener
 {
     protected final int DIALOG_FAVORITE = 2;
     protected final int DIALOG_ABOUT = 3;
@@ -33,15 +37,17 @@ public class BioDroidActivity extends FragmentActivity implements BioView.BioHol
 
     protected Calendar calBirth = Calendar.getInstance();
     protected Calendar calToday = Calendar.getInstance();
+
     private BioView bioview;
-    private String[] desc_phy;
-    private String[] desc_emo;
-    private String[] desc_int;
+
     private int oldPhaseP = -1;
     private int oldPhaseE = -1;
     private int oldPhaseI = -1;
     private Favorites favorites;
+    
     private boolean firstStart = true;
+	private ViewPager mViewPager;
+	private TabAdapter mTabAdapter;
 
     /** Called when the activity is first created. */
     @Override
@@ -50,43 +56,36 @@ public class BioDroidActivity extends FragmentActivity implements BioView.BioHol
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
 
-		desc_phy = getResources().getStringArray(R.array.desc_phy);
-		desc_emo = getResources().getStringArray(R.array.desc_emo);
-		desc_int = getResources().getStringArray(R.array.desc_int);
-
 		favorites = new Favorites(this, 
 			new SimpleDateFormat(getResources().getString(R.string.format_date)));
 
 		restoreActivityPreferences();
 
-		tv_birth = (TextView) findViewById(R.id.text_birth);
-		tv_today = (TextView) findViewById(R.id.text_today);
+		tv_birth = (TextView) findViewById(R.id.editBirthday);
+		tv_today = (TextView) findViewById(R.id.editToday);
         
         final ActionBar actionBar = getActionBar();
         actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_TITLE);
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
-        actionBar.addTab(actionBar.newTab()
-                         .setText(R.string.tab_phy)
-                         .setIcon(R.drawable.sin_phy)
-                         .setTabListener(new TabListener()));
-        actionBar.addTab(actionBar.newTab()
-                         .setText(R.string.tab_emo)
-                         .setIcon(R.drawable.sin_emo)
-                         .setTabListener(new TabListener())
-                         );
-        actionBar.addTab(actionBar.newTab()
-                         .setText(R.string.tab_int)
-                         .setIcon(R.drawable.sin_int)
-                         .setTabListener(new TabListener())
-                         );
-        actionBar.setSelectedNavigationItem(0);
-        
-        // ViewPager and its adapters use support library
-        // fragments, so use getSupportFragmentManager.
-        TabAdapter tabAdapter =
+
+        mTabAdapter =
 			new TabAdapter(getSupportFragmentManager());
-        ViewPager mViewPager = (ViewPager) findViewById(R.id.pager);
-        mViewPager.setAdapter(tabAdapter);
+        mViewPager = (ViewPager) findViewById(R.id.descPager);
+        mViewPager.setAdapter(mTabAdapter);
+        mViewPager
+		.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
+			@Override
+			public void onPageSelected(int position) {
+				actionBar.setSelectedNavigationItem(position);
+			}
+		});
+        
+        for (int i = 0; i < mTabAdapter.getCount(); i++) {
+			actionBar.addTab(actionBar.newTab()
+					.setText(mTabAdapter.getPageTitle(i))
+					.setIcon(mTabAdapter.getIcon(i))
+					.setTabListener(this));
+		}
 		
 		bioview = (BioView)findViewById(R.id.surface);
 		bioview.setBioHolder(this);
@@ -218,10 +217,8 @@ public class BioDroidActivity extends FragmentActivity implements BioView.BioHol
     @Override
     public boolean onCreateOptionsMenu(Menu menu)
 	{
-		super.onCreateOptionsMenu(menu);
-		MenuInflater inflater = getMenuInflater();
-		inflater.inflate(R.menu.main, menu);
-		return super.onCreateOptionsMenu(menu);
+		getMenuInflater().inflate(R.menu.main, menu);
+		return true;
 	}
 
 
@@ -295,19 +292,19 @@ public class BioDroidActivity extends FragmentActivity implements BioView.BioHol
 		int phaseP = bioview.getPhase(BioView.PHYSICAL);
 		if (oldPhaseP != phaseP)
 		{
-			((TextView) findViewById(R.id.tab_phy)).setText(desc_phy[phaseP]);
+//			((TextView) findViewById(R.id.tab_phy)).setText(desc_phy[phaseP]);
 			oldPhaseP  = phaseP;
 		}
 		int phaseE = bioview.getPhase(BioView.EMOTIONAL);
 		if (oldPhaseE != phaseE)
 		{
-			((TextView) findViewById(R.id.tab_emo)).setText(desc_emo[phaseE]);
+//			((TextView) findViewById(R.id.tab_emo)).setText(desc_emo[phaseE]);
 			oldPhaseE = phaseE;
 		}
 		int phaseI = bioview.getPhase(BioView.INTELECTUAL);
 		if (oldPhaseI != phaseE)
 		{
-			((TextView) findViewById(R.id.tab_int)).setText(desc_int[phaseI]);
+//			((TextView) findViewById(R.id.tab_int)).setText(desc_int[phaseI]);
 			oldPhaseI = phaseI;
 		}
     }
@@ -403,14 +400,14 @@ public class BioDroidActivity extends FragmentActivity implements BioView.BioHol
 	{
 		switch (item.getItemId())
 		{
-			case R.id.menuBirthday:
-				DialogFragment dpBirthFragment = new DatePickerFragment(calBirth, true);
-				dpBirthFragment.show(getSupportFragmentManager(), "datePickerBirthday");
-				return true;
-			case R.id.menuForDay:
-				DialogFragment dpTodayFragment = new DatePickerFragment(calToday, false);
-				dpTodayFragment.show(getSupportFragmentManager(), "datePickerToday");
-				return true;
+//			case R.id.menuBirthday:
+//				DialogFragment dpBirthFragment = new DatePickerFragment(calBirth, true);
+//				dpBirthFragment.show(getSupportFragmentManager(), "datePickerBirthday");
+//				return true;
+//			case R.id.menuForDay:
+//				DialogFragment dpTodayFragment = new DatePickerFragment(calToday, false);
+//				dpTodayFragment.show(getSupportFragmentManager(), "datePickerToday");
+//				return true;
 			case R.id.menuHistory:
 				showDialog(DIALOG_FAVORITE);
 				return true;
@@ -449,7 +446,7 @@ public class BioDroidActivity extends FragmentActivity implements BioView.BioHol
 		@Override
 		public void onTabSelected(ActionBar.Tab p1, android.app.FragmentTransaction p2)
 		{
-			// TODO: Implement this method
+			
 		}
 
 		@Override
@@ -467,54 +464,161 @@ public class BioDroidActivity extends FragmentActivity implements BioView.BioHol
 
 	
     }
+//
+//    /**
+//     * 
+//     * @author tay
+//     *
+//     */
+//	protected class BirthdayPickerFragment extends DialogFragment
+//	implements DatePickerDialog.OnDateSetListener
+//	{
+//		@Override
+//		public Dialog onCreateDialog(Bundle savedInstanceState)
+//		{
+//			return new DatePickerDialog(getActivity(), this, 
+//										calBirth.get(Calendar.YEAR), 
+//										calBirth.get(Calendar.MONTH), 
+//										calBirth.get(Calendar.DAY_OF_MONTH));
+//		}
+//
+//		public void onDateSet(DatePicker view, int year, int month, int day)
+//		{
+//			calBirth.set(year, month, day);
+//			favorites.add(calBirth.getTime());
+//			storeActivityPreferences();				
+//			updateDisplay();
+//		}
+//	}
+//
+//    /**
+//     * 
+//     * @author tay
+//     *
+//     */
+//	protected class DatePickerFragment extends DialogFragment
+//	implements DatePickerDialog.OnDateSetListener
+//	{
+//		private Calendar calendar;
+//		private boolean isBirthday;
+//
+//
+//		@Override
+//		public Dialog onCreateDialog(Bundle savedInstanceState)
+//		{
+//			return new DatePickerDialog(getActivity(), this, 
+//										calendar.get(Calendar.YEAR), 
+//										calendar.get(Calendar.MONTH), 
+//										calendar.get(Calendar.DAY_OF_MONTH));
+//		}
+//
+//		public void onDateSet(DatePicker view, int year, int month, int day)
+//		{
+//			calendar.set(year, month, day);
+//			if (isBirthday)
+//			{
+//				favorites.add(calBirth.getTime());
+//				storeActivityPreferences();				
+//			}
+//			updateDisplay();
+//		}
+//	}
+	
+	/**
+	 * 
+	 * @author tay
+	 * 
+	 */
+	public class TabAdapter extends FragmentPagerAdapter {
+		private TabFragement[] mTabs;
 
-	protected class DatePickerFragment extends DialogFragment
-	implements DatePickerDialog.OnDateSetListener
-	{
-		private Calendar calendar;
-		private boolean isBirthday;
+		public TabAdapter(FragmentManager fm) {
+			super(fm);
 
-		public DatePickerFragment(Calendar calendar, boolean isBirthday)
-		{
-			this.calendar = calendar;
-			this.isBirthday = isBirthday;
+			mTabs = new TabFragement[3];
+			int pos = 0;
+
+			TabFragement tf = new TabFragement();
+			tf.setPosition(pos);
+			tf.setTitle(getResources().getText(R.string.tab_phy));
+			tf.setDescription(getResources().getStringArray(R.array.desc_phy));
+			tf.setIcon(getResources().getDrawable(R.drawable.sin_phy));
+			mTabs[pos++] = tf;
+
+			tf = new TabFragement();
+			tf.setPosition(pos);
+			tf.setTitle(getResources().getText(R.string.tab_emo));
+			tf.setDescription(getResources().getStringArray(R.array.desc_emo));
+			tf.setIcon(getResources().getDrawable(R.drawable.sin_emo));
+			mTabs[pos++] = tf;
+
+			tf = new TabFragement();
+			tf.setPosition(pos);
+			tf.setTitle(getResources().getText(R.string.tab_int));
+			tf.setDescription(getResources().getStringArray(R.array.desc_int));
+			tf.setIcon(getResources().getDrawable(R.drawable.sin_int));
+			mTabs[pos++] = tf;
 		}
 
-
+		/*
+		 * @see android.support.v4.view.PagerAdapter#getCount()
+		 */
 		@Override
-		public Dialog onCreateDialog(Bundle savedInstanceState)
-		{
-			return new DatePickerDialog(getActivity(), this, 
-										calendar.get(Calendar.YEAR), 
-										calendar.get(Calendar.MONTH), 
-										calendar.get(Calendar.DAY_OF_MONTH));
+		public int getCount() {
+			return mTabs.length;
 		}
 
-		public void onDateSet(DatePicker view, int year, int month, int day)
-		{
-			calendar.set(year, month, day);
-			if (isBirthday)
-			{
-				favorites.add(calBirth.getTime());
-				storeActivityPreferences();				
-			}
-			updateDisplay();
+		/*
+		 * @see android.support.v4.app.FragmentPagerAdapter#getItem(int)
+		 */
+		@Override
+		public Fragment getItem(int position) {
+			return mTabs[position];
+		}
+
+		/*
+		 * @see android.support.v4.view.PagerAdapter#getPageTitle(int)
+		 */
+		@Override
+		public CharSequence getPageTitle(int position) {
+			return mTabs[position].getTitle();
+		}
+
+		/**
+		 * 
+		 * @param position
+		 * @return
+		 */
+		public Drawable getIcon(int position) {
+			return mTabs[position].getIcon();
 		}
 	}
-	
-	public static class TabAdapter extends FragmentPagerAdapter {
-        public TabAdapter(FragmentManager fm) {
-            super(fm);
-        }
 
-        @Override
-        public int getCount() {
-            return 3;
-        }
+	/*
+	 * @see
+	 * android.app.ActionBar.TabListener#onTabReselected(android.app.ActionBar
+	 * .Tab, android.app.FragmentTransaction)
+	 */
+	@Override
+	public void onTabReselected(Tab tab, FragmentTransaction ft) {
+	}
 
-        @Override
-        public Fragment getItem(int position) {
-            return ArrayListFragment.newInstance(position);
-        }
-    }
+	/*
+	 * @see
+	 * android.app.ActionBar.TabListener#onTabSelected(android.app.ActionBar
+	 * .Tab, android.app.FragmentTransaction)
+	 */
+	@Override
+	public void onTabSelected(Tab tab, FragmentTransaction ft) {
+		mViewPager.setCurrentItem(tab.getPosition());
+	}
+
+	/*
+	 * @see
+	 * android.app.ActionBar.TabListener#onTabUnselected(android.app.ActionBar
+	 * .Tab, android.app.FragmentTransaction)
+	 */
+	@Override
+	public void onTabUnselected(Tab tab, FragmentTransaction ft) {
+	}
 }

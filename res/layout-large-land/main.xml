@@ -12,9 +12,89 @@
   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
   See the License for the specific language governing permissions and
   limitations under the License.
-  -->
-
-<android.support.v4.view.ViewPager xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/pager"
+-->
+<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:android1="http://schemas.android.com/apk/res/android"
+    android:id="@+id/screen"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" />
+    android:layout_height="match_parent"
+    android:columnCount="2"
+    android:rowCount="1" >
+
+    <LinearLayout
+        android:id="@+id/mainContainer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_column="0"
+        android:layout_row="0"
+        android:orientation="vertical" >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/labelBirthday"
+                style="@style/Overlay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:text="@string/label_birthday" />
+
+            <EditText
+                android:id="@+id/editBirthday"
+                style="@style/Overlay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_toRightOf="@id/labelBirthday"
+                android:inputType="date" />
+
+            <Button
+                android:id="@+id/btnHistory"
+                style="@style/Overlay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:text="…" />
+        
+            <EditText
+                android:id="@+id/editToday"
+                style="@style/Overlay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_toLeftOf="@id/btnHistory"
+                android:ems="10"
+                android:inputType="date" >
+            </EditText>
+            
+            <TextView
+                android:id="@+id/labelToday"
+                style="@style/Overlay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_toLeftOf="@id/editToday"
+                android:layout_toRightOf="@id/editBirthday"
+                android:text="@string/label_today"
+                android1:gravity="right" />
+
+        </RelativeLayout>
+
+        <de.taytec.biodroid.BioView
+            android:id="@+id/surface"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent" />
+    </LinearLayout>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/descPager"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android1:layout_column="1"
+        android1:layout_row="0" >
+    </android.support.v4.view.ViewPager>
+
+</GridLayout>

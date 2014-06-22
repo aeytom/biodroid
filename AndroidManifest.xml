@@ -1,23 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest 
-  xmlns:android="http://schemas.android.com/apk/res/android" 
-  android:installLocation="auto" 
-  package="de.taytec.biodroid" 
-  android:versionName="1.4" 
-  android:versionCode="7">
-  <application android:icon="@drawable/icon" android:label="@string/app_name">
-    <activity android:name=".BioDroidActivity" 
-	  android:label="@string/app_name" 
-	  android:theme="@android:style/Theme.Holo">
-	  <meta-data android:name="android.support.UI_OPTIONS"
-		android:value="splitActionBarWhenNarrow" />
-      <intent-filter>
-        <action android:name="android.intent.action.MAIN" />
-        <category android:name="android.intent.category.LAUNCHER" />
-      </intent-filter>
-    </activity>
-  </application>
-  <uses-sdk 
-	android:minSdkVersion="11" 
-	android:targetSdkVersion="17" />
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="de.taytec.biodroid"
+    android:installLocation="auto"
+    android:versionCode="7"
+    android:versionName="1.4" >
+
+    <uses-sdk
+        android:minSdkVersion="14"
+        android:targetSdkVersion="17" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/icon"
+        android:label="@string/app_name" >
+        <activity
+            android:name=".BioDroidActivity"
+            android:label="@string/app_name"
+            android:theme="@android:style/Theme.Holo" >
+            <meta-data
+                android:name="android.support.UI_OPTIONS"
+                android:value="splitActionBarWhenNarrow" />
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
 </manifest>
