@@ -1,4 +1,4 @@
-package de.taytec.biodroid;
+        package de.taytec.biodroid;
 
 
 
@@ -292,19 +292,19 @@ public class BioDroidActivity extends FragmentActivity implements BioView.BioHol
 		int phaseP = bioview.getPhase(BioView.PHYSICAL);
 		if (oldPhaseP != phaseP)
 		{
-//			((TextView) findViewById(R.id.tab_phy)).setText(desc_phy[phaseP]);
+			mTabAdapter.showDescription(0, phaseP);
 			oldPhaseP  = phaseP;
 		}
 		int phaseE = bioview.getPhase(BioView.EMOTIONAL);
 		if (oldPhaseE != phaseE)
 		{
-//			((TextView) findViewById(R.id.tab_emo)).setText(desc_emo[phaseE]);
+			mTabAdapter.showDescription(1, phaseE);
 			oldPhaseE = phaseE;
 		}
 		int phaseI = bioview.getPhase(BioView.INTELECTUAL);
-		if (oldPhaseI != phaseE)
+		if (oldPhaseI != phaseI)
 		{
-//			((TextView) findViewById(R.id.tab_int)).setText(desc_int[phaseI]);
+			mTabAdapter.showDescription(2, phaseI);
 			oldPhaseI = phaseI;
 		}
     }
@@ -592,6 +592,11 @@ public class BioDroidActivity extends FragmentActivity implements BioView.BioHol
 		public Drawable getIcon(int position) {
 			return mTabs[position].getIcon();
 		}
+		
+		public void showDescription(int position, int phase) {
+			mTabs[position].showDescription(phase);
+		}
+		
 	}
 
 	/*

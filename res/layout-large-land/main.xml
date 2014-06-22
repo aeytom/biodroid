@@ -1,100 +1,81 @@
-<!--
-  Copyright 2012 The Android Open Source Project
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:android1="http://schemas.android.com/apk/res/android"
+	android:id="@+id/screen"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:orientation="horizontal">
 
-  Licensed under the Apache License, Version 2.0 (the "License");
-  you may not use this file except in compliance with the License.
-  You may obtain a copy of the License at
+	<LinearLayout
+		android:id="@+id/mainContainer"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:layout_weight="1"
+		android:orientation="vertical">
 
-      http://www.apache.org/licenses/LICENSE-2.0
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:orientation="horizontal">
 
-  Unless required by applicable law or agreed to in writing, software
-  distributed under the License is distributed on an "AS IS" BASIS,
-  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-  See the License for the specific language governing permissions and
-  limitations under the License.
--->
-<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:android1="http://schemas.android.com/apk/res/android"
-    android:id="@+id/screen"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:columnCount="2"
-    android:rowCount="1" >
+			<TextView
+				android:id="@+id/labelBirthday"
+				style="@style/Overlay"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="@string/label_birthday"/>
 
-    <LinearLayout
-        android:id="@+id/mainContainer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_column="0"
-        android:layout_row="0"
-        android:orientation="vertical" >
+			<EditText
+				android:id="@+id/editBirthday"
+				style="@style/Overlay"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:inputType="date"/>
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" >
+			<TextView
+				android:id="@+id/labelToday"
+				style="@style/Overlay"
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content"
+				android:layout_weight="1"
+				android:text="@string/label_today"
+				android:gravity="right|end"/>
 
-            <TextView
-                android:id="@+id/labelBirthday"
-                style="@style/Overlay"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentTop="true"
-                android:text="@string/label_birthday" />
+			<EditText
+				android:id="@+id/editToday"
+				style="@style/Overlay"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:ems="10"
+				android:inputType="date">
 
-            <EditText
-                android:id="@+id/editBirthday"
-                style="@style/Overlay"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:layout_toRightOf="@id/labelBirthday"
-                android:inputType="date" />
+			</EditText>
 
-            <Button
-                android:id="@+id/btnHistory"
-                style="@style/Overlay"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:text="…" />
-        
-            <EditText
-                android:id="@+id/editToday"
-                style="@style/Overlay"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:layout_toLeftOf="@id/btnHistory"
-                android:ems="10"
-                android:inputType="date" >
-            </EditText>
-            
-            <TextView
-                android:id="@+id/labelToday"
-                style="@style/Overlay"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:layout_toLeftOf="@id/editToday"
-                android:layout_toRightOf="@id/editBirthday"
-                android:text="@string/label_today"
-                android1:gravity="right" />
+			<Button
+				android:id="@+id/btnHistory"
+				style="@style/Overlay"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="…"/>
 
-        </RelativeLayout>
+		</LinearLayout>
 
-        <de.taytec.biodroid.BioView
-            android:id="@+id/surface"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent" />
-    </LinearLayout>
+		<de.taytec.biodroid.BioView
+			android:id="@+id/surface"
+			android:layout_width="fill_parent"
+			android:layout_height="fill_parent"
+			android:layout_weight="1"/>
 
-    <android.support.v4.view.ViewPager
-        android:id="@+id/descPager"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android1:layout_column="1"
-        android1:layout_row="0" >
-    </android.support.v4.view.ViewPager>
+	</LinearLayout>
 
-</GridLayout>
+	<android.support.v4.view.ViewPager
+		android:id="@+id/descPager"
+		android:layout_width="fill_parent"
+		android:layout_height="match_parent"
+		android:layout_weight="1">
+
+	</android.support.v4.view.ViewPager>
+
+</LinearLayout>
+

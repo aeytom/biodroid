@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.*;
 
 public class TabFragement extends Fragment {
 
@@ -15,6 +16,8 @@ public class TabFragement extends Fragment {
 	private String[] description;
 	private CharSequence title;
 	private Drawable icon;
+	private int Phase;
+
 
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
@@ -25,6 +28,9 @@ public class TabFragement extends Fragment {
 		} else {
 			Log.d(getClass().getSimpleName(), "onCreateView() - new");
 			mView = inflater.inflate(R.layout.tab_fragment, container, false);
+			((TextView)mView.findViewById(R.id.textTitleDescription)).setText(title);
+			((ImageView)mView.findViewById(R.id.iconDescription)).setImageDrawable(icon);
+			showDescription(Phase);
 		}
 		return mView;
 	}
@@ -45,12 +51,27 @@ public class TabFragement extends Fragment {
 		this.description = description;
 	}
 
+	public void showDescription(int phase)
+	{
+		this.Phase = phase;
+		if (mView != null) {
+			TextView text = (TextView) mView.findViewById(R.id.descriptionText);
+			text.setText(description[phase]);			
+		}
+	}
+	
 	public void setTitle(CharSequence text) {
 		this.title = text;
+		if (mView != null) {
+			((TextView)mView.findViewById(R.id.textTitleDescription)).setText(title);			
+		}
 	}
 
 	public void setIcon(Drawable drawable) {
 		this.icon = drawable;
+		if (mView != null) {
+			((ImageView)mView.findViewById(R.id.iconDescription)).setImageDrawable(drawable);
+		}
 	}
 
 	public Drawable getIcon() {

@@ -1,13 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/tab_fragment"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent" >
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_height="wrap_content"
+	android:layout_width="wrap_content"
+	android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/descriptionText"
-        style="@style/Normal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+	<LinearLayout
+		android:layout_height="wrap_content"
+		android:layout_width="match_parent"
+		android:orientation="horizontal"
+		android:gravity="center"
+		android:padding="10dp">
 
-</ScrollView>
+		<TextView
+			android:layout_height="wrap_content"
+			android:text="Auswertung"
+			android:layout_width="wrap_content"
+			android:paddingRight="10dp"
+			android:textAppearance="?android:attr/textAppearanceMedium"/>
+
+		<TextView
+			android:layout_height="wrap_content"
+			android:text="Physisch"
+			android:layout_width="wrap_content"
+			android:id="@+id/textTitleDescription"
+			android:textAppearance="?android:attr/textAppearanceLarge"/>
+
+	</LinearLayout>
+
+	<ImageView
+		android:layout_height="wrap_content"
+		android:layout_width="match_parent"
+		android:src="@drawable/sin_phy"
+		android:id="@+id/iconDescription"
+		android:layout_gravity="center"
+		android="5dp"/>
+
+	<ScrollView
+		android:id="@+id/tab_fragment"
+		android:layout_width="fill_parent"
+		android:layout_height="fill_parent">
+
+		<TextView
+			android:id="@+id/descriptionText"
+			style="@style/Normal"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"/>
+
+	</ScrollView>
+
+</LinearLayout>
+
