@@ -1,2 +1,6 @@
-[a-z]*
-[A-Z]*
+/res
+/AndroidManifest.xml
+/jarlist.cache
+/[a-z]*
+/[A-Z]*
+
