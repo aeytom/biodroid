@@ -25,15 +25,17 @@ import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.app.ActionBar.*;
+import android.widget.AdapterView.*;
+import de.taytec.biodroid.Favorites.*;
 
-public class BioDroidActivity extends FragmentActivity implements BioView.BioHolder, TabListener
+public class BioDroidActivity extends FragmentActivity implements BioView.BioHolder, TabListener, OnItemSelectedListener
 {
     protected final int DIALOG_FAVORITE = 2;
     protected final int DIALOG_ABOUT = 3;
     private static final int DIALOG_THEORY = 5;
  
     protected TextView tv_birth;
-    protected TextView tv_today;
+    protected Spinner tv_today;
 
     protected Calendar calBirth = Calendar.getInstance();
     protected Calendar calToday = Calendar.getInstance();
@@ -62,7 +64,7 @@ public class BioDroidActivity extends FragmentActivity implements BioView.BioHol
 		restoreActivityPreferences();
 
 		tv_birth = (TextView) findViewById(R.id.editBirthday);
-		tv_today = (TextView) findViewById(R.id.editToday);
+		tv_today = (Spinner) findViewById(R.id.editToday);
         
         final ActionBar actionBar = getActionBar();
         actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_TITLE);
@@ -89,6 +91,10 @@ public class BioDroidActivity extends FragmentActivity implements BioView.BioHol
 		
 		bioview = (BioView)findViewById(R.id.surface);
 		bioview.setBioHolder(this);
+        
+        Spinner spinner = (Spinner) findViewById(R.id.editToday);
+        favorites.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(favorites);
 
 		updateDisplay();
 
@@ -287,7 +293,7 @@ public class BioDroidActivity extends FragmentActivity implements BioView.BioHol
 		SimpleDateFormat df = new SimpleDateFormat(
 			getResources().getString(R.string.format_date));
 		tv_birth.setText(df.format(calBirth.getTime()));
-		tv_today.setText(df.format(calToday.getTime()));
+        favorites.add(calToday.getTime());
 
 		int phaseP = bioview.getPhase(BioView.PHYSICAL);
 		if (oldPhaseP != phaseP)
@@ -400,17 +406,6 @@ public class BioDroidActivity extends FragmentActivity implements BioView.BioHol
 	{
 		switch (item.getItemId())
 		{
-//			case R.id.menuBirthday:
-//				DialogFragment dpBirthFragment = new DatePickerFragment(calBirth, true);
-//				dpBirthFragment.show(getSupportFragmentManager(), "datePickerBirthday");
-//				return true;
-//			case R.id.menuForDay:
-//				DialogFragment dpTodayFragment = new DatePickerFragment(calToday, false);
-//				dpTodayFragment.show(getSupportFragmentManager(), "datePickerToday");
-//				return true;
-			case R.id.menuHistory:
-				showDialog(DIALOG_FAVORITE);
-				return true;
 			case R.id.menuAbout:
 				showDialog(DIALOG_ABOUT);
 				return true;
@@ -440,89 +435,76 @@ public class BioDroidActivity extends FragmentActivity implements BioView.BioHol
 		updateDisplay();
     }
 
-    protected class TabListener implements ActionBar.TabListener
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View v, int position, long id)
     {
-
-		@Override
-		public void onTabSelected(ActionBar.Tab p1, android.app.FragmentTransaction p2)
-		{
-			
-		}
-
-		@Override
-		public void onTabUnselected(ActionBar.Tab p1, android.app.FragmentTransaction p2)
-		{
-			// TODO: Implement this method
-		}
-
-		@Override
-		public void onTabReselected(ActionBar.Tab p1, android.app.FragmentTransaction p2)
-		{
-			// TODO: Implement this method
-		}
-
-
-	
+        Favorites.BioDate choosed = (Favorites.BioDate)parent.getItemAtPosition(position);
+        calBirth.setTime(choosed);
+        favorites.add(choosed);
+        updateDisplay();    
     }
-//
-//    /**
-//     * 
-//     * @author tay
-//     *
-//     */
-//	protected class BirthdayPickerFragment extends DialogFragment
-//	implements DatePickerDialog.OnDateSetListener
-//	{
-//		@Override
-//		public Dialog onCreateDialog(Bundle savedInstanceState)
-//		{
-//			return new DatePickerDialog(getActivity(), this, 
-//										calBirth.get(Calendar.YEAR), 
-//										calBirth.get(Calendar.MONTH), 
-//										calBirth.get(Calendar.DAY_OF_MONTH));
-//		}
-//
-//		public void onDateSet(DatePicker view, int year, int month, int day)
-//		{
-//			calBirth.set(year, month, day);
-//			favorites.add(calBirth.getTime());
-//			storeActivityPreferences();				
-//			updateDisplay();
-//		}
-//	}
-//
-//    /**
-//     * 
-//     * @author tay
-//     *
-//     */
-//	protected class DatePickerFragment extends DialogFragment
-//	implements DatePickerDialog.OnDateSetListener
-//	{
-//		private Calendar calendar;
-//		private boolean isBirthday;
-//
-//
-//		@Override
-//		public Dialog onCreateDialog(Bundle savedInstanceState)
-//		{
-//			return new DatePickerDialog(getActivity(), this, 
-//										calendar.get(Calendar.YEAR), 
-//										calendar.get(Calendar.MONTH), 
-//										calendar.get(Calendar.DAY_OF_MONTH));
-//		}
-//
-//		public void onDateSet(DatePicker view, int year, int month, int day)
-//		{
-//			calendar.set(year, month, day);
-//			if (isBirthday)
-//			{
-//				favorites.add(calBirth.getTime());
-//				storeActivityPreferences();				
-//			}
-//			updateDisplay();
-//		}
-//	}
+
+    @Override
+    public void onNothingSelected(AdapterView<?> p1)
+    {
+        showDatePickerDialog(null);
+    }
+
+    
+    
+    public void showBirthdayPickerDialog(View v) {
+        DialogFragment newFragment = new BirthdayPickerFragment();
+        newFragment.show(getSupportFragmentManager(), "birthdayPicker");
+    }
+
+    
+	private class BirthdayPickerFragment extends DialogFragment
+	implements DatePickerDialog.OnDateSetListener
+	{
+		@Override
+		public Dialog onCreateDialog(Bundle savedInstanceState)
+		{
+			return new DatePickerDialog(getActivity(), this, 
+										calBirth.get(Calendar.YEAR), 
+										calBirth.get(Calendar.MONTH), 
+										calBirth.get(Calendar.DAY_OF_MONTH));
+		}
+
+		public void onDateSet(DatePicker view, int year, int month, int day)
+		{
+			calBirth.set(year, month, day);
+			favorites.add(calBirth.getTime());
+			storeActivityPreferences();				
+			updateDisplay();
+		}
+	}
+
+
+    public void showDatePickerDialog(View v) {
+        DialogFragment newFragment = new DatePickerFragment();
+        newFragment.show(getSupportFragmentManager(), "datePicker");
+    }
+
+    
+	private class DatePickerFragment extends DialogFragment
+	implements DatePickerDialog.OnDateSetListener
+	{
+		@Override
+		public Dialog onCreateDialog(Bundle savedInstanceState)
+		{
+			return new DatePickerDialog(getActivity(), this, 
+										calToday.get(Calendar.YEAR), 
+										calToday.get(Calendar.MONTH), 
+										calToday.get(Calendar.DAY_OF_MONTH));
+		}
+
+		public void onDateSet(DatePicker view, int year, int month, int day)
+		{
+			calToday.set(year, month, day);
+			updateDisplay();
+		}
+	}
 	
 	/**
 	 * 

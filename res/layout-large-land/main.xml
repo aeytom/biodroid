@@ -5,7 +5,8 @@
 	android:id="@+id/screen"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
-	android:orientation="horizontal">
+	android:orientation="horizontal"
+	android:padding="3dp">
 
 	<LinearLayout
 		android:id="@+id/mainContainer"
@@ -14,58 +15,46 @@
 		android:layout_weight="1"
 		android:orientation="vertical">
 
+		<de.taytec.biodroid.BioView
+			android:id="@+id/surface"
+			android:layout_width="fill_parent"
+			android:layout_height="fill_parent"
+			android:layout_weight="1"/>
+		
 		<LinearLayout
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
-			android:orientation="horizontal">
+			android:orientation="horizontal"
+			android:padding="3dp">
 
 			<TextView
 				android:id="@+id/labelBirthday"
-				style="@style/Overlay"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				android:text="@string/label_birthday"/>
 
-			<EditText
+			<Button
 				android:id="@+id/editBirthday"
-				style="@style/Overlay"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
-				android:inputType="date"/>
+				android:onClick="showBirthdayPickerDialog"
+				android:ems="8"/>
 
 			<TextView
 				android:id="@+id/labelToday"
-				style="@style/Overlay"
 				android:layout_width="fill_parent"
 				android:layout_height="wrap_content"
 				android:layout_weight="1"
 				android:text="@string/label_today"
 				android:gravity="right|end"/>
 
-			<EditText
+			<Spinner
 				android:id="@+id/editToday"
-				style="@style/Overlay"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
-				android:ems="10"
-				android:inputType="date">
-
-			</EditText>
-
-			<Button
-				android:id="@+id/btnHistory"
-				style="@style/Overlay"
-				android:layout_width="wrap_content"
-				android:layout_height="wrap_content"
-				android:text="…"/>
+				android:ems="8"/>
 
 		</LinearLayout>
-
-		<de.taytec.biodroid.BioView
-			android:id="@+id/surface"
-			android:layout_width="fill_parent"
-			android:layout_height="fill_parent"
-			android:layout_weight="1"/>
 
 	</LinearLayout>
 
