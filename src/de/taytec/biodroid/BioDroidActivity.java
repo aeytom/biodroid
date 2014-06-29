@@ -28,14 +28,15 @@ import android.app.ActionBar.*;
 import android.widget.AdapterView.*;
 import de.taytec.biodroid.Favorites.*;
 
-public class BioDroidActivity extends FragmentActivity implements BioView.BioHolder, TabListener, OnItemSelectedListener
+public class BioDroidActivity extends FragmentActivity implements BioView.BioHolder, TabListener, OnItemSelectedListener, View.OnLongClickListener
 {
+
     protected final int DIALOG_FAVORITE = 2;
     protected final int DIALOG_ABOUT = 3;
     private static final int DIALOG_THEORY = 5;
  
-    protected TextView tv_birth;
-    protected Spinner tv_today;
+    protected Spinner tv_birth;
+    protected Button tv_today;
 
     protected Calendar calBirth = Calendar.getInstance();
     protected Calendar calToday = Calendar.getInstance();
@@ -63,8 +64,8 @@ public class BioDroidActivity extends FragmentActivity implements BioView.BioHol
 
 		restoreActivityPreferences();
 
-		tv_birth = (TextView) findViewById(R.id.editBirthday);
-		tv_today = (Spinner) findViewById(R.id.editToday);
+		tv_birth = (Spinner) findViewById(R.id.editBirthday);
+		tv_today = (Button) findViewById(R.id.editToday);
         
         final ActionBar actionBar = getActionBar();
         actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_TITLE);
@@ -92,8 +93,10 @@ public class BioDroidActivity extends FragmentActivity implements BioView.BioHol
 		bioview = (BioView)findViewById(R.id.surface);
 		bioview.setBioHolder(this);
         
-        Spinner spinner = (Spinner) findViewById(R.id.editToday);
+        Spinner spinner = (Spinner) findViewById(R.id.editBirthday);
         favorites.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+		spinner.setOnItemSelectedListener(this);
+		spinner.setOnLongClickListener(this);
         spinner.setAdapter(favorites);
 
 		updateDisplay();
@@ -292,8 +295,8 @@ public class BioDroidActivity extends FragmentActivity implements BioView.BioHol
 
 		SimpleDateFormat df = new SimpleDateFormat(
 			getResources().getString(R.string.format_date));
-		tv_birth.setText(df.format(calBirth.getTime()));
-        favorites.add(calToday.getTime());
+		tv_today.setText(df.format(calToday.getTime()));
+        favorites.add(calBirth.getTime());
 
 		int phaseP = bioview.getPhase(BioView.PHYSICAL);
 		if (oldPhaseP != phaseP)
@@ -446,12 +449,19 @@ public class BioDroidActivity extends FragmentActivity implements BioView.BioHol
     }
 
     @Override
-    public void onNothingSelected(AdapterView<?> p1)
+    public void onNothingSelected(AdapterView<?> parent)
     {
-        showDatePickerDialog(null);
+        showBirthdayPickerDialog(null);
     }
 
-    
+
+	@Override
+	public boolean onLongClick(View p1)
+	{
+		showBirthdayPickerDialog(null);
+		return false;
+	}
+	
     
     public void showBirthdayPickerDialog(View v) {
         DialogFragment newFragment = new BirthdayPickerFragment();

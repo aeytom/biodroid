@@ -20,7 +20,7 @@
 			android:layout_width="fill_parent"
 			android:layout_height="fill_parent"
 			android:layout_weight="1"/>
-		
+
 		<LinearLayout
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
@@ -33,11 +33,10 @@
 				android:layout_height="wrap_content"
 				android:text="@string/label_birthday"/>
 
-			<Button
+			<Spinner
 				android:id="@+id/editBirthday"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
-				android:onClick="showBirthdayPickerDialog"
 				android:ems="8"/>
 
 			<TextView
@@ -48,10 +47,11 @@
 				android:text="@string/label_today"
 				android:gravity="right|end"/>
 
-			<Spinner
+			<Button
 				android:id="@+id/editToday"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
+				android:onClick="showDatePickerDialog"
 				android:ems="8"/>
 
 		</LinearLayout>
