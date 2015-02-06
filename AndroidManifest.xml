@@ -3,20 +3,17 @@
     package="de.taytec.biodroid"
     android:installLocation="auto"
     android:versionCode="7"
-    android:versionName="1.4" >
-
-    <uses-sdk
-        android:minSdkVersion="14"
-        android:targetSdkVersion="17" />
+    android:versionName="1.4">
 
     <application
         android:allowBackup="true"
         android:icon="@drawable/icon"
-        android:label="@string/app_name" >
+        android:label="@string/app_name">
         <activity
             android:name=".BioDroidActivity"
             android:label="@string/app_name"
-            android:theme="@android:style/Theme.Holo" >
+            android:theme="@android:style/Theme.Holo"
+            uiOptions="splitActionBarWhenNarrow">
             <meta-data
                 android:name="android.support.UI_OPTIONS"
                 android:value="splitActionBarWhenNarrow" />

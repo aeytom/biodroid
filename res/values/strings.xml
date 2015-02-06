@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-  <string name="app_name">BioDroid</string>
-  <string name="tab_phy">Physical</string>
-  <string-array name="desc_phy">
+    <string name="app_name">BioDroid</string>
+    <string name="tab_phy">Physical</string>
+    <string-array name="desc_phy">
     <item>
   Your energy, vitality, and strength are at full tide. Your physical system is able to withstand shock, injury, or
   stress at this time. Sexual drives are above normal. At the same time, physical forces may be overly strong with a
@@ -29,8 +29,8 @@
   may be present and must be resisted. There is a danger of overexertion if highs in the other cycles tend to override
   your feelings of physical low energy. Watch eating, drinking, as any overindulgence at this time is potentially
   dangerous.</item>
-  </string-array>
-  <string-array name="desc_emo">
+    </string-array>
+    <string-array name="desc_emo">
     <item>
   Your emotions are keyed to their highest levels. This is the time when you will feel most outwardly directed to
   others, able to enjoy their company, as well as to give them support, encouragement, and understanding if needed. It
@@ -56,8 +56,8 @@
   this may be helpful. In other circumstances, your feelings, sensitivities, and awareness of your environment may be
   low. lt is a time when you may feel more inwardly directed, less able to extend yourself to others. You may even
   experience feelings of Depression or loneliness. In general, it is a time of passivity rather than engagement.</item>
-  </string-array>
-  <string-array name="desc_int">
+    </string-array>
+    <string-array name="desc_int">
     <item>
   Analytical, logistical, and concentrative abilities are at upper levels. This is a prime time for creative thinking,
   composing, writing, decision-making. This is a good time for abstract reasoning, verbal fluency, understanding new
@@ -80,9 +80,9 @@
   concentration on tasks may all be frustrating or difficult during this period. Impulsive, spur-of-the-moment actions
   with regrettable consequences are possible. Loss or relinquishment of cautions or protective inclinations may occur.
   Depressed or exhausted mental states are also possible.</item>
-  </string-array>
-  <string name="tab_emo">Emotional</string>
-  <string name="tab_int">Intellectual</string>
+    </string-array>
+    <string name="tab_emo">Emotional</string>
+    <string name="tab_int">Intellectual</string>
   
   
   
@@ -93,18 +93,22 @@ by Tom Anheyer
 &lt;p&gt;
 Please use the &lt;b&gt;Menu&lt;/b&gt; key for changing the app settings.
 &lt;/p&gt;</string>
-  <string name="Button_Ok">OK</string>
-  <string name="label_birthday">Birthday:</string>
-  <string name="label_today">For date:</string>
-  <string name="format_date">EEE, MMMM d, \'\'yy</string>
-  <string name="language">en</string>
-  <string name="country">US</string>
-  <color name="clr_text_overlay">#ffffff</color>
-  <string name="label_btn_birthday">Birthday</string>
-  <color name="clr_phy">#0000ff</color>
-  <color name="clr_emo">#ff00ff</color>
-  <color name="clr_int">#ffff00</color>
-  <string name="favorite_dialog_title">Pick a birthday</string>
+    <string name="Button_Ok">OK</string>
+    <string name="label_birthday">Birthday:</string>
+    <string name="label_btn_birthday">Birthday</string>
+    <string name="label_today">For date:</string>
+    <string name="label_btn_today">For date</string>
+    <string name="label_btn_history">History</string>
+    <string name="label_btn_theory">Theory</string>
+    <string name="label_btn_about">About</string>
+    <string name="format_date">EEE, MMMM d, \'\'yy</string>
+    <string name="language">en</string>
+    <string name="country">US</string>
+    <color name="clr_text_overlay">#ffffff</color>
+    <color name="clr_phy">#0000ff</color>
+    <color name="clr_emo">#ff00ff</color>
+    <color name="clr_int">#ffff00</color>
+    <string name="favorite_dialog_title">Pick a birthday</string>
   
   <string name="theory">&lt;div style=&quot;font-size:8pt&quot;&gt;&lt;h1&gt;Theory&lt;/h1&gt; &lt;p&gt; In the nineteenth century, studies first began on certain life rhythms or cycles that were later
     termed &quot;biorhythms&quot;. The word biorhythm is a compound of two Greek words, bios and rhythmos, which mean life and a constant or periodic beat. The theory of biorhythms defines and
@@ -188,5 +192,6 @@ Please use the &lt;b&gt;Menu&lt;/b&gt; key for changing the app settings.
     your life cycles at a particular time, and how you function while being at various points in each of the three cycles will help you determine the best coping mechanisms for your particular life
     style. &lt;/p&gt; &lt;/div&gt;</string>
 
-<string name="contactPickerTitle">choose Contact</string>
+    <string name="contactPickerTitle">choose Contact</string>
+    <string name="evaluation">Evaluation:</string>
 </resources>

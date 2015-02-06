@@ -12,29 +12,27 @@
 		android:gravity="center"
 		android:padding="10dp">
 
-		<TextView
-			android:layout_height="wrap_content"
-			android:text="Auswertung"
-			android:layout_width="wrap_content"
-			android:paddingRight="10dp"
-			android:textAppearance="?android:attr/textAppearanceMedium"/>
+        <TextView
+            android:layout_height="wrap_content"
+            android:text="@string/evaluation"
+            android:layout_width="wrap_content"
+            android:paddingRight="10dp"/>
+
+        <ImageView
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:src="@drawable/sin_phy"
+            android:id="@+id/iconDescription"
+            android:layout_gravity="center"
+            android:paddingRight="10dp"/>
 
 		<TextView
 			android:layout_height="wrap_content"
-			android:text="Physisch"
+			android:text="@string/tab_phy"
 			android:layout_width="wrap_content"
-			android:id="@+id/textTitleDescription"
-			android:textAppearance="?android:attr/textAppearanceLarge"/>
+			android:id="@+id/textTitleDescription"/>
 
 	</LinearLayout>
-
-	<ImageView
-		android:layout_height="wrap_content"
-		android:layout_width="match_parent"
-		android:src="@drawable/sin_phy"
-		android:id="@+id/iconDescription"
-		android:layout_gravity="center"
-		android="5dp"/>
 
 	<ScrollView
 		android:id="@+id/tab_fragment"
@@ -43,7 +41,6 @@
 
 		<TextView
 			android:id="@+id/descriptionText"
-			style="@style/Normal"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"/>
 

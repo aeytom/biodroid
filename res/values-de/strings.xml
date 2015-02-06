@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-  <string name="app_name">BioDroid</string>
-  <string name="tab_phy">Physisch</string>
-  <string-array name="desc_phy">
+    <string name="app_name">BioDroid</string>
+    <string name="tab_phy">Physisch</string>
+    <string-array name="desc_phy">
     <item>
   Ihre Energie, Vitalität und Kraft sind auf der vollen Höhe. Ihr Körper kann Schock, Verletzungen und Streß ohne
   Probleme standhalten. Die sexuellen Triebe sind stärker ausgeprägt als üblich. Gleichzeitig können die physischen
@@ -25,8 +25,8 @@
   dieser Zeit. Depressive Tendenzen sind vielleicht vorhanden und müssen bekämpft werden. Es besteht die Gefahr der
   Überanstrengung, wenn die Hochphasen der anderen biorythmischen Zyklen Ihr physisches Tief überdecken. Achten Sie auf
   Ihre Ernährung, da übermäßiger Genuß zur Zeit gefährlich sein kann. </item>
-  </string-array>
-  <string-array name="desc_emo">
+    </string-array>
+    <string-array name="desc_emo">
     <item>
   Ihre Gefühle erreichen die höchste Aktivität. Dies ist die Zeit, wo Sie sich am meisten mit anderen verbunden fühlen.
   Sie erfreuen sich der Gesellschaft anderer und sind bereit Sie zu unterstützen, zu ermutigen und Verständnis zu zeigen
@@ -57,8 +57,8 @@
   Wahrnehmungen von Ihrer Umgebung dagegen sehr gering. In dieser Zeit sind Sie mehr in sich gekehrt und deshalb weniger
   bereit sich anderen zu öffnen. Sie können sogar Gefühle der Depression und Einsamkeit erfahren. Im allgemeinen ist
   dies mehr ein Zeitraum der Passivität, als des Engagements.</item>
-  </string-array>
-  <string-array name="desc_int">
+    </string-array>
+    <string-array name="desc_int">
     <item>
   Sowohl Ihre analytischen und logischen Fähigkeiten als auch Ihre Konzentrationsfähigkeit befinden sich auf einem hohen
   Level. Dies ist eine erstklassige Zeit um kreativ zu denken, zu komponieren, zu schreiben, Entscheidungen zu treffen.
@@ -87,9 +87,9 @@
   Impulsive, aus dem Moment heraus gemachte Handlungen mit bedauerlichen Konsequenzen sind jetzt möglich. Weiterhin kann
   der Verlust oder Verzicht auf Vorsicht oder schützende Neigungen auftreten. Genauso sind aber auch depressive und
   erschöpfte geistige Zustände möglich.</item>
-  </string-array>
-  <string name="tab_emo">Emotional</string>
-  <string name="tab_int">Intellektuell</string>
+    </string-array>
+    <string name="tab_emo">Emotional</string>
+    <string name="tab_int">Intellektuell</string>
   <string name="About">&lt;h1&gt;BioDroid VERSION&lt;/h1&gt;
 &lt;div&gt;
 von Tom Anheyer
@@ -97,14 +97,18 @@ von Tom Anheyer
 &lt;p&gt;
 Benutze die &lt;b&gt;Menü&lt;/b&gt; Taste, um die Einstellungen zu verändern.
 &lt;/p&gt;</string>
-  <string name="Button_Ok">OK</string>
-  <string name="label_birthday">Geburtstag:</string>
-  <string name="label_today">Für Tag:</string>
-  <string name="format_date">d. MMMM yy</string>
-  <string name="language">de</string>
-  <string name="country">DE</string>
-  <string name="label_btn_birthday">Geburtstag</string>
-  <string name="favorite_dialog_title">Wähle Geburtstag</string>
+    <string name="Button_Ok">OK</string>
+    <string name="label_birthday">Geburtstag:</string>
+    <string name="label_today">Für Tag:</string>
+    <string name="label_btn_today">Für Tag</string>
+    <string name="label_btn_history">Verlauf</string>
+    <string name="label_btn_theory">Theorie</string>
+    <string name="label_btn_about">Über</string>
+    <string name="format_date">d. MMMM yy</string>
+    <string name="language">de</string>
+    <string name="country">DE</string>
+    <string name="label_btn_birthday">Geburtstag</string>
+    <string name="favorite_dialog_title">Wähle Geburtstag</string>
 <string name="theory">&lt;h1&gt;Theorie&lt;/h1&gt; 
 &lt;h2&gt;Geschichte&lt;/h2&gt;
 &lt;p&gt;
@@ -177,5 +181,6 @@ Benutze die &lt;b&gt;Menü&lt;/b&gt; Taste, um die Einstellungen zu verändern.
 &lt;/p&gt;
 </string>
 
-<string name="contactPickerTitle">Kontakt auswählen</string>
+    <string name="contactPickerTitle">Kontakt auswählen</string>
+    <string name="evaluation">Auswertung:</string>
 </resources>
