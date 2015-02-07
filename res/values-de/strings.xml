@@ -97,7 +97,8 @@ von Tom Anheyer
 &lt;p&gt;
 Benutze die &lt;b&gt;Menü&lt;/b&gt; Taste, um die Einstellungen zu verändern.
 &lt;/p&gt;</string>
-    <string name="Button_Ok">OK</string>
+    <string name="button_ok">OK</string>
+    <string name="button_new">Neu</string>
     <string name="label_birthday">Geburtstag:</string>
     <string name="label_today">Für Tag:</string>
     <string name="label_btn_today">Für Tag</string>

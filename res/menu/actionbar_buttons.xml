@@ -10,7 +10,7 @@
     <item
         android:id="@+id/menuForDay"
         android:alphabeticShortcut="d"
-        android:icon="@drawable/ic_action_go_to_today"
+        android:icon="@drawable/ic_action_event"
         android:numericShortcut="2"
         android:showAsAction="ifRoom"
         android:title="@string/label_btn_today"></item>

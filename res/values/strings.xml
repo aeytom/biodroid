@@ -93,7 +93,8 @@ by Tom Anheyer
 &lt;p&gt;
 Please use the &lt;b&gt;Menu&lt;/b&gt; key for changing the app settings.
 &lt;/p&gt;</string>
-    <string name="Button_Ok">OK</string>
+    <string name="button_ok">OK</string>
+    <string name="button_new">New</string>
     <string name="label_birthday">Birthday:</string>
     <string name="label_btn_birthday">Birthday</string>
     <string name="label_today">For date:</string>

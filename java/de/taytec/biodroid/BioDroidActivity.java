@@ -1,49 +1,50 @@
-        package de.taytec.biodroid;
+package de.taytec.biodroid;
 
 
-        import android.app.ActionBar;
-        import android.app.ActionBar.Tab;
-        import android.app.ActionBar.TabListener;
-        import android.app.AlertDialog;
-        import android.app.DatePickerDialog;
-        import android.app.Dialog;
-        import android.app.FragmentTransaction;
-        import android.content.DialogInterface;
-        import android.content.SharedPreferences;
-        import android.content.SharedPreferences.Editor;
-        import android.content.pm.PackageInfo;
-        import android.content.pm.PackageManager;
-        import android.content.pm.PackageManager.NameNotFoundException;
-        import android.graphics.drawable.Drawable;
-        import android.os.Bundle;
-        import android.support.v4.app.DialogFragment;
-        import android.support.v4.app.Fragment;
-        import android.support.v4.app.FragmentActivity;
-        import android.support.v4.app.FragmentManager;
-        import android.support.v4.app.FragmentPagerAdapter;
-        import android.support.v4.view.ViewPager;
-        import android.util.Log;
-        import android.view.Menu;
-        import android.view.MenuItem;
-        import android.view.View;
-        import android.widget.AdapterView;
-        import android.widget.AdapterView.OnItemSelectedListener;
-        import android.widget.Button;
-        import android.widget.DatePicker;
-        import android.widget.Spinner;
+import android.app.ActionBar;
+import android.app.ActionBar.Tab;
+import android.app.AlertDialog;
+import android.app.DatePickerDialog;
+import android.app.Dialog;
+import android.app.FragmentTransaction;
+import android.content.DialogInterface;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.PackageManager.NameNotFoundException;
+import android.graphics.drawable.Drawable;
+import android.os.Bundle;
+import android.support.v4.app.DialogFragment;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.ViewPager;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.Button;
+import android.widget.DatePicker;
+import android.widget.ListView;
+import android.widget.Spinner;
 
-        import java.text.SimpleDateFormat;
-        import java.util.Calendar;
-        import java.util.Date;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 
-        public class BioDroidActivity extends FragmentActivity implements BioView.BioCalendarProvider, TabListener, OnItemSelectedListener, View.OnLongClickListener
+public class BioDroidActivity
+        extends FragmentActivity
+        implements BioView.BioCalendarProvider
 {
 
     protected final int DIALOG_FAVORITE = 2;
     protected final int DIALOG_ABOUT = 3;
     private static final int DIALOG_THEORY = 5;
  
-    protected Spinner tv_birth;
+    protected Button tv_birth;
     protected Button tv_today;
 
     protected Calendar calBirth = Calendar.getInstance();
@@ -54,11 +55,11 @@
     private int oldPhaseP = -1;
     private int oldPhaseE = -1;
     private int oldPhaseI = -1;
-    private Favorites favorites;
+    private FavoritesAdapter favoritesAdapter;
     
     private boolean firstStart = true;
 	private ViewPager mViewPager;
-	private TabAdapter mTabAdapter;
+    private AlertDialog mHistFragment;
 
     /** Called when the activity is first created. */
     @Override
@@ -67,45 +68,17 @@
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
 
-		favorites = new Favorites(this, 
+		favoritesAdapter = new FavoritesAdapter(this,
 			new SimpleDateFormat(getResources().getString(R.string.format_date)));
 
-		restoreActivityPreferences();
+        tv_birth = (Button) findViewById(R.id.editBirthday);
+        tv_today = (Button) findViewById(R.id.editToday);
 
-		tv_birth = (Spinner) findViewById(R.id.editBirthday);
-		tv_today = (Button) findViewById(R.id.editToday);
-
-        final ActionBar actionBar = getActionBar();
-        actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_TITLE);
-
-        mTabAdapter =
-                new TabAdapter(getSupportFragmentManager());
-        mViewPager = (ViewPager) findViewById(R.id.descPager);
-        mViewPager.setAdapter(mTabAdapter);
-        mViewPager
-                .setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
-                    @Override
-                    public void onPageSelected(int position) {
-                        mViewPager.setCurrentItem(position);
-                    }
-                });
-        
-        for (int i = 0; i < mTabAdapter.getCount(); i++) {
-
-			actionBar.addTab(actionBar.newTab()
-					.setText(mTabAdapter.getPageTitle(i))
-					.setIcon(mTabAdapter.getIcon(i))
-					.setTabListener(this));
-		}
+        restoreActivityPreferences();
+        initActionBar();
 		
 		bioview = (BioView)findViewById(R.id.surface);
-		bioview.setBioHolder(this);
-        
-        Spinner spinner = (Spinner) findViewById(R.id.editBirthday);
-        favorites.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-		spinner.setOnItemSelectedListener(this);
-		spinner.setOnLongClickListener(this);
-        spinner.setAdapter(favorites);
+		bioview.setCalendarProvider(this);
 
 		updateDisplay();
 
@@ -113,6 +86,51 @@
 		{
 			showDialog(DIALOG_ABOUT);
 		}
+    }
+
+    /**
+     * initialize ActionBar Tabs
+     */
+    private void initActionBar() {
+        final ActionBar actionBar = getActionBar();
+        actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_TITLE);
+        actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
+
+        final TabAdapter tabAdapter = new TabAdapter(getSupportFragmentManager());
+        mViewPager = (ViewPager) findViewById(R.id.descPager);
+        mViewPager.setAdapter(tabAdapter);
+        mViewPager
+                .setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
+                    @Override
+                    public void onPageSelected(int position) {
+                        Log.d(getPackageName(), "onPageSelected(): " + position);
+                        mViewPager.setCurrentItem(position);
+                        actionBar.selectTab(actionBar.getTabAt(position));
+
+                    }
+                });
+
+        for (int i = 0; i < tabAdapter.getCount(); i++) {
+            actionBar.addTab(actionBar.newTab()
+                    .setText(tabAdapter.getPageTitle(i))
+                    .setTabListener(new ActionBar.TabListener() {
+                        @Override
+                        public void onTabSelected(Tab tab, FragmentTransaction fragmentTransaction) {
+                            Log.d(getPackageName(), "(BioDroidActivity:TabListener) : onTabSelected() " + tab.getPosition());
+                            mViewPager.setCurrentItem(tab.getPosition(), true);
+                        }
+
+                        @Override
+                        public void onTabUnselected(Tab tab, FragmentTransaction fragmentTransaction) {
+
+                        }
+
+                        @Override
+                        public void onTabReselected(Tab tab, FragmentTransaction fragmentTransaction) {
+
+                        }
+                    }));
+        }
     }
 
     /**
@@ -133,7 +151,7 @@
 		{
 			Log.e(getPackageName(), "storeActivityPreferences() : PackageManager.GET_META_DATA", e);
 		}
-		favorites.storeToPreferences(ed, "history");
+		favoritesAdapter.storeToPreferences(ed, "history");
 		ed.commit();
     }
 
@@ -142,7 +160,7 @@
      */
     protected void restoreActivityPreferences()
 	{
-		//	Log.d(getPackageName(), "restoreActivityPreferences()");
+		Log.d(getPackageName(), "restoreActivityPreferences()");
 		SharedPreferences preferences = getPreferences(MODE_PRIVATE);
 		try
 		{
@@ -153,7 +171,7 @@
 		{
 			Log.e(getPackageName(), "restoreActivityPreferences() : PackageManager.GET_META_DATA", e);
 		}	
-		favorites.restoreFromPreferences(preferences, "history");
+		favoritesAdapter.restoreFromPreferences(preferences, "history");
 		//
 		// restore birthday
 		//
@@ -161,12 +179,12 @@
 		if (-1 != bdTime)
 		{
 			calBirth.setTime(new Date(bdTime));
-			favorites.add(calBirth.getTime());
+			favoritesAdapter.add(calBirth.getTime());
 		}
 		else
 		{
 			calBirth.set(2003, 2, 6);
-			favorites.add(calBirth.getTime());
+			favoritesAdapter.add(calBirth.getTime());
 		}
     }
 
@@ -252,7 +270,7 @@
 		builder
 			.setMessage(android.text.Html.fromHtml(getResources().getString(R.string.About).replace("VERSION", versionName)))
 			.setCancelable(false)
-			.setPositiveButton(R.string.Button_Ok,
+			.setPositiveButton(R.string.button_ok,
 			new DialogInterface.OnClickListener() {
 			    public void onClick(DialogInterface dialog, int id)
 				{
@@ -273,24 +291,26 @@
 		SimpleDateFormat df = new SimpleDateFormat(
 			getResources().getString(R.string.format_date));
 		tv_today.setText(df.format(calToday.getTime()));
-        favorites.add(calBirth.getTime());
+        tv_birth.setText(df.format(calBirth.getTime()));
+        favoritesAdapter.add(calBirth.getTime());
 
 		int phaseP = bioview.getPhase(BioView.PHYSICAL);
-		if (oldPhaseP != phaseP)
+        TabAdapter tabAdapter = (TabAdapter) mViewPager.getAdapter();
+        if (oldPhaseP != phaseP)
 		{
-			mTabAdapter.showDescription(0, phaseP);
+			tabAdapter.showDescription(0, phaseP);
 			oldPhaseP  = phaseP;
 		}
 		int phaseE = bioview.getPhase(BioView.EMOTIONAL);
 		if (oldPhaseE != phaseE)
 		{
-			mTabAdapter.showDescription(1, phaseE);
+			tabAdapter.showDescription(1, phaseE);
 			oldPhaseE = phaseE;
 		}
 		int phaseI = bioview.getPhase(BioView.INTELECTUAL);
 		if (oldPhaseI != phaseI)
 		{
-			mTabAdapter.showDescription(2, phaseI);
+			tabAdapter.showDescription(2, phaseI);
 			oldPhaseI = phaseI;
 		}
     }
@@ -324,23 +344,25 @@
 		{
 			cal.set(Calendar.YEAR, Calendar.getInstance().get(Calendar.YEAR));
 		}
-		if (cal.get(Calendar.YEAR) > cal.getActualMaximum(Calendar.YEAR))
+		else if (cal.get(Calendar.YEAR) > cal.getActualMaximum(Calendar.YEAR))
 		{
 			cal.set(Calendar.YEAR, Calendar.getInstance().get(Calendar.YEAR));
 		}
+
 		if (cal.get(Calendar.MONTH) < cal.getActualMinimum(Calendar.MONTH))
 		{
 			cal.set(Calendar.MONTH, Calendar.getInstance().get(Calendar.MONTH));
 		}
-		if (cal.get(Calendar.MONTH) > cal.getActualMaximum(Calendar.MONTH))
+		else if (cal.get(Calendar.MONTH) > cal.getActualMaximum(Calendar.MONTH))
 		{
 			cal.set(Calendar.MONTH, Calendar.getInstance().get(Calendar.MONTH));
 		}
+
 		if (cal.get(Calendar.DAY_OF_MONTH) < cal.getActualMinimum(Calendar.DAY_OF_MONTH))
 		{
 			cal.set(Calendar.DAY_OF_MONTH, Calendar.getInstance().get(Calendar.DAY_OF_MONTH));
 		}
-		if (cal.get(Calendar.DAY_OF_MONTH) > cal.getActualMaximum(Calendar.DAY_OF_MONTH))
+		else if (cal.get(Calendar.DAY_OF_MONTH) > cal.getActualMaximum(Calendar.DAY_OF_MONTH))
 		{
 			cal.set(Calendar.DAY_OF_MONTH, Calendar.getInstance().get(Calendar.DAY_OF_MONTH));
 		}
@@ -358,7 +380,7 @@
 		builder
 			.setMessage(android.text.Html.fromHtml(getResources().getString(R.string.theory)))
 			.setCancelable(false)
-			.setPositiveButton(R.string.Button_Ok,
+			.setPositiveButton(R.string.button_ok,
 			new DialogInterface.OnClickListener() {
 			    public void onClick(DialogInterface dialog, int id)
 				{
@@ -391,6 +413,7 @@
                 showDatePickerDialog(null);
                 return true;
             case R.id.menuHistory:
+                showHistoryDialog();
                 return true;
 			case R.id.menuAbout:
 				showDialog(DIALOG_ABOUT);
@@ -402,85 +425,125 @@
 		return false;
     }
 
+    private void showHistoryDialog() {
+        if (mHistFragment == null) {
+            View view = getLayoutInflater().inflate(R.layout.favorites_fragment, null);
+            ListView favList = (ListView) view.findViewById(R.id.fav_list);
+            favoritesAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            favList.setAdapter(favoritesAdapter);
+            favList.setOnItemClickListener(new ListView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+                    Log.d(getPackageName(), "ListView.OnItemClickListener.onItemClick: " + position);
+                    FavoritesAdapter.BioDate selectedItem = (FavoritesAdapter.BioDate) adapterView.getItemAtPosition(position);
+                    calBirth.setTime(selectedItem);
+                    updateDisplay();
+                    mHistFragment.cancel();
+                }
+            });
 
-
-    @Override
-    public void onItemSelected(AdapterView<?> parent, View v, int position, long id)
-    {
-        Favorites.BioDate choosed = (Favorites.BioDate)parent.getItemAtPosition(position);
-        calBirth.setTime(choosed);
-        favorites.add(choosed);
-        updateDisplay();    
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder
+                    .setTitle(R.string.label_btn_history)
+                    .setCancelable(true)
+                    .setView(view)
+                    .setPositiveButton(R.string.button_new, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            mHistFragment.cancel();
+                            showBirthdayPickerDialog(null);
+                        }
+                    })
+                    .setNeutralButton(R.string.button_ok, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            mHistFragment.cancel();
+                        }
+                    });
+            mHistFragment = builder.create();
+        }
+        mHistFragment.show();
     }
 
-    @Override
-    public void onNothingSelected(AdapterView<?> parent)
-    {
-        showBirthdayPickerDialog(null);
+    public void resetDateToToday(View v) {
+        calToday.setTime(Calendar.getInstance().getTime());
+        updateDisplay();
     }
-
-
-	@Override
-	public boolean onLongClick(View p1)
-	{
-		showBirthdayPickerDialog(null);
-		return false;
-	}
-	
-    
-    public void showBirthdayPickerDialog(View v) {
-        DialogFragment newFragment = new BirthdayPickerFragment();
-        newFragment.show(getSupportFragmentManager(), "birthdayPicker");
-    }
-
-    
-	private class BirthdayPickerFragment extends DialogFragment
-	implements DatePickerDialog.OnDateSetListener
-	{
-		@Override
-		public Dialog onCreateDialog(Bundle savedInstanceState)
-		{
-			return new DatePickerDialog(getActivity(), this, 
-										calBirth.get(Calendar.YEAR), 
-										calBirth.get(Calendar.MONTH), 
-										calBirth.get(Calendar.DAY_OF_MONTH));
-		}
-
-		public void onDateSet(DatePicker view, int year, int month, int day)
-		{
-			calBirth.set(year, month, day);
-			favorites.add(calBirth.getTime());
-			storeActivityPreferences();				
-			updateDisplay();
-		}
-	}
-
 
     public void showDatePickerDialog(View v) {
         DialogFragment newFragment = new DatePickerFragment();
-        newFragment.show(getSupportFragmentManager(), "datePicker");
+        newFragment.show(getSupportFragmentManager(), DatePickerFragment.TagEndDate);
     }
 
-    
-	private class DatePickerFragment extends DialogFragment
+    public void showBirthdayPickerDialog(View v) {
+        DialogFragment newFragment = new DatePickerFragment();
+        newFragment.show(getSupportFragmentManager(), DatePickerFragment.TagStartDate);
+    }
+
+    /**
+     * set birthday from date picker
+     *
+     * - update favoritesAdapter
+     * - redraw ui
+     *
+     * @param year
+     * @param month
+     * @param day
+     */
+    public void setStartCalendar(int year, int month, int day) {
+        calBirth.set(year, month, day);
+        favoritesAdapter.add(calBirth.getTime());
+        storeActivityPreferences();
+        updateDisplay();
+    }
+
+    private void setEndCalendar(int year, int month, int day) {
+        calToday.set(year, month, day);
+        updateDisplay();
+    }
+
+
+    /**
+     * provide date picker fragment for birthday and second date
+     */
+	public class DatePickerFragment extends DialogFragment
 	implements DatePickerDialog.OnDateSetListener
 	{
-		@Override
+        static final public String TagStartDate = "birthdayPicker";
+        static final public String TagEndDate = "datePicker";
+
+        @Override
 		public Dialog onCreateDialog(Bundle savedInstanceState)
 		{
-			return new DatePickerDialog(getActivity(), this, 
-										calToday.get(Calendar.YEAR), 
-										calToday.get(Calendar.MONTH), 
-										calToday.get(Calendar.DAY_OF_MONTH));
-		}
+            if (getActivity() instanceof BioDroidActivity) {
+                Calendar cal = getTag().equals(TagStartDate)
+                        ? ((BioDroidActivity) getActivity()).getStartCalendar()
+                        : ((BioDroidActivity) getActivity()).getStartCalendar();
+                return new DatePickerDialog(getActivity(), this,
+                        cal.get(Calendar.YEAR),
+                        cal.get(Calendar.MONTH),
+                        cal.get(Calendar.DAY_OF_MONTH));
+            } else {
+                return super.onCreateDialog(savedInstanceState);
+            }
+        }
 
+        @Override
 		public void onDateSet(DatePicker view, int year, int month, int day)
 		{
-			calToday.set(year, month, day);
-			updateDisplay();
+            if (getActivity() instanceof BioDroidActivity) {
+                if (getTag().equals(TagStartDate)) {
+                    ((BioDroidActivity) getActivity()).setStartCalendar(year, month, day);
+                }
+                else {
+                    ((BioDroidActivity) getActivity()).setEndCalendar(year, month, day);
+                }
+            }
 		}
 	}
-	
+
+    
+
 	/**
 	 * 
 	 * @author tay
@@ -560,25 +623,6 @@
 		}
 		
 	}
-
-    /*
-     * Interface TabListener
-     */
-
-    @Override
-    public void onTabSelected(Tab tab, FragmentTransaction fragmentTransaction) {
-        Log.d(getPackageName(), "(BioDroidActivity:TabListener) : onTabSelected()");
-    }
-
-    @Override
-    public void onTabUnselected(Tab tab, FragmentTransaction fragmentTransaction) {
-        Log.d(getPackageName(), "(BioDroidActivity:TabListener) : onTabUnselected()");
-    }
-
-    @Override
-    public void onTabReselected(Tab tab, FragmentTransaction fragmentTransaction) {
-        Log.d(getPackageName(), "(BioDroidActivity:TabListener) : onTabReselected()");
-    }
 
     /*
      * Interface BioView.BioCalendarProvider

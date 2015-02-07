@@ -23,6 +23,8 @@ import java.util.Calendar;
 public class BioView extends View {
 
 
+    public static final float STROKE_WIDTH = 8.0f;
+
     interface BioCalendarProvider {
         /**
          * get the birthday date
@@ -53,7 +55,6 @@ public class BioView extends View {
             start = Calendar.getInstance();
             start.set(1968,9,27);
             end = Calendar.getInstance();
-            end.set(2015,1,30);
         }
         @Override
         public Calendar getStartCalendar() {
@@ -109,7 +110,7 @@ public class BioView extends View {
         initialize();
     }
 
-    public void setBioHolder(BioCalendarProvider holder) {
+    public void setCalendarProvider(BioCalendarProvider holder) {
         this.holder = holder;
     }
 
@@ -126,6 +127,7 @@ public class BioView extends View {
         pGrid = new Paint();
         pGrid.setColor(Color.BLACK);
         pGrid.setDither(false);
+        pGrid.setStrokeWidth(3.0f);
 
         pDay = new Paint();
         pDay.setColor(Color.GRAY);
@@ -133,15 +135,22 @@ public class BioView extends View {
 
         pPhysical = new Paint();
         pPhysical.setColor(getResources().getColor(R.color.clr_phy));
-        pPhysical.setAlpha(128);
+//        pPhysical.setAlpha(128);
+        pPhysical.setStyle(Paint.Style.STROKE);
+        pPhysical.setStrokeWidth(STROKE_WIDTH);
 
         pEmotional = new Paint();
-        pEmotional.setColor(getResources().getColor(R.color.clr_emo));
+//        pEmotional.setColor(getResources().getColor(R.color.clr_emo));
         pEmotional.setAlpha(160);
+        pEmotional.setStyle(Paint.Style.STROKE);
+        pEmotional.setStrokeWidth(STROKE_WIDTH);
 
         pIntellectual = new Paint();
         pIntellectual.setColor(getResources().getColor(R.color.clr_int));
-        pIntellectual.setAlpha(196);
+//        pIntellectual.setAlpha(196);
+        pIntellectual.setStyle(Paint.Style.STROKE);
+        pIntellectual.setStrokeWidth(STROKE_WIDTH);
+
     }
 
     public int getPhase(int interval) {
@@ -253,11 +262,11 @@ public class BioView extends View {
         path.moveTo(0, base);
         for (int d = -SHOWDAYS - 1; d <= SHOWDAYS; d++) {
             double arc = 2 * Math.PI * ((age + d) % interval) / interval;
-            double y = base - base * Math.sin(arc) * interval / INTELECTUAL;
+            double y = base - base * Math.sin(arc) * interval / INTELECTUAL * 0.9;
             float x = width / 2 + d * pixelsPerDay;
             path.lineTo(x, (float) y);
         }
-        path.lineTo(width - 1, base);
+//        path.lineTo(width - 1, base);
         canvas.drawPath(path, paint);
     }
 
@@ -312,7 +321,7 @@ public class BioView extends View {
 
         for (int d = -SHOWDAYS - 1; d < SHOWDAYS; d++) {
             int x = center + d * pixelPerDay;
-            canvas.drawLine(x, base - 5, x, base + 5, pGrid);
+            canvas.drawLine(x, base - 10, x, base + 10, pGrid);
         }
 
         // draw cross
