@@ -25,11 +25,11 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.ListView;
-import android.widget.Spinner;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -57,15 +57,17 @@ public class BioDroidActivity
     private int oldPhaseI = -1;
     private FavoritesAdapter favoritesAdapter;
     
-    private boolean firstStart = true;
 	private ViewPager mViewPager;
     private AlertDialog mHistFragment;
+
+    private TabAdapter mTabAdapter;
 
     /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState)
 	{
-		super.onCreate(savedInstanceState);
+        Log.d(getClass().getSimpleName(), "onCreate()");
+        super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
 
 		favoritesAdapter = new FavoritesAdapter(this,
@@ -74,18 +76,26 @@ public class BioDroidActivity
         tv_birth = (Button) findViewById(R.id.editBirthday);
         tv_today = (Button) findViewById(R.id.editToday);
 
-        restoreActivityPreferences();
         initActionBar();
-		
 		bioview = (BioView)findViewById(R.id.surface);
 		bioview.setCalendarProvider(this);
 
-		updateDisplay();
+        if (null != savedInstanceState) {
+            onRestoreInstanceState(savedInstanceState);
+        }
+        else {
+            restoreActivityPreferences();
+        }
 
-		if (firstStart)
-		{
-			showDialog(DIALOG_ABOUT);
-		}
+        Log.d(getClass().getSimpleName(), "onCreate() done");
+    }
+
+    @Override
+    protected void onResume() {
+        Log.d(getClass().getSimpleName(), "onResume()");
+        super.onResume();
+        updateDisplay();
+        Log.d(getClass().getSimpleName(), "onResume() done");
     }
 
     /**
@@ -96,23 +106,21 @@ public class BioDroidActivity
         actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_TITLE);
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
 
-        final TabAdapter tabAdapter = new TabAdapter(getSupportFragmentManager());
         mViewPager = (ViewPager) findViewById(R.id.descPager);
-        mViewPager.setAdapter(tabAdapter);
+        mViewPager.setAdapter(getTabAdapter());
         mViewPager
                 .setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
                     @Override
                     public void onPageSelected(int position) {
                         Log.d(getPackageName(), "onPageSelected(): " + position);
-                        mViewPager.setCurrentItem(position);
-                        actionBar.selectTab(actionBar.getTabAt(position));
+                        getActionBar().setSelectedNavigationItem(position);
 
                     }
                 });
 
-        for (int i = 0; i < tabAdapter.getCount(); i++) {
+        for (int i = 0; i < mTabAdapter.getCount(); i++) {
             actionBar.addTab(actionBar.newTab()
-                    .setText(tabAdapter.getPageTitle(i))
+                    .setText(mTabAdapter.getPageTitle(i))
                     .setTabListener(new ActionBar.TabListener() {
                         @Override
                         public void onTabSelected(Tab tab, FragmentTransaction fragmentTransaction) {
@@ -138,7 +146,7 @@ public class BioDroidActivity
      */
     protected void storeActivityPreferences()
 	{
-		//	Log.d(getPackageName(), "storeActivityPreferences()");
+        Log.d(getClass().getSimpleName(), "storeActivityPreferences()");
 		SharedPreferences preferences = getPreferences(MODE_PRIVATE);
 		Editor ed = preferences.edit();
 		ed.putLong("birthday", calBirth.getTime().getTime());
@@ -160,12 +168,16 @@ public class BioDroidActivity
      */
     protected void restoreActivityPreferences()
 	{
-		Log.d(getPackageName(), "restoreActivityPreferences()");
+        Log.d(getClass().getSimpleName(), "restoreActivityPreferences()");
 		SharedPreferences preferences = getPreferences(MODE_PRIVATE);
 		try
 		{
 			PackageInfo pInfo = getPackageManager().getPackageInfo(getPackageName(), PackageManager.GET_META_DATA);
-			firstStart = ! (pInfo.versionCode == preferences.getInt("version", 0));
+            boolean firstStart = !(pInfo.versionCode == preferences.getInt("version", 0));
+            if (firstStart)
+            {
+                showDialog(DIALOG_ABOUT);
+            }
 		}
 		catch (NameNotFoundException e)
 		{
@@ -179,37 +191,25 @@ public class BioDroidActivity
 		if (-1 != bdTime)
 		{
 			calBirth.setTime(new Date(bdTime));
-			favoritesAdapter.add(calBirth.getTime());
 		}
 		else
 		{
 			calBirth.set(2003, 2, 6);
-			favoritesAdapter.add(calBirth.getTime());
 		}
     }
 
     /**
      * persistent save the activity state
-     * 
+     *
      * @see android.app.ActivityGroup#onStop()
      */
     @Override
     protected void onStop()
 	{
-		//	Log.d(getPackageName(), "onStop()");
+		Log.d(getClass().getSimpleName(), "onStop()");
 		super.onStop();
-		storeActivityPreferences();
-    }
-
-    /* (non-Javadoc)
-     * @see android.app.ActivityGroup#onResume()
-     */
-    @Override
-    protected void onResume()
-	{
-		//	Log.d(getPackageName(), "onResume()");
-		super.onResume();
-		restoreActivityPreferences();
+		//storeActivityPreferences();
+        Log.d(getClass().getSimpleName(), "onStop() done");
     }
 
     /**
@@ -220,13 +220,14 @@ public class BioDroidActivity
     @Override
     protected void onRestoreInstanceState(Bundle state)
 	{
-		//	Log.d(getPackageName(), "onRestoreInstanceState()");
+		Log.d(getClass().getSimpleName(), "onRestoreInstanceState()");
 		super.onRestoreInstanceState(state);
-		restoreActivityPreferences();
 		if (state.containsKey("today"))
 		{
 			calToday.setTimeInMillis(state.getLong("today"));
 		}
+        restoreActivityPreferences();
+        Log.d(getClass().getSimpleName(), "onRestoreInstanceState() done");
     }
 
     /* (non-Javadoc)
@@ -235,11 +236,15 @@ public class BioDroidActivity
     @Override
     protected void onSaveInstanceState(Bundle outState)
 	{
-		//	Log.d(getPackageName(), "onSaveInstanceState()");
+		Log.d(getClass().getSimpleName(), "onSaveInstanceState()");
 		super.onSaveInstanceState(outState);
 		storeActivityPreferences();
 		outState.putLong("today", calToday.getTimeInMillis());
+        Log.d(getClass().getSimpleName(), "onSaveInstanceState() done");
     }
+
+
+
 
 
     @Override
@@ -294,25 +299,33 @@ public class BioDroidActivity
         tv_birth.setText(df.format(calBirth.getTime()));
         favoritesAdapter.add(calBirth.getTime());
 
-		int phaseP = bioview.getPhase(BioView.PHYSICAL);
         TabAdapter tabAdapter = (TabAdapter) mViewPager.getAdapter();
-        if (oldPhaseP != phaseP)
-		{
-			tabAdapter.showDescription(0, phaseP);
-			oldPhaseP  = phaseP;
-		}
-		int phaseE = bioview.getPhase(BioView.EMOTIONAL);
-		if (oldPhaseE != phaseE)
-		{
-			tabAdapter.showDescription(1, phaseE);
-			oldPhaseE = phaseE;
-		}
-		int phaseI = bioview.getPhase(BioView.INTELECTUAL);
-		if (oldPhaseI != phaseI)
-		{
-			tabAdapter.showDescription(2, phaseI);
-			oldPhaseI = phaseI;
-		}
+        switch (mViewPager.getCurrentItem()) {
+            case 0:
+                int phaseP = bioview.getPhase(BioView.PHYSICAL);
+                if (oldPhaseP != phaseP)
+                {
+                    tabAdapter.showDescription(0, phaseP);
+                    oldPhaseP  = phaseP;
+                }
+                break;
+            case 1:
+                int phaseE = bioview.getPhase(BioView.EMOTIONAL);
+                if (oldPhaseE != phaseE)
+                {
+                    tabAdapter.showDescription(1, phaseE);
+                    oldPhaseE = phaseE;
+                }
+                break;
+            case 2:
+                int phaseI = bioview.getPhase(BioView.INTELECTUAL);
+                if (oldPhaseI != phaseI)
+                {
+                    tabAdapter.showDescription(2, phaseI);
+                    oldPhaseI = phaseI;
+                }
+                break;
+        }
     }
 
     /**
@@ -465,16 +478,31 @@ public class BioDroidActivity
         mHistFragment.show();
     }
 
+    /**
+     * reset date to compute for (endCalendar) to today
+     *
+     * @param v
+     */
     public void resetDateToToday(View v) {
         calToday.setTime(Calendar.getInstance().getTime());
         updateDisplay();
     }
 
+    /**
+     * show the dialog to set the date to compute for
+     *
+     * @param v
+     */
     public void showDatePickerDialog(View v) {
         DialogFragment newFragment = new DatePickerFragment();
         newFragment.show(getSupportFragmentManager(), DatePickerFragment.TagEndDate);
     }
 
+    /**
+     * show a date picker dialog to set a new birthday ( start calendar )
+     *
+     * @param v
+     */
     public void showBirthdayPickerDialog(View v) {
         DialogFragment newFragment = new DatePickerFragment();
         newFragment.show(getSupportFragmentManager(), DatePickerFragment.TagStartDate);
@@ -497,6 +525,13 @@ public class BioDroidActivity
         updateDisplay();
     }
 
+    /**
+     * set date to compute for
+     *
+     * @param year
+     * @param month
+     * @param day
+     */
     private void setEndCalendar(int year, int month, int day) {
         calToday.set(year, month, day);
         updateDisplay();
@@ -542,87 +577,79 @@ public class BioDroidActivity
 		}
 	}
 
-    
+    TabAdapter getTabAdapter() {
+        if (null == mTabAdapter) {
+            mTabAdapter = new TabAdapter(getSupportFragmentManager());
+        }
+        return mTabAdapter;
+    }
 
-	/**
+    /**
 	 * 
 	 * @author tay
 	 * 
 	 */
 	public class TabAdapter extends FragmentPagerAdapter {
-		private TabFragment[] mTabs;
 
-		public TabAdapter(FragmentManager fm) {
-			super(fm);
+        private final int[] tfIconIds = {R.drawable.sin_phy, R.drawable.sin_emo, R.drawable.sin_int};
+        private final int[] tfTitleIds = {R.string.tab_phy, R.string.tab_emo, R.string.tab_int};
+        private final int[] tfDescriptionIds = {R.array.desc_phy, R.array.desc_emo, R.array.desc_int};
+        private final int[] tfPhases;
+        private final TabFragment[] tfTabs;
+        private final String[] tfDescriptions;
 
-			mTabs = new TabFragment[3];
-			int pos = 0;
+        public TabAdapter(FragmentManager fm) {
+            super(fm);
+            Log.d(getClass().getSimpleName(), "new TabAdapter()");
+            tfTabs = new TabFragment[tfIconIds.length];
+            tfDescriptions = new String[tfIconIds.length];
+            tfPhases = new int[tfIconIds.length];
+        }
 
-			TabFragment tf = new TabFragment();
-			tf.setPosition(pos);
-			tf.setTitle(getResources().getText(R.string.tab_phy));
-			tf.setDescription(getResources().getStringArray(R.array.desc_phy));
-			tf.setIcon(getResources().getDrawable(R.drawable.sin_phy));
-			mTabs[pos++] = tf;
+        @Override
+        public Object instantiateItem(ViewGroup container, int position) {
+            TabFragment tf = (TabFragment) super.instantiateItem(container, position);
+            tfTabs[position] = tf;
+            return tf;
+        }
 
-			tf = new TabFragment();
-			tf.setPosition(pos);
-			tf.setTitle(getResources().getText(R.string.tab_emo));
-			tf.setDescription(getResources().getStringArray(R.array.desc_emo));
-			tf.setIcon(getResources().getDrawable(R.drawable.sin_emo));
-			mTabs[pos++] = tf;
+        @Override
+        public int getCount() {
+            return tfIconIds.length;
+        }
 
-			tf = new TabFragment();
-			tf.setPosition(pos);
-			tf.setTitle(getResources().getText(R.string.tab_int));
-			tf.setDescription(getResources().getStringArray(R.array.desc_int));
-			tf.setIcon(getResources().getDrawable(R.drawable.sin_int));
-			mTabs[pos++] = tf;
-		}
+        @Override
+        public Fragment getItem(int position) {
+            Log.d(getClass().getSimpleName(), "TabAdapter::getItem() " + position);
+            tfTabs[position] = TabFragment.getInstance(position, tfIconIds[position], tfTitleIds[position], getDescription(position));
+            return tfTabs[position];
+        }
 
-		/*
-		 * @see android.support.v4.view.PagerAdapter#getCount()
-		 */
-		@Override
-		public int getCount() {
-			return mTabs.length;
-		}
+        @Override
+        public CharSequence getPageTitle(int position) {
+            Log.d(getClass().getSimpleName(), "getPageTitle() " + position);
+            return getResources().getString(tfTitleIds[position]);
+        }
 
-		/*
-		 * @see android.support.v4.app.FragmentPagerAdapter#getItem(int)
-		 */
-		@Override
-		public Fragment getItem(int position) {
-			return mTabs[position];
-		}
+        public Drawable getIcon(int position) {
+            Log.d(getClass().getSimpleName(), "getIcon() " + position);
+            return getResources().getDrawable(tfIconIds[position]);
+        }
 
-		/*
-		 * @see android.support.v4.view.PagerAdapter#getPageTitle(int)
-		 */
-		@Override
-		public CharSequence getPageTitle(int position) {
-			return mTabs[position].getTitle();
-		}
+        public void showDescription(int position, int phase) {
+            Log.d(getClass().getSimpleName(), "showDescription(" + position + "," + phase + ")");
+            tfPhases[position] = phase;
+            if (null != tfTabs[position]) {
+                tfTabs[position].showDescription(getDescription(position));
+            }
+        }
 
-		/**
-		 * 
-		 * @param position
-		 * @return
-		 */
-		public Drawable getIcon(int position) {
-			return mTabs[position].getIcon();
-		}
-
-        /**
-         *
-         * @param position
-         * @param phase
-         */
-		public void showDescription(int position, int phase) {
-			mTabs[position].showDescription(phase);
-		}
-		
-	}
+        public String getDescription(int position) {
+            int phase = tfPhases[position];
+            Log.d(getClass().getSimpleName(), "getDescription(" + position + "," + phase + ")");
+            return getResources().getStringArray(tfDescriptionIds[position])[phase];
+        }
+    }
 
     /*
      * Interface BioView.BioCalendarProvider

@@ -18,13 +18,14 @@
     <de.taytec.biodroid.BioView
         android:id="@+id/surface"
         android:layout_width="fill_parent"
-        android:layout_height="400dp"
+        android:layout_height="fill_parent"
         android:layout_weight="1"/>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_weight="0">
 
         <ImageView
             android:layout_width="wrap_content"

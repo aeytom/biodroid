@@ -11,6 +11,7 @@ import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.Shader;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
@@ -68,7 +69,6 @@ public class BioView extends View {
 
         @Override
         public void onScroll() {
-            ;
         }
     }
 
@@ -82,7 +82,7 @@ public class BioView extends View {
 
     private final int SHOWDAYS = 16;
 
-    private BioCalendarProvider holder;
+    private BioCalendarProvider calendarProvider;
 
     private Paint pPhysical;
     private Paint pEmotional;
@@ -111,13 +111,13 @@ public class BioView extends View {
     }
 
     public void setCalendarProvider(BioCalendarProvider holder) {
-        this.holder = holder;
+        this.calendarProvider = holder;
     }
 
     private void initialize() {
         setFocusable(true);
 
-        holder = new BioCalendarDefault();
+        calendarProvider = new BioCalendarDefault();
 
         pBackground = new Paint();
         pBackground.setColor(Color.WHITE);
@@ -135,19 +135,16 @@ public class BioView extends View {
 
         pPhysical = new Paint();
         pPhysical.setColor(getResources().getColor(R.color.clr_phy));
-//        pPhysical.setAlpha(128);
         pPhysical.setStyle(Paint.Style.STROKE);
         pPhysical.setStrokeWidth(STROKE_WIDTH);
 
         pEmotional = new Paint();
-//        pEmotional.setColor(getResources().getColor(R.color.clr_emo));
-        pEmotional.setAlpha(160);
+        pEmotional.setColor(getResources().getColor(R.color.clr_emo));
         pEmotional.setStyle(Paint.Style.STROKE);
         pEmotional.setStrokeWidth(STROKE_WIDTH);
 
         pIntellectual = new Paint();
         pIntellectual.setColor(getResources().getColor(R.color.clr_int));
-//        pIntellectual.setAlpha(196);
         pIntellectual.setStyle(Paint.Style.STROKE);
         pIntellectual.setStrokeWidth(STROKE_WIDTH);
 
@@ -165,7 +162,7 @@ public class BioView extends View {
     }
 
     public int getAge() {
-        return getDaysSinceAD(holder.getEndCalendar()) - getDaysSinceAD(holder.getStartCalendar());
+        return getDaysSinceAD(calendarProvider.getEndCalendar()) - getDaysSinceAD(calendarProvider.getStartCalendar());
     }
 
     /*
@@ -191,15 +188,15 @@ public class BioView extends View {
      */
     @Override
     public boolean onKeyUp(int keyCode, KeyEvent event) {
-        Calendar cal = holder.getEndCalendar();
+        Calendar cal = calendarProvider.getEndCalendar();
         switch (event.getKeyCode()) {
             case KeyEvent.KEYCODE_DPAD_LEFT:
                 cal.add(Calendar.DAY_OF_YEAR, -1);
-                holder.onScroll();
+                calendarProvider.onScroll();
                 return true;
             case KeyEvent.KEYCODE_DPAD_RIGHT:
                 cal.add(Calendar.DAY_OF_YEAR, 1);
-                holder.onScroll();
+                calendarProvider.onScroll();
                 return true;
         }
         return false;
@@ -218,9 +215,9 @@ public class BioView extends View {
             case MotionEvent.ACTION_MOVE:
                 double diffX = (touchLastX - x) / getPixelsPerDay();
                 if (Math.abs(diffX) >= 1) {
-                    Calendar cal = holder.getEndCalendar();
+                    Calendar cal = calendarProvider.getEndCalendar();
                     cal.add(Calendar.DAY_OF_YEAR, (int) diffX);
-                    holder.onScroll();
+                    calendarProvider.onScroll();
                     touchLastX = x;
                     return true;
                 }
@@ -237,9 +234,9 @@ public class BioView extends View {
         if (event.getAction() == MotionEvent.ACTION_MOVE) {
             trackballScrollX = event.getX() * event.getXPrecision();
             if (Math.abs(trackballScrollX) >= 1.0) {
-                Calendar cal = holder.getEndCalendar();
+                Calendar cal = calendarProvider.getEndCalendar();
                 cal.add(Calendar.DAY_OF_YEAR, (int) trackballScrollX);
-                holder.onScroll();
+                calendarProvider.onScroll();
                 trackballScrollX -= (int) trackballScrollX;
                 return true;
             }
@@ -292,7 +289,7 @@ public class BioView extends View {
 
         int width = getWidth();
         int height = getHeight();
-        int dayOfWeek = holder.getEndCalendar().get(Calendar.DAY_OF_WEEK);
+        int dayOfWeek = calendarProvider.getEndCalendar().get(Calendar.DAY_OF_WEEK);
         int pixelPerDay = getPixelsPerDay();
 
         // fill background

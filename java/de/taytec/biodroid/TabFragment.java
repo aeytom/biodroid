@@ -12,71 +12,62 @@ import android.widget.TextView;
 
 public class TabFragment extends Fragment {
 
-	private View mView;
-	private int position;
-	private String[] description;
-	private CharSequence title;
-	private Drawable icon;
-	private int Phase;
+    private static final String STATE_KEY_POSITION = "position";
+    private static final String STATE_KEY_ICON_ID = "icon_id";
+    private static final String STATE_KEY_TITLE_ID = "title_id";
+    private static final String STATE_KEY_DESCRIPTION = "description";
 
+    private TextView mDescriptionView;
 
-	public View onCreateView(LayoutInflater inflater, ViewGroup container,
-			Bundle savedInstanceState) {
+    public static TabFragment getInstance(int position, int iconId, int titleId, String description) {
+        Bundle arguments = new Bundle();
+        arguments.putInt(STATE_KEY_POSITION, position);
+        arguments.putInt(STATE_KEY_ICON_ID, iconId);
+        arguments.putInt(STATE_KEY_TITLE_ID, titleId);
+        arguments.putString(STATE_KEY_DESCRIPTION, description);
 
-		if (mView != null && mView.getParent() instanceof ViewGroup) {
-			Log.d(getClass().getSimpleName(), "onCreateView() - recycled");
-			((ViewGroup) mView.getParent()).removeView(mView);
-		} else {
-			Log.d(getClass().getSimpleName(), "onCreateView() - new");
-			mView = inflater.inflate(R.layout.tab_fragment, container, false);
-			((TextView)mView.findViewById(R.id.textTitleDescription)).setText(title);
-			((ImageView)mView.findViewById(R.id.iconDescription)).setImageDrawable(icon);
-			showDescription(Phase);
-		}
-		return mView;
-	}
+        TabFragment tf = new TabFragment();
+        tf.setArguments(arguments);
+        return tf;
+    }
 
-	public CharSequence getTitle() {
-		return title;
-	}
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        int position = getArguments().getInt(STATE_KEY_POSITION);
+        Log.d(getClass().getSimpleName(), "onCreateView() " + position + " – " + this.toString());
 
-	public int getPosition() {
-		return position;
-	}
+        View view = getView();
+        if (view == null) {
+            Log.d(getClass().getSimpleName(), "onCreateView() - new");
+            view = inflater.inflate(R.layout.tab_fragment, container, false);
 
-	public void setPosition(int position) {
-		this.position = position;
-	}
+            Drawable icon = view.getResources().getDrawable(getArguments().getInt(STATE_KEY_ICON_ID));
+            ((ImageView) view.findViewById(R.id.iconDescription)).setImageDrawable(icon);
 
-	public void setDescription(String[] description) {
-		this.description = description;
-	}
+            String title = view.getResources().getString(getArguments().getInt(STATE_KEY_TITLE_ID));
+            ((TextView) view.findViewById(R.id.textTitleDescription)).setText(title);
+        } else if (view.getParent() instanceof ViewGroup) {
+            ((ViewGroup) view.getParent()).removeView(view);
+        }
 
-	public void showDescription(int phase)
-	{
-		this.Phase = phase;
-		if (mView != null) {
-			TextView text = (TextView) mView.findViewById(R.id.descriptionText);
-			text.setText(description[phase]);			
-		}
-	}
-	
-	public void setTitle(CharSequence text) {
-		this.title = text;
-		if (mView != null) {
-			((TextView)mView.findViewById(R.id.textTitleDescription)).setText(title);			
-		}
-	}
+        mDescriptionView = (TextView) view.findViewById(R.id.descriptionText);
+        showDescription(getArguments().getString(STATE_KEY_DESCRIPTION, ""));
 
-	public void setIcon(Drawable drawable) {
-		this.icon = drawable;
-		if (mView != null) {
-			((ImageView)mView.findViewById(R.id.iconDescription)).setImageDrawable(drawable);
-		}
-	}
+        return view;
+    }
 
-	public Drawable getIcon() {
-		return icon;
-	}
+    public void showDescription(String description) {
+        int position = getArguments().getInt(STATE_KEY_POSITION);
+        Log.d(getClass().getSimpleName(), "showDescription() " + position + " – " + toString());
+
+        getArguments().putString(STATE_KEY_DESCRIPTION, description);
+        if (mDescriptionView != null) {
+            Log.d(getClass().getSimpleName(), "showDescription() changed " + position);
+            mDescriptionView.setText(description);
+        } else {
+            Log.d(getClass().getSimpleName(), "    null == mDescriptionView " + position);
+        }
+    }
 
 }
