@@ -300,32 +300,8 @@ public class BioDroidActivity
         favoritesAdapter.add(calBirth.getTime());
 
         TabAdapter tabAdapter = (TabAdapter) mViewPager.getAdapter();
-        switch (mViewPager.getCurrentItem()) {
-            case 0:
-                int phaseP = bioview.getPhase(BioView.PHYSICAL);
-                if (oldPhaseP != phaseP)
-                {
-                    tabAdapter.showDescription(0, phaseP);
-                    oldPhaseP  = phaseP;
-                }
-                break;
-            case 1:
-                int phaseE = bioview.getPhase(BioView.EMOTIONAL);
-                if (oldPhaseE != phaseE)
-                {
-                    tabAdapter.showDescription(1, phaseE);
-                    oldPhaseE = phaseE;
-                }
-                break;
-            case 2:
-                int phaseI = bioview.getPhase(BioView.INTELECTUAL);
-                if (oldPhaseI != phaseI)
-                {
-                    tabAdapter.showDescription(2, phaseI);
-                    oldPhaseI = phaseI;
-                }
-                break;
-        }
+        tabAdapter.updateDescription();
+
     }
 
     /**
@@ -594,6 +570,7 @@ public class BioDroidActivity
         private final int[] tfIconIds = {R.drawable.sin_phy, R.drawable.sin_emo, R.drawable.sin_int};
         private final int[] tfTitleIds = {R.string.tab_phy, R.string.tab_emo, R.string.tab_int};
         private final int[] tfDescriptionIds = {R.array.desc_phy, R.array.desc_emo, R.array.desc_int};
+        private final int[] tfIntervals = {BioView.IVAL_PHYSICAL, BioView.IVAL_EMOTIONAL, BioView.IVAL_INTELECTUAL};
         private final int[] tfPhases;
         private final TabFragment[] tfTabs;
         private final String[] tfDescriptions;
@@ -611,6 +588,11 @@ public class BioDroidActivity
             TabFragment tf = (TabFragment) super.instantiateItem(container, position);
             tfTabs[position] = tf;
             return tf;
+        }
+        @Override
+        public void destroyItem(ViewGroup container, int position, Object object) {
+            tfTabs[position] = null;
+            super.destroyItem(container, position, object);
         }
 
         @Override
@@ -636,18 +618,18 @@ public class BioDroidActivity
             return getResources().getDrawable(tfIconIds[position]);
         }
 
-        public void showDescription(int position, int phase) {
-            Log.d(getClass().getSimpleName(), "showDescription(" + position + "," + phase + ")");
-            tfPhases[position] = phase;
-            if (null != tfTabs[position]) {
-                tfTabs[position].showDescription(getDescription(position));
-            }
-        }
-
         public String getDescription(int position) {
-            int phase = tfPhases[position];
+            int phase = bioview.getPhase(tfIntervals[position]);
             Log.d(getClass().getSimpleName(), "getDescription(" + position + "," + phase + ")");
             return getResources().getStringArray(tfDescriptionIds[position])[phase];
+        }
+
+        public void updateDescription() {
+            int position = mViewPager.getCurrentItem();
+            if (null != tfTabs[position]) {
+                Log.d(getClass().getSimpleName(), "updateDescription(" + position + ") child: " + tfTabs[position]);
+                tfTabs[position].showDescription(getDescription(position));
+            }
         }
     }
 

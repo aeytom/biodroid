@@ -102,7 +102,8 @@ Please use the &lt;b&gt;Menu&lt;/b&gt; key for changing the app settings.
     <string name="label_btn_history">History</string>
     <string name="label_btn_theory">Theory</string>
     <string name="label_btn_about">About</string>
-    <string name="format_date">EEE, MMMM d, \'\'yy</string>
+    <string name="format_date">MMMM d, \'\'yy</string>
+    <string name="format_date_short">MMM d</string>
     <string name="language">en</string>
     <string name="country">US</string>
     <color name="clr_text_overlay">#ffffff</color>

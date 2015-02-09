@@ -106,6 +106,7 @@ Benutze die &lt;b&gt;Menü&lt;/b&gt; Taste, um die Einstellungen zu verändern.
     <string name="label_btn_theory">Theorie</string>
     <string name="label_btn_about">Über</string>
     <string name="format_date">d. MMMM yy</string>
+    <string name="format_date_short">d. MMM</string>
     <string name="language">de</string>
     <string name="country">DE</string>
     <string name="label_btn_birthday">Geburtstag</string>

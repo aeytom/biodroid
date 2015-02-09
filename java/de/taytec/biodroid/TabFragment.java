@@ -43,30 +43,28 @@ public class TabFragment extends Fragment {
             view = inflater.inflate(R.layout.tab_fragment, container, false);
 
             Drawable icon = view.getResources().getDrawable(getArguments().getInt(STATE_KEY_ICON_ID));
-            ((ImageView) view.findViewById(R.id.iconDescription)).setImageDrawable(icon);
+            ((ImageView) view.findViewById(R.id.tfIcon)).setImageDrawable(icon);
 
             String title = view.getResources().getString(getArguments().getInt(STATE_KEY_TITLE_ID));
-            ((TextView) view.findViewById(R.id.textTitleDescription)).setText(title);
+            ((TextView) view.findViewById(R.id.tfTitle)).setText(title);
         } else if (view.getParent() instanceof ViewGroup) {
             ((ViewGroup) view.getParent()).removeView(view);
         }
 
-        mDescriptionView = (TextView) view.findViewById(R.id.descriptionText);
-        showDescription(getArguments().getString(STATE_KEY_DESCRIPTION, ""));
+        mDescriptionView = (TextView) view.findViewById(R.id.tfDescription);
+        mDescriptionView.setText(getArguments().getString(STATE_KEY_DESCRIPTION, ""));
 
         return view;
     }
 
     public void showDescription(String description) {
         int position = getArguments().getInt(STATE_KEY_POSITION);
-        Log.d(getClass().getSimpleName(), "showDescription() " + position + " – " + toString());
 
-        getArguments().putString(STATE_KEY_DESCRIPTION, description);
-        if (mDescriptionView != null) {
-            Log.d(getClass().getSimpleName(), "showDescription() changed " + position);
-            mDescriptionView.setText(description);
-        } else {
-            Log.d(getClass().getSimpleName(), "    null == mDescriptionView " + position);
+        if (! description.equals(getArguments().getString(STATE_KEY_DESCRIPTION, ""))) {
+            getArguments().putString(STATE_KEY_DESCRIPTION, description);
+            if (mDescriptionView != null) {
+                mDescriptionView.setText(description);
+            }
         }
     }
 

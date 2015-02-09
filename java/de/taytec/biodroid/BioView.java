@@ -11,11 +11,11 @@ import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.Shader;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 /**
@@ -76,11 +76,9 @@ public class BioView extends View {
     public static final int CRITICAL = 1;
     public static final int LOW = 2;
 
-    public static final int INTELECTUAL = 33;
-    public static final int EMOTIONAL = 28;
-    public static final int PHYSICAL = 23;
-
-    private final int SHOWDAYS = 16;
+    public static final int IVAL_INTELECTUAL = 33;
+    public static final int IVAL_EMOTIONAL = 28;
+    public static final int IVAL_PHYSICAL = 23;
 
     private BioCalendarProvider calendarProvider;
 
@@ -90,7 +88,10 @@ public class BioView extends View {
     private Paint pBackground;
     private Paint pGrid;
     private Paint pDay;
+    private Paint pDate;
 
+    private int mAge;
+    private int mShowDays = 16;
     private float touchLastX;
     private float trackballScrollX;
 
@@ -118,6 +119,7 @@ public class BioView extends View {
         setFocusable(true);
 
         calendarProvider = new BioCalendarDefault();
+        mAge = computeAge();
 
         pBackground = new Paint();
         pBackground.setColor(Color.WHITE);
@@ -128,6 +130,10 @@ public class BioView extends View {
         pGrid.setColor(Color.BLACK);
         pGrid.setDither(false);
         pGrid.setStrokeWidth(3.0f);
+
+        pDate = new Paint(pGrid);
+        pDate.setStrokeWidth(0);
+        pDate.setColor(Color.WHITE);
 
         pDay = new Paint();
         pDay.setColor(Color.GRAY);
@@ -147,11 +153,10 @@ public class BioView extends View {
         pIntellectual.setColor(getResources().getColor(R.color.clr_int));
         pIntellectual.setStyle(Paint.Style.STROKE);
         pIntellectual.setStrokeWidth(STROKE_WIDTH);
-
     }
 
     public int getPhase(int interval) {
-        int di = getAge() % interval;
+        int di = mAge % interval;
         if (di == 0 || di == interval / 2) {
             return CRITICAL;
         } else if (di < interval / 2) {
@@ -161,8 +166,12 @@ public class BioView extends View {
         }
     }
 
-    public int getAge() {
+    protected int computeAge() {
         return getDaysSinceAD(calendarProvider.getEndCalendar()) - getDaysSinceAD(calendarProvider.getStartCalendar());
+    }
+
+    public int getAge() {
+        return mAge;
     }
 
     /*
@@ -175,12 +184,12 @@ public class BioView extends View {
         // TODO Auto-generated method stub
         super.onDraw(canvas);
         drawBackground(canvas);
-
-        int age = getAge();
-        drawRhythm(canvas, age, INTELECTUAL, pIntellectual);
-        drawRhythm(canvas, age, EMOTIONAL, pEmotional);
-        drawRhythm(canvas, age, PHYSICAL, pPhysical);
         drawCross(canvas);
+
+        mAge = computeAge();
+        drawRhythm(canvas, mAge, IVAL_INTELECTUAL, pIntellectual, getResources().getString(R.string.tab_int));
+        drawRhythm(canvas, mAge, IVAL_EMOTIONAL, pEmotional, getResources().getString(R.string.tab_emo));
+        drawRhythm(canvas, mAge, IVAL_PHYSICAL, pPhysical, getResources().getString(R.string.tab_phy));
     }
 
     /* (non-Javadoc)
@@ -192,14 +201,19 @@ public class BioView extends View {
         switch (event.getKeyCode()) {
             case KeyEvent.KEYCODE_DPAD_LEFT:
                 cal.add(Calendar.DAY_OF_YEAR, -1);
-                calendarProvider.onScroll();
+                onCalendarChanged();
                 return true;
             case KeyEvent.KEYCODE_DPAD_RIGHT:
                 cal.add(Calendar.DAY_OF_YEAR, 1);
-                calendarProvider.onScroll();
+                onCalendarChanged();
                 return true;
         }
         return false;
+    }
+
+    private void onCalendarChanged() {
+        mAge = computeAge();
+        calendarProvider.onScroll();
     }
 
     /* (non-Javadoc)
@@ -217,7 +231,7 @@ public class BioView extends View {
                 if (Math.abs(diffX) >= 1) {
                     Calendar cal = calendarProvider.getEndCalendar();
                     cal.add(Calendar.DAY_OF_YEAR, (int) diffX);
-                    calendarProvider.onScroll();
+                    onCalendarChanged();
                     touchLastX = x;
                     return true;
                 }
@@ -236,7 +250,7 @@ public class BioView extends View {
             if (Math.abs(trackballScrollX) >= 1.0) {
                 Calendar cal = calendarProvider.getEndCalendar();
                 cal.add(Calendar.DAY_OF_YEAR, (int) trackballScrollX);
-                calendarProvider.onScroll();
+                onCalendarChanged();
                 trackballScrollX -= (int) trackballScrollX;
                 return true;
             }
@@ -245,23 +259,30 @@ public class BioView extends View {
     }
 
     protected int getPixelsPerDay() {
-        return getWidth() / SHOWDAYS / 2;
+        mShowDays = 10 * getWidth() / getHeight();
+        return getWidth() / mShowDays / 2;
     }
 
-    protected void drawRhythm(Canvas canvas, int age, int interval, Paint paint) {
+    protected void drawRhythm(Canvas canvas, int age, int interval, Paint paint, String text) {
 
         int width = getWidth();
         int height = getHeight();
         int base = height / 2;
         int pixelsPerDay = getPixelsPerDay();
+        Paint textPaint = new Paint(paint);
+        textPaint.setStrokeWidth(0);
+        textPaint.setTextSize(pixelsPerDay);
 
         Path path = new Path();
         path.moveTo(0, base);
-        for (int d = -SHOWDAYS - 1; d <= SHOWDAYS; d++) {
+        for (int d = -mShowDays - 1; d <= mShowDays; d++) {
             double arc = 2 * Math.PI * ((age + d) % interval) / interval;
-            double y = base - base * Math.sin(arc) * interval / INTELECTUAL * 0.9;
+            double y = base - base * Math.sin(arc) * interval / IVAL_INTELECTUAL * 0.9;
             float x = width / 2 + d * pixelsPerDay;
             path.lineTo(x, (float) y);
+            if (0 == d) {
+                canvas.drawText(text, width/2 + 5, (float) y, textPaint);
+            }
         }
 //        path.lineTo(width - 1, base);
         canvas.drawPath(path, paint);
@@ -291,6 +312,12 @@ public class BioView extends View {
         int height = getHeight();
         int dayOfWeek = calendarProvider.getEndCalendar().get(Calendar.DAY_OF_WEEK);
         int pixelPerDay = getPixelsPerDay();
+        pDate.setTextSize(pixelPerDay);
+        SimpleDateFormat df = new SimpleDateFormat(
+                getResources().getString(R.string.format_date_short));
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(calendarProvider.getEndCalendar().getTime());
+        cal.add(Calendar.DATE, -mShowDays-1);
 
         // fill background
         pBackground.setShader(new LinearGradient(0, height - 1, 0, 0,
@@ -298,12 +325,16 @@ public class BioView extends View {
                 Shader.TileMode.CLAMP));
         canvas.drawPaint(pBackground);
 
-        for (int d = -SHOWDAYS - 1; d < SHOWDAYS; d++) {
+        for (int d = -mShowDays - 1; d < mShowDays; d++) {
             boolean we = ((dayOfWeek + d + 7000) % 7) < 2;
             if (we) {
                 int left = width / 2 + d * pixelPerDay;
-                canvas.drawRect(left, 0, left + pixelPerDay, height, pDay);
+                canvas.drawRect(left, 0, left + pixelPerDay, height - pixelPerDay - 6, pDay);
+                if (0 == ((dayOfWeek + d + 7000) % 7)) {
+                    canvas.drawText(df.format(cal.getTime()), left, height - 3, pDate);
+                }
             }
+            cal.add(Calendar.DATE, 1);
         }
     }
 
@@ -316,7 +347,7 @@ public class BioView extends View {
         int base = getHeight() / 2;
         int pixelPerDay = getPixelsPerDay();
 
-        for (int d = -SHOWDAYS - 1; d < SHOWDAYS; d++) {
+        for (int d = -mShowDays - 1; d < mShowDays; d++) {
             int x = center + d * pixelPerDay;
             canvas.drawLine(x, base - 10, x, base + 10, pGrid);
         }
