@@ -529,7 +529,7 @@ public class BioDroidActivity
             if (getActivity() instanceof BioDroidActivity) {
                 Calendar cal = getTag().equals(TagStartDate)
                         ? ((BioDroidActivity) getActivity()).getStartCalendar()
-                        : ((BioDroidActivity) getActivity()).getStartCalendar();
+                        : ((BioDroidActivity) getActivity()).getEndCalendar();
                 return new DatePickerDialog(getActivity(), this,
                         cal.get(Calendar.YEAR),
                         cal.get(Calendar.MONTH),
