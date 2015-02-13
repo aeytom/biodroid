@@ -31,6 +31,9 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.ListView;
 
+import com.github.amlcurran.showcaseview.targets.ActionViewTarget;
+import com.github.amlcurran.showcaseview.targets.ViewTarget;
+
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -40,23 +43,16 @@ public class BioDroidActivity
         implements BioView.BioCalendarProvider
 {
 
-    protected final int DIALOG_FAVORITE = 2;
-    protected final int DIALOG_ABOUT = 3;
     private static final int DIALOG_THEORY = 5;
- 
-    protected Button tv_birth;
-    protected Button tv_today;
 
-    protected Calendar calBirth = Calendar.getInstance();
-    protected Calendar calToday = Calendar.getInstance();
-
+    private Button tv_birth;
+    private Button tv_today;
     private BioView bioview;
-
-    private int oldPhaseP = -1;
-    private int oldPhaseE = -1;
-    private int oldPhaseI = -1;
     private FavoritesAdapter favoritesAdapter;
-    
+
+    private Calendar calBirth = Calendar.getInstance();
+    private Calendar calToday = Calendar.getInstance();
+
 	private ViewPager mViewPager;
     private AlertDialog mHistFragment;
 
@@ -176,7 +172,7 @@ public class BioDroidActivity
             boolean firstStart = !(pInfo.versionCode == preferences.getInt("version", 0));
             if (firstStart)
             {
-                showDialog(DIALOG_ABOUT);
+                showIntro();
             }
 		}
 		catch (NameNotFoundException e)
@@ -196,6 +192,18 @@ public class BioDroidActivity
 		{
 			calBirth.set(2003, 2, 6);
 		}
+    }
+
+    private void showIntro() {
+        ShowCase showCase = new ShowCase(this);
+        showCase.addCase(new ActionViewTarget(this, ActionViewTarget.Type.HOME),R.string.showCaseAboutTitle, R.string.showCaseAboutText);
+        showCase.addCase(new ViewTarget(tv_birth), R.string.showCaseBirthTitle, R.string.showCaseBirthText);
+        showCase.addCase(new ViewTarget(tv_today), R.string.showCaseDateTitle, R.string.showCaseDateText);
+        showCase.addCase(new ViewTarget(findViewById(R.id.dateReset)), R.string.showCaseResetTitle, R.string.showCaseResetText);
+        showCase.addCase(new ActionViewTarget(this,ActionViewTarget.Type.OVERFLOW), R.string.showCaseOverflowTitle, R.string.showCaseOverflowText);
+        showCase.addCase(new ViewTarget(bioview), R.string.showCaseGraphTitle, R.string.showCaseGraphText);
+        showCase.addCase(new ViewTarget(mViewPager), R.string.showCaseDetailTitle, R.string.showCaseDetailText);
+        showCase.showDemo();
     }
 
     /**
@@ -313,8 +321,6 @@ public class BioDroidActivity
 	{
 		switch (id)
 		{
-			case DIALOG_ABOUT:
-				return this.createAboutDialog();
 			case DIALOG_THEORY:
 				return this.createTheoryDialog();
 		}
@@ -405,7 +411,7 @@ public class BioDroidActivity
                 showHistoryDialog();
                 return true;
 			case R.id.menuAbout:
-				showDialog(DIALOG_ABOUT);
+                showIntro();
 				return true;
 			case R.id.menuTheory:
 				showDialog(DIALOG_THEORY);

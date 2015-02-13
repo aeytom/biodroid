@@ -185,4 +185,18 @@ Benutze die &lt;b&gt;Menü&lt;/b&gt; Taste, um die Einstellungen zu verändern.
 
     <string name="contactPickerTitle">Kontakt auswählen</string>
     <string name="evaluation">Auswertung:</string>
+    <string name="showCaseOverflowTitle">Weitere Funktionen</string>
+    <string name="showCaseOverflowText">Klicke für: Schnellzugriff auf die zuletzt benutzten Geburtstage, Theorie der Biorhythmen, …</string>
+    <string name="showCaseGraphTitle">Biorhythmus Grafik</string>
+    <string name="showCaseGraphText">Die Grafik zeigt das Verhalten des Biorhythmus für den Zeitraum um das eingestellte Datum. Wische die Grafik horizontal um den dargestellen Bereich zu verschieben.</string>
+    <string name="showCaseDetailTitle">Auswertung</string>
+    <string name="showCaseDetailText">Detailierte Auswertung der drei Rhythmen (dem Physisischen, Emotionalen und dem Intellektuellen). Wechsle die Ansichten durch Wischen oder Klick auf die Navigtionstabs.</string>
+    <string name="showCaseAboutTitle">Über BioDroid</string>
+    <string name="showCaseAboutText">BioDroid ermittelt mit Hilfe des Geburtstages dein Befinden für einen beliebigen Tag in deinem Leben. Dazu wird die Theorie des Biorhythmus für die physische, emotionale und intellektuelle Leistungsfähigkeit benutzt. Viel Spaß</string>
+    <string name="showCaseBirthText">Stelle deinen oder jemandes anderen Geburtstag ein. Der genaue Geburtstag ist die wichtigste Grundlage für die Ermittlung der Biorhythmen.</string>
+    <string name="showCaseBirthTitle">Der Geburtstag</string>
+    <string name="showCaseDateText">Hier lässt sich ein beliebiges (Ziel-)Datum einstellen um die Biorhythmen zu bestimmen.</string>
+    <string name="showCaseDateTitle">Aktuelles Datum</string>
+    <string name="showCaseResetText">Das Datum wird auf Heute zurückgesetzt.</string>
+    <string name="showCaseResetTitle">Heute einstellen</string>
 </resources>

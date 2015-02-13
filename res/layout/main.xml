@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:android1="http://schemas.android.com/apk/res/android"
-    android:id="@+id/screen"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -19,52 +16,51 @@
         android:id="@+id/surface"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:layout_weight="1"/>
+        android:layout_weight="1" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_weight="0">
+        android:layout_weight="0"
+        android:orientation="horizontal">
 
         <ImageView
+            android:id="@+id/imageView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/imageView2"
-            android:layout_weight="0"
             android:layout_gravity="center_vertical"
+            android:layout_weight="0"
             android:src="@drawable/ic_action_add_person" />
 
         <Button
             android:id="@+id/editBirthday"
+            style="@android:style/TextAppearance.Holo.Small"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/label_btn_birthday"
             android:onClick="showBirthdayPickerDialog"
-            style="@android:style/TextAppearance.Holo.Small" />
+            android:text="@string/label_btn_birthday" />
 
         <ImageButton
+            android:id="@+id/dateReset"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/imageButton"
-            android:layout_weight="0"
-            android:src="@drawable/ic_action_go_to_today"
             android:layout_gravity="center_vertical"
+            android:layout_weight="0"
             android:clickable="true"
-            android:onClick="resetDateToToday" />
+            android:onClick="resetDateToToday"
+            android:src="@drawable/ic_action_go_to_today" />
 
         <Button
             android:id="@+id/editToday"
+            style="@android:style/TextAppearance.Holo.Small"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="showDatePickerDialog"
             android:layout_weight="1"
-            style="@android:style/TextAppearance.Holo.Small"
+            android:onClick="showDatePickerDialog"
             android:text="@string/label_btn_today" />
 
     </LinearLayout>
 
-
-
 </LinearLayout>
+

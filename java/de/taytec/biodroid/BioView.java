@@ -24,7 +24,7 @@ import java.util.Calendar;
 public class BioView extends View {
 
 
-    public static final float STROKE_WIDTH = 8.0f;
+    public static final float STROKE_WIDTH = 6.0f;
 
     interface BioCalendarProvider {
         /**

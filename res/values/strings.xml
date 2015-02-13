@@ -196,4 +196,21 @@ Please use the &lt;b&gt;Menu&lt;/b&gt; key for changing the app settings.
 
     <string name="contactPickerTitle">choose Contact</string>
     <string name="evaluation">Evaluation:</string>
+    <!--
+     show Case / app intro
+    -->
+    <string name="showCaseBirthTitle">Your Birthday</string>
+    <string name="showCaseBirthText">Set the your (or somebody else) birthday. You will get the biorhythm for this date and …</string>
+    <string name="showCaseDateTitle">Current date</string>
+    <string name="showCaseDateText">the current date. You can set any date in past or future to get the biorhythm.</string>
+    <string name="showCaseResetTitle">Reset date</string>
+    <string name="showCaseResetText">The date will be reset to today.</string>
+    <string name="showCaseOverflowTitle">Additional functions</string>
+    <string name="showCaseOverflowText">Try the additional functions: History of last used birthdays, Theory of biorhythms, …</string>
+    <string name="showCaseGraphTitle">Biorhythm graph</string>
+    <string name="showCaseGraphText">The graph displays the biorhythm behaviour around the current date. You can swipe the graph to show the biorhythm for further days.</string>
+    <string name="showCaseDetailTitle">Detail view</string>
+    <string name="showCaseDetailText">See the description for the three different rhythms (the physical, emotional and intellectual). Change the views by swiping around or clicking on the tabs.</string>
+    <string name="showCaseAboutTitle">About BioDroid</string>
+    <string name="showCaseAboutText">BioDroid determines your being for any day in your life using the theory of biorhythms for the physical, emotional and intellectual strenght. Have Fun.</string>
 </resources>
