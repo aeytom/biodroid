@@ -58,8 +58,6 @@ public class TabFragment extends Fragment {
     }
 
     public void showDescription(String description) {
-        int position = getArguments().getInt(STATE_KEY_POSITION);
-
         if (! description.equals(getArguments().getString(STATE_KEY_DESCRIPTION, ""))) {
             getArguments().putString(STATE_KEY_DESCRIPTION, description);
             if (mDescriptionView != null) {

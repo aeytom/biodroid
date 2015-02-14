@@ -8,9 +8,9 @@ import java.util.ArrayList;
 
 public class ShowCase implements OnShowcaseEventListener {
     private final BioDroidActivity bioDroidActivity;
-    ArrayList<ShowCaseElement> list = new ArrayList<ShowCaseElement>(5);
+    final ArrayList<ShowCaseElement> list = new ArrayList<ShowCaseElement>(5);
     private int viewIndex;
-    private ShowcaseView.Builder showcaseView;
+    private final ShowcaseView.Builder showcaseView;
 
     public ShowCase(BioDroidActivity bioDroidActivity) {
         this.bioDroidActivity = bioDroidActivity;
@@ -56,11 +56,11 @@ public class ShowCase implements OnShowcaseEventListener {
         list.add(el);
     }
 
-    public void addCase(Target target, int titleid, int textid) {
+    public void addCase(Target target, int titleId, int textId) {
         ShowCaseElement el = new ShowCaseElement();
         el.target = target;
-        el.title = bioDroidActivity.getString(titleid);
-        el.text = bioDroidActivity.getString(textid);
+        el.title = bioDroidActivity.getString(titleId);
+        el.text = bioDroidActivity.getString(textId);
         addCase(el);
     }
 

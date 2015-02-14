@@ -99,19 +99,14 @@ Benutze die &lt;b&gt;Menü&lt;/b&gt; Taste, um die Einstellungen zu verändern.
 &lt;/p&gt;</string>
     <string name="button_ok">OK</string>
     <string name="button_new">Neu</string>
-    <string name="label_birthday">Geburtstag:</string>
-    <string name="label_today">Für Tag:</string>
     <string name="label_btn_today">Für Tag</string>
     <string name="label_btn_history">Verlauf</string>
     <string name="label_btn_theory">Theorie</string>
     <string name="label_btn_about">Über</string>
     <string name="format_date">d. MMMM yy</string>
     <string name="format_date_short">d. MMM</string>
-    <string name="language">de</string>
-    <string name="country">DE</string>
     <string name="label_btn_birthday">Geburtstag</string>
-    <string name="favorite_dialog_title">Wähle Geburtstag</string>
-<string name="theory">&lt;h1&gt;Theorie&lt;/h1&gt; 
+<string name="theory">&lt;h1&gt;Theorie&lt;/h1&gt;
 &lt;h2&gt;Geschichte&lt;/h2&gt;
 &lt;p&gt;
   Im neunzehnten Jahrhundert begannen Studien bestimmter Lebensrhythmen oder Zyklen, die später &quot;Biorhythmus&quot; genannt wurden. Das Wort Biorhythmus ist eine Verbindung von zwei griechischen Wörtern, BIOS und RHYTHMOS. Diese bedeuten Leben und konstant oder periodischen schlagen. Die Theorie des Biorhythmus definiert und misst drei grundlegende und wichtige Lebenszyklen im Menschen: die physische, emotionale und intellektuelle.
@@ -183,14 +178,13 @@ Benutze die &lt;b&gt;Menü&lt;/b&gt; Taste, um die Einstellungen zu verändern.
 &lt;/p&gt;
 </string>
 
-    <string name="contactPickerTitle">Kontakt auswählen</string>
     <string name="evaluation">Auswertung:</string>
     <string name="showCaseOverflowTitle">Weitere Funktionen</string>
     <string name="showCaseOverflowText">Klicke für: Schnellzugriff auf die zuletzt benutzten Geburtstage, Theorie der Biorhythmen, …</string>
     <string name="showCaseGraphTitle">Biorhythmus Grafik</string>
     <string name="showCaseGraphText">Die Grafik zeigt das Verhalten des Biorhythmus für den Zeitraum um das eingestellte Datum. Wische die Grafik horizontal um den dargestellen Bereich zu verschieben.</string>
     <string name="showCaseDetailTitle">Auswertung</string>
-    <string name="showCaseDetailText">Detailierte Auswertung der drei Rhythmen (dem Physisischen, Emotionalen und dem Intellektuellen). Wechsle die Ansichten durch Wischen oder Klick auf die Navigtionstabs.</string>
+    <string name="showCaseDetailText">Detaillierte Auswertung der drei Rhythmen (dem Physisischen, Emotionalen und dem Intellektuellen). Wechsle die Ansichten durch Wischen oder Klick auf die Navigtionstabs.</string>
     <string name="showCaseAboutTitle">Über BioDroid</string>
     <string name="showCaseAboutText">BioDroid ermittelt mit Hilfe des Geburtstages dein Befinden für einen beliebigen Tag in deinem Leben. Dazu wird die Theorie des Biorhythmus für die physische, emotionale und intellektuelle Leistungsfähigkeit benutzt. Viel Spaß</string>
     <string name="showCaseBirthText">Stelle deinen oder jemandes anderen Geburtstag ein. Der genaue Geburtstag ist die wichtigste Grundlage für die Ermittlung der Biorhythmen.</string>
@@ -199,4 +193,6 @@ Benutze die &lt;b&gt;Menü&lt;/b&gt; Taste, um die Einstellungen zu verändern.
     <string name="showCaseDateTitle">Aktuelles Datum</string>
     <string name="showCaseResetText">Das Datum wird auf Heute zurückgesetzt.</string>
     <string name="showCaseResetTitle">Heute einstellen</string>
+    <string name="btnBirthdayDesc">Geburtstag eingeben</string>
+    <string name="btnResetDateDesc">Datum auf Heute setzen</string>
 </resources>

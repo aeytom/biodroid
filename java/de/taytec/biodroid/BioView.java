@@ -11,9 +11,11 @@ import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.Shader;
 import android.util.AttributeSet;
+import android.util.DisplayMetrics;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewConfiguration;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -25,6 +27,11 @@ public class BioView extends View {
 
 
     public static final float STROKE_WIDTH = 6.0f;
+    private float textSize = 12f;
+
+    public void setTextSize(float textSize) {
+        this.textSize = textSize * 0.8f;
+    }
 
     interface BioCalendarProvider {
         /**
@@ -51,7 +58,8 @@ public class BioView extends View {
      * dummy calender provider for the view
      */
     private class BioCalendarDefault implements BioCalendarProvider {
-        Calendar start,end;
+        final Calendar start;
+        final Calendar end;
         public BioCalendarDefault() {
             start = Calendar.getInstance();
             start.set(1968,9,27);
@@ -93,7 +101,6 @@ public class BioView extends View {
     private int mAge;
     private int mShowDays = 16;
     private float touchLastX;
-    private float trackballScrollX;
 
 
     public BioView(Context context) {
@@ -181,7 +188,6 @@ public class BioView extends View {
      */
     @Override
     protected void onDraw(Canvas canvas) {
-        // TODO Auto-generated method stub
         super.onDraw(canvas);
         drawBackground(canvas);
         drawCross(canvas);
@@ -216,9 +222,11 @@ public class BioView extends View {
         calendarProvider.onScroll();
     }
 
+
+
     /* (non-Javadoc)
-     * @see android.view.View#onTouchEvent(android.view.MotionEvent)
-     */
+         * @see android.view.View#onTouchEvent(android.view.MotionEvent)
+         */
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         float x = event.getX();
@@ -246,7 +254,7 @@ public class BioView extends View {
     @Override
     public boolean onTrackballEvent(MotionEvent event) {
         if (event.getAction() == MotionEvent.ACTION_MOVE) {
-            trackballScrollX = event.getX() * event.getXPrecision();
+            float trackballScrollX = event.getX() * event.getXPrecision();
             if (Math.abs(trackballScrollX) >= 1.0) {
                 Calendar cal = calendarProvider.getEndCalendar();
                 cal.add(Calendar.DAY_OF_YEAR, (int) trackballScrollX);
@@ -271,7 +279,7 @@ public class BioView extends View {
         int pixelsPerDay = getPixelsPerDay();
         Paint textPaint = new Paint(paint);
         textPaint.setStrokeWidth(0);
-        textPaint.setTextSize(pixelsPerDay);
+        textPaint.setTextSize(textSize);
 
         Path path = new Path();
         path.moveTo(0, base);
@@ -312,7 +320,7 @@ public class BioView extends View {
         int height = getHeight();
         int dayOfWeek = calendarProvider.getEndCalendar().get(Calendar.DAY_OF_WEEK);
         int pixelPerDay = getPixelsPerDay();
-        pDate.setTextSize(pixelPerDay);
+        pDate.setTextSize(textSize);
         SimpleDateFormat df = new SimpleDateFormat(
                 getResources().getString(R.string.format_date_short));
         Calendar cal = Calendar.getInstance();

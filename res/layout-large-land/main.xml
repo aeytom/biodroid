@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
 	xmlns:android="http://schemas.android.com/apk/res/android"
-	xmlns:android1="http://schemas.android.com/apk/res/android"
 	android:id="@+id/screen"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
@@ -27,7 +26,7 @@
 		<de.taytec.biodroid.BioView
 			android:id="@+id/surface"
 			android:layout_width="fill_parent"
-			android:layout_height="fill_parent"
+			android:layout_height="0dp"
 			android:layout_weight="1"/>
 
         <LinearLayout
@@ -38,10 +37,11 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/imageView2"
+                android:id="@+id/btnBirthday"
                 android:layout_weight="0"
                 android:layout_gravity="center_vertical"
-                android:src="@drawable/ic_action_add_person" />
+                android:src="@drawable/ic_action_add_person"
+                android:contentDescription="@string/btnBirthdayDesc" />
 
             <Button
                 android:id="@+id/editBirthday"
@@ -60,6 +60,7 @@
                 android:src="@drawable/ic_action_go_to_today"
                 android:layout_gravity="center_vertical"
                 android:clickable="true"
+                android:contentDescription="@string/btnResetDateDesc"
                 android:onClick="resetDateToToday" />
 
             <Button

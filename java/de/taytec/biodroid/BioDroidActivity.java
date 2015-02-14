@@ -14,6 +14,7 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
@@ -43,15 +44,13 @@ public class BioDroidActivity
         implements BioView.BioCalendarProvider
 {
 
-    private static final int DIALOG_THEORY = 5;
-
     private Button tv_birth;
     private Button tv_today;
     private BioView bioview;
     private FavoritesAdapter favoritesAdapter;
 
-    private Calendar calBirth = Calendar.getInstance();
-    private Calendar calToday = Calendar.getInstance();
+    private final Calendar calBirth = Calendar.getInstance();
+    private final Calendar calToday = Calendar.getInstance();
 
 	private ViewPager mViewPager;
     private AlertDialog mHistFragment;
@@ -62,7 +61,7 @@ public class BioDroidActivity
     @Override
     public void onCreate(Bundle savedInstanceState)
 	{
-        Log.d(getClass().getSimpleName(), "onCreate()");
+        Log.d(getClass().getSimpleName(), "onCreate() " + Build.TYPE);
         super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
 
@@ -75,6 +74,7 @@ public class BioDroidActivity
         initActionBar();
 		bioview = (BioView)findViewById(R.id.surface);
 		bioview.setCalendarProvider(this);
+        bioview.setTextSize(tv_birth.getTextSize());
 
         if (null != savedInstanceState) {
             onRestoreInstanceState(savedInstanceState);
@@ -108,9 +108,7 @@ public class BioDroidActivity
                 .setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
                     @Override
                     public void onPageSelected(int position) {
-                        Log.d(getPackageName(), "onPageSelected(): " + position);
-                        getActionBar().setSelectedNavigationItem(position);
-
+                        actionBar.setSelectedNavigationItem(position);
                     }
                 });
 
@@ -156,7 +154,7 @@ public class BioDroidActivity
 			Log.e(getPackageName(), "storeActivityPreferences() : PackageManager.GET_META_DATA", e);
 		}
 		favoritesAdapter.storeToPreferences(ed, "history");
-		ed.commit();
+		ed.apply();
     }
 
     /**
@@ -206,12 +204,7 @@ public class BioDroidActivity
         showCase.showDemo();
     }
 
-    /**
-     * persistent save the activity state
-     *
-     * @see android.app.ActivityGroup#onStop()
-     */
-    @Override
+     @Override
     protected void onStop()
 	{
 		Log.d(getClass().getSimpleName(), "onStop()");
@@ -220,11 +213,7 @@ public class BioDroidActivity
         Log.d(getClass().getSimpleName(), "onStop() done");
     }
 
-    /**
-     * Restore activity state
-     * 
-     * @see android.app.TabActivity#onRestoreInstanceState(android.os.Bundle)
-     */
+
     @Override
     protected void onRestoreInstanceState(Bundle state)
 	{
@@ -238,9 +227,6 @@ public class BioDroidActivity
         Log.d(getClass().getSimpleName(), "onRestoreInstanceState() done");
     }
 
-    /* (non-Javadoc)
-     * @see android.app.TabActivity#onSaveInstanceState(android.os.Bundle)
-     */
     @Override
     protected void onSaveInstanceState(Bundle outState)
 	{
@@ -284,12 +270,11 @@ public class BioDroidActivity
 			.setMessage(android.text.Html.fromHtml(getResources().getString(R.string.About).replace("VERSION", versionName)))
 			.setCancelable(false)
 			.setPositiveButton(R.string.button_ok,
-			new DialogInterface.OnClickListener() {
-			    public void onClick(DialogInterface dialog, int id)
-				{
-					dialog.cancel();
-			    }
-			});
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            dialog.cancel();
+                        }
+                    });
 		AlertDialog alert = builder.create();
 		return alert;
     }
@@ -310,21 +295,6 @@ public class BioDroidActivity
         TabAdapter tabAdapter = (TabAdapter) mViewPager.getAdapter();
         tabAdapter.updateDescription();
 
-    }
-
-    /**
-     * @param id
-     *            wanted dialog id
-     */
-    @Override
-    protected Dialog onCreateDialog(int id)
-	{
-		switch (id)
-		{
-			case DIALOG_THEORY:
-				return this.createTheoryDialog();
-		}
-		return null;
     }
 
     /**
@@ -366,29 +336,6 @@ public class BioDroidActivity
     }
 
     /**
-     * 
-     * @return
-     */
-    private Dialog createTheoryDialog()
-	{
-		AlertDialog.Builder builder = new AlertDialog.Builder(this);
-		builder
-			.setMessage(android.text.Html.fromHtml(getResources().getString(R.string.theory)))
-			.setCancelable(false)
-			.setPositiveButton(R.string.button_ok,
-			new DialogInterface.OnClickListener() {
-			    public void onClick(DialogInterface dialog, int id)
-				{
-					dialog.cancel();
-			    }
-			});
-		AlertDialog alert = builder.create();
-		return alert;
-    }
-
-
-
-    /**
      * Invoked when the user selects an item from the Menu.
      * 
      * @param item
@@ -414,7 +361,7 @@ public class BioDroidActivity
                 showIntro();
 				return true;
 			case R.id.menuTheory:
-				showDialog(DIALOG_THEORY);
+                TheoryFragment.newInstance().show(getSupportFragmentManager(), TheoryFragment.TAG);
 				return true;
 		}
 		return false;
@@ -465,6 +412,7 @@ public class BioDroidActivity
      *
      * @param v
      */
+    @SuppressWarnings("UnusedParameters")
     public void resetDateToToday(View v) {
         calToday.setTime(Calendar.getInstance().getTime());
         updateDisplay();
@@ -475,6 +423,7 @@ public class BioDroidActivity
      *
      * @param v
      */
+    @SuppressWarnings("UnusedParameters")
     public void showDatePickerDialog(View v) {
         DialogFragment newFragment = new DatePickerFragment();
         newFragment.show(getSupportFragmentManager(), DatePickerFragment.TagEndDate);
@@ -485,6 +434,7 @@ public class BioDroidActivity
      *
      * @param v
      */
+    @SuppressWarnings("UnusedParameters")
     public void showBirthdayPickerDialog(View v) {
         DialogFragment newFragment = new DatePickerFragment();
         newFragment.show(getSupportFragmentManager(), DatePickerFragment.TagStartDate);
@@ -523,12 +473,13 @@ public class BioDroidActivity
     /**
      * provide date picker fragment for birthday and second date
      */
-	public class DatePickerFragment extends DialogFragment
+	public static class DatePickerFragment extends DialogFragment
 	implements DatePickerDialog.OnDateSetListener
 	{
         static final public String TagStartDate = "birthdayPicker";
         static final public String TagEndDate = "datePicker";
 
+        @SuppressWarnings("NullableProblems")
         @Override
 		public Dialog onCreateDialog(Bundle savedInstanceState)
 		{

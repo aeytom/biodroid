@@ -24,7 +24,8 @@
             android:src="@drawable/sin_phy"
             android:id="@+id/tfIcon"
             android:layout_gravity="center"
-            android:paddingRight="10dp"/>
+            android:paddingRight="10dp"
+            android:contentDescription="-" />
 
 		<TextView
 			android:layout_height="wrap_content"

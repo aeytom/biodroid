@@ -24,12 +24,14 @@
         android:layout_weight="0"
         android:orientation="horizontal">
 
-        <ImageView
+        <ImageButton
             android:id="@+id/imageView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:layout_weight="0"
+            android:onClick="showBirthdayPickerDialog"
+            android:contentDescription="@string/btnBirthdayDesc"
             android:src="@drawable/ic_action_add_person" />
 
         <Button
@@ -49,6 +51,7 @@
             android:layout_weight="0"
             android:clickable="true"
             android:onClick="resetDateToToday"
+            android:contentDescription="@string/btnResetDateDesc"
             android:src="@drawable/ic_action_go_to_today" />
 
         <Button

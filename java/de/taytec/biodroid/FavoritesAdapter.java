@@ -14,8 +14,8 @@ import java.util.Date;
 
 public class FavoritesAdapter extends ArrayAdapter<Date> implements SpinnerAdapter {
     private static final String STANDARD_DATE_FORMAT = "yyyy-mm-dd";
-    public static final int MAX_FAVORITES = 5;
-    private DateFormat _dateFormat;
+    public static final int MAX_FAVORITES = 10;
+    private final DateFormat _dateFormat;
 
     /**
      * @param context
