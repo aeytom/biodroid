@@ -198,5 +198,5 @@ Please use the &lt;b>Menu&lt;/b> key for changing the app settings.
     <string name="showCaseAboutText">BioDroid determines your being for any day in your life using the theory of biorhythms for the physical, emotional and intellectual strength Have Fun.</string>
     <string name="btnBirthdayDesc">Set birthday with date picker</string>
     <string name="btnResetDateDesc">Reset current date do today</string>
-
+    <string name="banner_ad_unit_id" translatable="false">ca-app-pub-6913805149169253/3247631688</string>
 </resources>

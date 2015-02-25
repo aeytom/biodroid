@@ -337,7 +337,7 @@ public class BioView extends View {
             boolean we = ((dayOfWeek + d + 7000) % 7) < 2;
             if (we) {
                 int left = width / 2 + d * pixelPerDay;
-                canvas.drawRect(left, 0, left + pixelPerDay, height - pixelPerDay - 6, pDay);
+                canvas.drawRect(left, 0, left + pixelPerDay, height - textSize - 6, pDay);
                 if (0 == ((dayOfWeek + d + 7000) % 7)) {
                     canvas.drawText(df.format(cal.getTime()), left, height - 3, pDate);
                 }

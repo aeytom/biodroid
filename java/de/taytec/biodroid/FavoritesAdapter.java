@@ -49,7 +49,7 @@ public class FavoritesAdapter extends ArrayAdapter<Date> implements SpinnerAdapt
                 BioDate item = new BioDate(df.parse(stringArray[i]));
                 add(item);
             } catch (ParseException e) {
-                Log.e("BioDroid", "Restore favorites", e);
+                BioLog.e("BioDroid", "Restore favorites", e);
             }
         }
         notifyDataSetChanged();

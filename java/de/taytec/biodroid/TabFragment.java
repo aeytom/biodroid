@@ -35,11 +35,11 @@ public class TabFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         int position = getArguments().getInt(STATE_KEY_POSITION);
-        Log.d(getClass().getSimpleName(), "onCreateView() " + position + " – " + this.toString());
+        BioLog.d(getClass().getSimpleName(), "onCreateView() " + position + " – " + this.toString());
 
         View view = getView();
         if (view == null) {
-            Log.d(getClass().getSimpleName(), "onCreateView() - new");
+            BioLog.d(getClass().getSimpleName(), "onCreateView() - new");
             view = inflater.inflate(R.layout.tab_fragment, container, false);
 
             Drawable icon = view.getResources().getDrawable(getArguments().getInt(STATE_KEY_ICON_ID));

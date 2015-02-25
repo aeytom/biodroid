@@ -22,7 +22,6 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -31,6 +30,8 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.ListView;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 
 import com.github.amlcurran.showcaseview.targets.ActionViewTarget;
 import com.github.amlcurran.showcaseview.targets.ViewTarget;
@@ -56,14 +57,24 @@ public class BioDroidActivity
     private AlertDialog mHistFragment;
 
     private TabAdapter mTabAdapter;
+    public boolean debug;
 
     /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState)
 	{
-        Log.d(getClass().getSimpleName(), "onCreate() " + Build.TYPE);
+        if (getPackageName().endsWith(".debug")) {
+            BioLog.debug = true;
+        }
+
+        BioLog.d(getClass().getSimpleName(), "onCreate() package=" + getPackageName());
+
         super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
+
+        AdView mAdView = (AdView) findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
 
 		favoritesAdapter = new FavoritesAdapter(this,
 			new SimpleDateFormat(getResources().getString(R.string.format_date)));
@@ -83,15 +94,15 @@ public class BioDroidActivity
             restoreActivityPreferences();
         }
 
-        Log.d(getClass().getSimpleName(), "onCreate() done");
+        BioLog.d(getClass().getSimpleName(), "onCreate() done");
     }
 
     @Override
     protected void onResume() {
-        Log.d(getClass().getSimpleName(), "onResume()");
+        BioLog.d(getClass().getSimpleName(), "onResume()");
         super.onResume();
         updateDisplay();
-        Log.d(getClass().getSimpleName(), "onResume() done");
+        BioLog.d(getClass().getSimpleName(), "onResume() done");
     }
 
     /**
@@ -118,7 +129,7 @@ public class BioDroidActivity
                     .setTabListener(new ActionBar.TabListener() {
                         @Override
                         public void onTabSelected(Tab tab, FragmentTransaction fragmentTransaction) {
-                            Log.d(getPackageName(), "(BioDroidActivity:TabListener) : onTabSelected() " + tab.getPosition());
+                            BioLog.d(getPackageName(), "(BioDroidActivity:TabListener) : onTabSelected() " + tab.getPosition());
                             mViewPager.setCurrentItem(tab.getPosition(), true);
                         }
 
@@ -140,7 +151,7 @@ public class BioDroidActivity
      */
     protected void storeActivityPreferences()
 	{
-        Log.d(getClass().getSimpleName(), "storeActivityPreferences()");
+        BioLog.d(getClass().getSimpleName(), "storeActivityPreferences()");
 		SharedPreferences preferences = getPreferences(MODE_PRIVATE);
 		Editor ed = preferences.edit();
 		ed.putLong("birthday", calBirth.getTime().getTime());
@@ -151,7 +162,7 @@ public class BioDroidActivity
 		}
 		catch (NameNotFoundException e)
 		{
-			Log.e(getPackageName(), "storeActivityPreferences() : PackageManager.GET_META_DATA", e);
+			BioLog.e(getPackageName(), "storeActivityPreferences() : PackageManager.GET_META_DATA", e);
 		}
 		favoritesAdapter.storeToPreferences(ed, "history");
 		ed.apply();
@@ -162,7 +173,7 @@ public class BioDroidActivity
      */
     protected void restoreActivityPreferences()
 	{
-        Log.d(getClass().getSimpleName(), "restoreActivityPreferences()");
+        BioLog.d(getClass().getSimpleName(), "restoreActivityPreferences()");
 		SharedPreferences preferences = getPreferences(MODE_PRIVATE);
 		try
 		{
@@ -175,7 +186,7 @@ public class BioDroidActivity
 		}
 		catch (NameNotFoundException e)
 		{
-			Log.e(getPackageName(), "restoreActivityPreferences() : PackageManager.GET_META_DATA", e);
+			BioLog.e(getPackageName(), "restoreActivityPreferences() : PackageManager.GET_META_DATA", e);
 		}	
 		favoritesAdapter.restoreFromPreferences(preferences, "history");
 		//
@@ -207,34 +218,34 @@ public class BioDroidActivity
      @Override
     protected void onStop()
 	{
-		Log.d(getClass().getSimpleName(), "onStop()");
+		BioLog.d(getClass().getSimpleName(), "onStop()");
 		super.onStop();
 		//storeActivityPreferences();
-        Log.d(getClass().getSimpleName(), "onStop() done");
+        BioLog.d(getClass().getSimpleName(), "onStop() done");
     }
 
 
     @Override
     protected void onRestoreInstanceState(Bundle state)
 	{
-		Log.d(getClass().getSimpleName(), "onRestoreInstanceState()");
+		BioLog.d(getClass().getSimpleName(), "onRestoreInstanceState()");
 		super.onRestoreInstanceState(state);
 		if (state.containsKey("today"))
 		{
 			calToday.setTimeInMillis(state.getLong("today"));
 		}
         restoreActivityPreferences();
-        Log.d(getClass().getSimpleName(), "onRestoreInstanceState() done");
+        BioLog.d(getClass().getSimpleName(), "onRestoreInstanceState() done");
     }
 
     @Override
     protected void onSaveInstanceState(Bundle outState)
 	{
-		Log.d(getClass().getSimpleName(), "onSaveInstanceState()");
+		BioLog.d(getClass().getSimpleName(), "onSaveInstanceState()");
 		super.onSaveInstanceState(outState);
 		storeActivityPreferences();
 		outState.putLong("today", calToday.getTimeInMillis());
-        Log.d(getClass().getSimpleName(), "onSaveInstanceState() done");
+        BioLog.d(getClass().getSimpleName(), "onSaveInstanceState() done");
     }
 
 
@@ -263,7 +274,7 @@ public class BioDroidActivity
 		}
 		catch (NameNotFoundException e)
 		{
-			Log.e(getPackageName(), "createAboutDialog() : PackageManager.GET_META_DATA", e);
+			BioLog.e(getPackageName(), "createAboutDialog() : PackageManager.GET_META_DATA", e);
 		}	
 		AlertDialog.Builder builder = new AlertDialog.Builder(this);
 		builder
@@ -376,7 +387,7 @@ public class BioDroidActivity
             favList.setOnItemClickListener(new ListView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
-                    Log.d(getPackageName(), "ListView.OnItemClickListener.onItemClick: " + position);
+                    BioLog.d(getPackageName(), "ListView.OnItemClickListener.onItemClick: " + position);
                     FavoritesAdapter.BioDate selectedItem = (FavoritesAdapter.BioDate) adapterView.getItemAtPosition(position);
                     calBirth.setTime(selectedItem);
                     updateDisplay();
@@ -534,7 +545,7 @@ public class BioDroidActivity
 
         public TabAdapter(FragmentManager fm) {
             super(fm);
-            Log.d(getClass().getSimpleName(), "new TabAdapter()");
+            BioLog.d(getClass().getSimpleName(), "new TabAdapter()");
             tfTabs = new TabFragment[tfIconIds.length];
             tfDescriptions = new String[tfIconIds.length];
             tfPhases = new int[tfIconIds.length];
@@ -559,32 +570,32 @@ public class BioDroidActivity
 
         @Override
         public Fragment getItem(int position) {
-            Log.d(getClass().getSimpleName(), "TabAdapter::getItem() " + position);
+            BioLog.d(getClass().getSimpleName(), "TabAdapter::getItem() " + position);
             tfTabs[position] = TabFragment.getInstance(position, tfIconIds[position], tfTitleIds[position], getDescription(position));
             return tfTabs[position];
         }
 
         @Override
         public CharSequence getPageTitle(int position) {
-            Log.d(getClass().getSimpleName(), "getPageTitle() " + position);
+            BioLog.d(getClass().getSimpleName(), "getPageTitle() " + position);
             return getResources().getString(tfTitleIds[position]);
         }
 
         public Drawable getIcon(int position) {
-            Log.d(getClass().getSimpleName(), "getIcon() " + position);
+            BioLog.d(getClass().getSimpleName(), "getIcon() " + position);
             return getResources().getDrawable(tfIconIds[position]);
         }
 
         public String getDescription(int position) {
             int phase = bioview.getPhase(tfIntervals[position]);
-            Log.d(getClass().getSimpleName(), "getDescription(" + position + "," + phase + ")");
+            BioLog.d(getClass().getSimpleName(), "getDescription(" + position + "," + phase + ")");
             return getResources().getStringArray(tfDescriptionIds[position])[phase];
         }
 
         public void updateDescription() {
             int position = mViewPager.getCurrentItem();
             if (null != tfTabs[position]) {
-                Log.d(getClass().getSimpleName(), "updateDescription(" + position + ") child: " + tfTabs[position]);
+                BioLog.d(getClass().getSimpleName(), "updateDescription(" + position + ") child: " + tfTabs[position]);
                 tfTabs[position].showDescription(getDescription(position));
             }
         }
