@@ -88,10 +88,10 @@ Please use the &lt;b>Menu&lt;/b> key for changing the app settings.
     <string name="button_new">New</string>
     <string name="label_btn_birthday">Birthday</string>
     <string name="label_btn_today">For date</string>
-    <string name="label_btn_history">History</string>
+    <string name="label_btn_history">Last used birthdays</string>
     <string name="label_btn_theory">Theory</string>
     <string name="label_btn_about">About</string>
-    <string name="format_date">MMMM d, \'\'yy</string>
+    <string name="format_date">MMM d, \'\'yy</string>
     <string name="format_date_short">MMM d</string>
 
     <color name="clr_text_overlay">#ffffff</color>
@@ -189,7 +189,7 @@ Please use the &lt;b>Menu&lt;/b> key for changing the app settings.
     <string name="showCaseResetTitle">Reset date</string>
     <string name="showCaseResetText">The date will be reset to today.</string>
     <string name="showCaseOverflowTitle">Additional functions</string>
-    <string name="showCaseOverflowText">Try the additional functions: History of last used birthdays, Theory of biorhythms, …</string>
+    <string name="showCaseOverflowText">Try the additional functions: Theory of biorhythms, Help, …</string>
     <string name="showCaseGraphTitle">Biorhythm graph</string>
     <string name="showCaseGraphText">The graph displays the biorhythm behaviour around the current date. You can swipe the graph to show the biorhythm for further days.</string>
     <string name="showCaseDetailTitle">Detail view</string>

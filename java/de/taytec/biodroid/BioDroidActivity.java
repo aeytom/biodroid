@@ -205,7 +205,7 @@ public class BioDroidActivity
 
     private void showIntro() {
         ShowCase showCase = new ShowCase(this);
-        showCase.addCase(new ActionViewTarget(this, ActionViewTarget.Type.HOME),R.string.showCaseAboutTitle, R.string.showCaseAboutText);
+        showCase.addCase(new ActionViewTarget(this, ActionViewTarget.Type.TITLE),R.string.showCaseAboutTitle, R.string.showCaseAboutText);
         showCase.addCase(new ViewTarget(tv_birth), R.string.showCaseBirthTitle, R.string.showCaseBirthText);
         showCase.addCase(new ViewTarget(tv_today), R.string.showCaseDateTitle, R.string.showCaseDateText);
         showCase.addCase(new ViewTarget(findViewById(R.id.dateReset)), R.string.showCaseResetTitle, R.string.showCaseResetText);
@@ -359,15 +359,6 @@ public class BioDroidActivity
 	{
 		switch (item.getItemId())
 		{
-            case R.id.menuBirthday:
-                showBirthdayPickerDialog(null);
-                return true;
-            case R.id.menuForDay:
-                showDatePickerDialog(null);
-                return true;
-            case R.id.menuHistory:
-                showHistoryDialog();
-                return true;
 			case R.id.menuAbout:
                 showIntro();
 				return true;
@@ -416,6 +407,15 @@ public class BioDroidActivity
             mHistFragment = builder.create();
         }
         mHistFragment.show();
+    }
+
+    /**
+     *
+     * @param v
+     */
+    @SuppressWarnings("UnusedParameters")
+    public void showHistoryDialog(View v) {
+        showHistoryDialog();
     }
 
     /**

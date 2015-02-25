@@ -100,10 +100,10 @@ Benutze die &lt;b&gt;Menü&lt;/b&gt; Taste, um die Einstellungen zu verändern.
     <string name="button_ok">OK</string>
     <string name="button_new">Neu</string>
     <string name="label_btn_today">Für Tag</string>
-    <string name="label_btn_history">Verlauf</string>
+    <string name="label_btn_history">Benutzte Geburtstage</string>
     <string name="label_btn_theory">Theorie</string>
     <string name="label_btn_about">Über</string>
-    <string name="format_date">d. MMMM yy</string>
+    <string name="format_date">d. MMM yy</string>
     <string name="format_date_short">d. MMM</string>
     <string name="label_btn_birthday">Geburtstag</string>
 <string name="theory">&lt;h1&gt;Theorie&lt;/h1&gt;
@@ -180,7 +180,7 @@ Benutze die &lt;b&gt;Menü&lt;/b&gt; Taste, um die Einstellungen zu verändern.
 
     <string name="evaluation">Auswertung:</string>
     <string name="showCaseOverflowTitle">Weitere Funktionen</string>
-    <string name="showCaseOverflowText">Klicke für: Schnellzugriff auf die zuletzt benutzten Geburtstage, Theorie der Biorhythmen, …</string>
+    <string name="showCaseOverflowText">Klicke für: Theorie der Biorhythmen, Hilfe, …</string>
     <string name="showCaseGraphTitle">Biorhythmus Grafik</string>
     <string name="showCaseGraphText">Die Grafik zeigt das Verhalten des Biorhythmus für den Zeitraum um das eingestellte Datum. Wische die Grafik horizontal um den dargestellen Bereich zu verschieben.</string>
     <string name="showCaseDetailTitle">Auswertung</string>
