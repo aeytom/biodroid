@@ -91,6 +91,8 @@ Please use the &lt;b>Menu&lt;/b> key for changing the app settings.
     <string name="label_btn_history">Last used birthdays</string>
     <string name="label_btn_theory">Theory</string>
     <string name="label_btn_about">About</string>
+    <string name="title_dialog_birthday">Set birthday</string>
+    <string name="title_dialog_date">Set date</string>
     <string name="format_date">MMM d, \'\'yy</string>
     <string name="format_date_short">MMM d</string>
 

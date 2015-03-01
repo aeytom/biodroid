@@ -195,4 +195,6 @@ Benutze die &lt;b&gt;Menü&lt;/b&gt; Taste, um die Einstellungen zu verändern.
     <string name="showCaseResetTitle">Heute einstellen</string>
     <string name="btnBirthdayDesc">Geburtstag eingeben</string>
     <string name="btnResetDateDesc">Datum auf Heute setzen</string>
+    <string name="title_dialog_birthday">Geburtstag festlegen</string>
+    <string name="title_dialog_date">Datum festlegen</string>
 </resources>
