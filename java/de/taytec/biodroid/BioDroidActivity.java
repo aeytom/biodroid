@@ -22,6 +22,7 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -30,6 +31,8 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.ListView;
+
+import com.github.amlcurran.showcaseview.targets.ActionItemTarget;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 
@@ -178,8 +181,8 @@ public class BioDroidActivity
 		try
 		{
 			PackageInfo pInfo = getPackageManager().getPackageInfo(getPackageName(), PackageManager.GET_META_DATA);
-            boolean firstStart = !(pInfo.versionCode == preferences.getInt("version", 0));
-            if (firstStart)
+            int oldVersion = preferences.getInt("version", 0);
+            if (oldVersion < 12)
             {
                 showIntro();
             }
@@ -205,11 +208,30 @@ public class BioDroidActivity
 
     private void showIntro() {
         ShowCase showCase = new ShowCase(this);
-        showCase.addCase(new ActionViewTarget(this, ActionViewTarget.Type.TITLE),R.string.showCaseAboutTitle, R.string.showCaseAboutText);
+
+        try {
+            ActionViewTarget target = new ActionViewTarget(this, ActionViewTarget.Type.TITLE);
+            target.getPoint();
+            showCase.addCase(target, R.string.showCaseAboutTitle, R.string.showCaseAboutText);
+        }
+        catch (NullPointerException e)
+        {
+            Log.e(getClass().getSimpleName(), "show case title", e);
+        }
+
         showCase.addCase(new ViewTarget(tv_birth), R.string.showCaseBirthTitle, R.string.showCaseBirthText);
         showCase.addCase(new ViewTarget(tv_today), R.string.showCaseDateTitle, R.string.showCaseDateText);
         showCase.addCase(new ViewTarget(findViewById(R.id.dateReset)), R.string.showCaseResetTitle, R.string.showCaseResetText);
-        showCase.addCase(new ActionViewTarget(this,ActionViewTarget.Type.OVERFLOW), R.string.showCaseOverflowTitle, R.string.showCaseOverflowText);
+
+        try {
+            ActionItemTarget target = new ActionItemTarget(this, R.id.menuTheory);
+            target.getPoint();
+            showCase.addCase(target, R.string.showCaseOverflowTitle, R.string.showCaseOverflowText);
+        }
+        catch (NullPointerException e) {
+            Log.e(getClass().getSimpleName(), "show case theory", e);
+        }
+
         showCase.addCase(new ViewTarget(bioview), R.string.showCaseGraphTitle, R.string.showCaseGraphText);
         showCase.addCase(new ViewTarget(mViewPager), R.string.showCaseDetailTitle, R.string.showCaseDetailText);
         showCase.showDemo();
