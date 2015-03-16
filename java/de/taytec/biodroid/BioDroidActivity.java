@@ -14,7 +14,6 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.graphics.drawable.Drawable;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
@@ -43,18 +42,19 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
-public class BioDroidActivity
-        extends FragmentActivity
-        implements BioView.BioCalendarProvider
+public class BioDroidActivity extends FragmentActivity implements Core.ChangeListener
 {
+    public static final String PREFERENCES_NAME = "BioDroid";
+    public static final String PREF_KEY_VERSION = "version";
+    public static final String PREF_KEY_BIRTHDAY = "birthday";
+    public static final String PREF_KEY_HISTORY = "history";
 
     private Button tv_birth;
     private Button tv_today;
     private BioView bioview;
     private FavoritesAdapter favoritesAdapter;
 
-    private final Calendar calBirth = Calendar.getInstance();
-    private final Calendar calToday = Calendar.getInstance();
+    private Core core = new Core();
 
 	private ViewPager mViewPager;
     private AlertDialog mHistFragment;
@@ -86,8 +86,9 @@ public class BioDroidActivity
         tv_today = (Button) findViewById(R.id.editToday);
 
         initActionBar();
+        core.setChangeListener(this);
 		bioview = (BioView)findViewById(R.id.surface);
-		bioview.setCalendarProvider(this);
+		bioview.setCore(core);
         bioview.setTextSize(tv_birth.getTextSize());
 
         if (null != savedInstanceState) {
@@ -155,19 +156,19 @@ public class BioDroidActivity
     protected void storeActivityPreferences()
 	{
         BioLog.d(getClass().getSimpleName(), "storeActivityPreferences()");
-		SharedPreferences preferences = getPreferences(MODE_PRIVATE);
+		SharedPreferences preferences = getSharedPreferences(PREFERENCES_NAME, MODE_PRIVATE);
 		Editor ed = preferences.edit();
-		ed.putLong("birthday", calBirth.getTime().getTime());
+		ed.putLong(PREF_KEY_BIRTHDAY, getCore().getStartCalendar().getTime().getTime());
 		try
 		{
 			PackageInfo pInfo = getPackageManager().getPackageInfo(getPackageName(), PackageManager.GET_META_DATA);
-			ed.putInt("version", pInfo.versionCode);
+			ed.putInt(PREF_KEY_VERSION, pInfo.versionCode);
 		}
 		catch (NameNotFoundException e)
 		{
 			BioLog.e(getPackageName(), "storeActivityPreferences() : PackageManager.GET_META_DATA", e);
 		}
-		favoritesAdapter.storeToPreferences(ed, "history");
+		favoritesAdapter.storeToPreferences(ed, PREF_KEY_HISTORY);
 		ed.apply();
     }
 
@@ -177,11 +178,14 @@ public class BioDroidActivity
     protected void restoreActivityPreferences()
 	{
         BioLog.d(getClass().getSimpleName(), "restoreActivityPreferences()");
-		SharedPreferences preferences = getPreferences(MODE_PRIVATE);
+		SharedPreferences preferences = this.getSharedPreferences(PREFERENCES_NAME, MODE_PRIVATE);
+        if (! preferences.contains(PREF_KEY_VERSION)) {
+            preferences = getPreferences(MODE_PRIVATE);
+        }
 		try
 		{
 			PackageInfo pInfo = getPackageManager().getPackageInfo(getPackageName(), PackageManager.GET_META_DATA);
-            int oldVersion = preferences.getInt("version", 0);
+            int oldVersion = preferences.getInt(PREF_KEY_VERSION, 0);
             if (oldVersion < 12)
             {
                 showIntro();
@@ -191,18 +195,15 @@ public class BioDroidActivity
 		{
 			BioLog.e(getPackageName(), "restoreActivityPreferences() : PackageManager.GET_META_DATA", e);
 		}	
-		favoritesAdapter.restoreFromPreferences(preferences, "history");
+		favoritesAdapter.restoreFromPreferences(preferences, PREF_KEY_HISTORY);
 		//
 		// restore birthday
 		//
-		long bdTime = preferences.getLong("birthday", -1);
+		long bdTime = preferences.getLong(PREF_KEY_BIRTHDAY, -1);
 		if (-1 != bdTime)
 		{
-			calBirth.setTime(new Date(bdTime));
-		}
-		else
-		{
-			calBirth.set(2003, 2, 6);
+            core.getStartCalendar().setTime(new Date(bdTime));
+            onBirthdayChanged(core);
 		}
     }
 
@@ -254,7 +255,7 @@ public class BioDroidActivity
 		super.onRestoreInstanceState(state);
 		if (state.containsKey("today"))
 		{
-			calToday.setTimeInMillis(state.getLong("today"));
+            core.getEndCalendar().setTimeInMillis(state.getLong("today"));
 		}
         restoreActivityPreferences();
         BioLog.d(getClass().getSimpleName(), "onRestoreInstanceState() done");
@@ -266,7 +267,7 @@ public class BioDroidActivity
 		BioLog.d(getClass().getSimpleName(), "onSaveInstanceState()");
 		super.onSaveInstanceState(outState);
 		storeActivityPreferences();
-		outState.putLong("today", calToday.getTimeInMillis());
+		outState.putLong("today", core.getEndCalendar().getTimeInMillis());
         BioLog.d(getClass().getSimpleName(), "onSaveInstanceState() done");
     }
 
@@ -321,51 +322,13 @@ public class BioDroidActivity
 
 		SimpleDateFormat df = new SimpleDateFormat(
 			getResources().getString(R.string.format_date));
-		tv_today.setText(df.format(calToday.getTime()));
-        tv_birth.setText(df.format(calBirth.getTime()));
-        favoritesAdapter.add(calBirth.getTime());
+		tv_today.setText(df.format(getCore().getEndCalendar().getTime()));
+        tv_birth.setText(df.format(getCore().getStartCalendar().getTime()));
+        favoritesAdapter.add(getCore().getStartCalendar().getTime());
 
         TabAdapter tabAdapter = (TabAdapter) mViewPager.getAdapter();
         tabAdapter.updateDescription();
 
-    }
-
-    /**
-     * check date values of Calendar to ensure that all fields are correct
-     * 
-     * @param cal
-     * @return
-     */
-    protected Calendar checkCalendar(Calendar cal)
-	{
-		if (cal.get(Calendar.YEAR) < cal.getActualMinimum(Calendar.YEAR))
-		{
-			cal.set(Calendar.YEAR, Calendar.getInstance().get(Calendar.YEAR));
-		}
-		else if (cal.get(Calendar.YEAR) > cal.getActualMaximum(Calendar.YEAR))
-		{
-			cal.set(Calendar.YEAR, Calendar.getInstance().get(Calendar.YEAR));
-		}
-
-		if (cal.get(Calendar.MONTH) < cal.getActualMinimum(Calendar.MONTH))
-		{
-			cal.set(Calendar.MONTH, Calendar.getInstance().get(Calendar.MONTH));
-		}
-		else if (cal.get(Calendar.MONTH) > cal.getActualMaximum(Calendar.MONTH))
-		{
-			cal.set(Calendar.MONTH, Calendar.getInstance().get(Calendar.MONTH));
-		}
-
-		if (cal.get(Calendar.DAY_OF_MONTH) < cal.getActualMinimum(Calendar.DAY_OF_MONTH))
-		{
-			cal.set(Calendar.DAY_OF_MONTH, Calendar.getInstance().get(Calendar.DAY_OF_MONTH));
-		}
-		else if (cal.get(Calendar.DAY_OF_MONTH) > cal.getActualMaximum(Calendar.DAY_OF_MONTH))
-		{
-			cal.set(Calendar.DAY_OF_MONTH, Calendar.getInstance().get(Calendar.DAY_OF_MONTH));
-		}
-
-		return cal;
     }
 
     /**
@@ -402,8 +365,7 @@ public class BioDroidActivity
                 public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
                     BioLog.d(getPackageName(), "ListView.OnItemClickListener.onItemClick: " + position);
                     FavoritesAdapter.BioDate selectedItem = (FavoritesAdapter.BioDate) adapterView.getItemAtPosition(position);
-                    calBirth.setTime(selectedItem);
-                    updateDisplay();
+                    getCore().setStartTime(selectedItem);
                     mHistFragment.cancel();
                 }
             });
@@ -447,8 +409,8 @@ public class BioDroidActivity
      */
     @SuppressWarnings("UnusedParameters")
     public void resetDateToToday(View v) {
-        calToday.setTime(Calendar.getInstance().getTime());
-        updateDisplay();
+        getCore().getEndCalendar().setTime(Calendar.getInstance().getTime());
+        getCore().changedDates();
     }
 
     /**
@@ -463,7 +425,7 @@ public class BioDroidActivity
     }
 
     /**
-     * show a date picker dialog to set a new birthday ( start calendar )
+     * show a date picker dialog to set a new birthday ( calBirth calendar )
      *
      * @param v
      */
@@ -484,10 +446,9 @@ public class BioDroidActivity
      * @param day
      */
     public void setStartCalendar(int year, int month, int day) {
-        calBirth.set(year, month, day);
-        favoritesAdapter.add(calBirth.getTime());
+        core.setBirthday(year, month, day);
+        favoritesAdapter.add(core.getStartCalendar().getTime());
         storeActivityPreferences();
-        updateDisplay();
     }
 
     /**
@@ -498,8 +459,11 @@ public class BioDroidActivity
      * @param day
      */
     private void setEndCalendar(int year, int month, int day) {
-        calToday.set(year, month, day);
-        updateDisplay();
+        getCore().setDate(year, month, day);
+    }
+
+    public Core getCore() {
+        return core;
     }
 
 
@@ -514,12 +478,11 @@ public class BioDroidActivity
 
         @SuppressWarnings("NullableProblems")
         @Override
-		public Dialog onCreateDialog(Bundle savedInstanceState)
-		{
+        public Dialog onCreateDialog(Bundle savedInstanceState) {
             if (getActivity() instanceof BioDroidActivity) {
                 Calendar cal = getTag().equals(TagStartDate)
-                        ? ((BioDroidActivity) getActivity()).getStartCalendar()
-                        : ((BioDroidActivity) getActivity()).getEndCalendar();
+                        ? ((BioDroidActivity) getActivity()).getCore().getStartCalendar()
+                        : ((BioDroidActivity) getActivity()).getCore().getEndCalendar();
                 DatePickerDialog dpd = new DatePickerDialog(getActivity(), this,
                         cal.get(Calendar.YEAR),
                         cal.get(Calendar.MONTH),
@@ -562,7 +525,7 @@ public class BioDroidActivity
         private final int[] tfIconIds = {R.drawable.sin_phy, R.drawable.sin_emo, R.drawable.sin_int};
         private final int[] tfTitleIds = {R.string.tab_phy, R.string.tab_emo, R.string.tab_int};
         private final int[] tfDescriptionIds = {R.array.desc_phy, R.array.desc_emo, R.array.desc_int};
-        private final int[] tfIntervals = {BioView.IVAL_PHYSICAL, BioView.IVAL_EMOTIONAL, BioView.IVAL_INTELECTUAL};
+        private final int[] tfIntervals = {Core.IVAL_PHYSICAL, Core.IVAL_EMOTIONAL, Core.IVAL_INTELECTUAL};
         private final int[] tfPhases;
         private final TabFragment[] tfTabs;
         private final String[] tfDescriptions;
@@ -611,7 +574,7 @@ public class BioDroidActivity
         }
 
         public String getDescription(int position) {
-            int phase = bioview.getPhase(tfIntervals[position]);
+            int phase = core.getPhase(tfIntervals[position]);
             BioLog.d(getClass().getSimpleName(), "getDescription(" + position + "," + phase + ")");
             return getResources().getStringArray(tfDescriptionIds[position])[phase];
         }
@@ -626,24 +589,18 @@ public class BioDroidActivity
     }
 
     /*
-     * Interface BioView.BioCalendarProvider
+     * Interface Core.ChangeListener
      */
 
     @Override
-    public Calendar getEndCalendar()
-    {
-        return calToday;
+    public void onBirthdayChanged(Core core) {
+        storeActivityPreferences();
+        BioWidget.sendBirthdayChangedToWidget(this, getCore());
     }
 
     @Override
-    public Calendar getStartCalendar()
-    {
-        return calBirth;
-    }
-
-    @Override
-    public void onScroll()
-    {
+    public void onCoreChanged(Core core) {
         updateDisplay();
     }
+
 }

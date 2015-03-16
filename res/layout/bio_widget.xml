@@ -1,0 +1,75 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:padding="@dimen/widget_margin"
+    android:background="#00ffffff">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/wdg_image"
+        android:src="@drawable/sin_phy"
+        android:contentDescription="BioDroid View"
+        android:scaleType="fitXY"
+        android:padding="0dp"
+        android:alpha="60"
+        android:cropToPadding="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="[BIRTHDAY]"
+        android:id="@+id/wdg_birthday"
+        android:paddingLeft="5dp"
+        android:shadowColor="@color/wallet_hint_foreground_holo_dark"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="[TODAY]"
+        android:id="@+id/wdg_date"
+        android:layout_gravity="left|top"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@id/wdg_birthday"
+        android:paddingLeft="5dp"
+        android:shadowColor="@color/wallet_hint_foreground_holo_dark" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="@string/lblAge"
+        android:id="@+id/wdg_age_lbl"
+        android:layout_below="@+id/wdg_date"
+        android:layout_alignParentLeft="true"
+        android:paddingRight="5dp"
+        android:paddingLeft="5dp"
+        android:password="false"
+        android:shadowColor="@color/wallet_hint_foreground_holo_dark" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="[AGE]"
+        android:id="@+id/wdg_age"
+        android:shadowColor="@color/wallet_hint_foreground_holo_dark"
+        android:layout_alignBaseline="@+id/wdg_age_lbl"
+        android:layout_toRightOf="@+id/wdg_age_lbl"
+        android:numeric="integer" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="@string/lblDays"
+        android:id="@+id/wdg_age_days"
+        android:paddingLeft="5dp"
+        android:shadowColor="@color/wallet_hint_foreground_holo_dark"
+        android:layout_alignBaseline="@+id/wdg_age"
+        android:layout_toRightOf="@+id/wdg_age" />
+
+</RelativeLayout>

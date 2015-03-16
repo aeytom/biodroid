@@ -197,4 +197,6 @@ Benutze die &lt;b&gt;Menü&lt;/b&gt; Taste, um die Einstellungen zu verändern.
     <string name="btnResetDateDesc">Datum auf Heute setzen</string>
     <string name="title_dialog_birthday">Geburtstag festlegen</string>
     <string name="title_dialog_date">Datum festlegen</string>
+    <string name="lblAge">Alter:</string>
+    <string name="lblDays">Tage</string>
 </resources>
