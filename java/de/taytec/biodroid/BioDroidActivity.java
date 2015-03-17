@@ -32,11 +32,10 @@ import android.widget.DatePicker;
 import android.widget.ListView;
 
 import com.github.amlcurran.showcaseview.targets.ActionItemTarget;
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
-
 import com.github.amlcurran.showcaseview.targets.ActionViewTarget;
 import com.github.amlcurran.showcaseview.targets.ViewTarget;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -75,9 +74,11 @@ public class BioDroidActivity extends FragmentActivity implements Core.ChangeLis
         super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
 
-        AdView mAdView = (AdView) findViewById(R.id.adView);
-        AdRequest adRequest = new AdRequest.Builder().build();
-        mAdView.loadAd(adRequest);
+        if (! getPackageName().endsWith(".debug")) {
+            AdView mAdView = (AdView) findViewById(R.id.adView);
+            AdRequest adRequest = new AdRequest.Builder().build();
+            mAdView.loadAd(adRequest);
+        }
 
 		favoritesAdapter = new FavoritesAdapter(this,
 			new SimpleDateFormat(getResources().getString(R.string.format_date)));
@@ -105,7 +106,7 @@ public class BioDroidActivity extends FragmentActivity implements Core.ChangeLis
     protected void onResume() {
         BioLog.d(getClass().getSimpleName(), "onResume()");
         super.onResume();
-        updateDisplay();
+        getCore().changedDates();
         BioLog.d(getClass().getSimpleName(), "onResume() done");
     }
 
@@ -179,8 +180,11 @@ public class BioDroidActivity extends FragmentActivity implements Core.ChangeLis
 	{
         BioLog.d(getClass().getSimpleName(), "restoreActivityPreferences()");
 		SharedPreferences preferences = this.getSharedPreferences(PREFERENCES_NAME, MODE_PRIVATE);
+        Editor editorOld = null;
         if (! preferences.contains(PREF_KEY_VERSION)) {
+            // no preferences PREFERENCES_NAME found - try to load old preferences file
             preferences = getPreferences(MODE_PRIVATE);
+            editorOld = preferences.edit();
         }
 		try
 		{
@@ -194,6 +198,7 @@ public class BioDroidActivity extends FragmentActivity implements Core.ChangeLis
 		catch (NameNotFoundException e)
 		{
 			BioLog.e(getPackageName(), "restoreActivityPreferences() : PackageManager.GET_META_DATA", e);
+            showIntro();
 		}	
 		favoritesAdapter.restoreFromPreferences(preferences, PREF_KEY_HISTORY);
 		//
@@ -205,6 +210,13 @@ public class BioDroidActivity extends FragmentActivity implements Core.ChangeLis
             core.getStartCalendar().setTime(new Date(bdTime));
             onBirthdayChanged(core);
 		}
+        //
+        // delete old preferences file used before build version 14
+        //
+        if (editorOld != null) {
+            editorOld.clear();
+            editorOld.apply();
+        }
     }
 
     private void showIntro() {
@@ -318,8 +330,6 @@ public class BioDroidActivity extends FragmentActivity implements Core.ChangeLis
      */
     protected void updateDisplay()
 	{
-		bioview.invalidate();
-
 		SimpleDateFormat df = new SimpleDateFormat(
 			getResources().getString(R.string.format_date));
 		tv_today.setText(df.format(getCore().getEndCalendar().getTime()));
@@ -328,7 +338,7 @@ public class BioDroidActivity extends FragmentActivity implements Core.ChangeLis
 
         TabAdapter tabAdapter = (TabAdapter) mViewPager.getAdapter();
         tabAdapter.updateDescription();
-
+        bioview.invalidate();
     }
 
     /**

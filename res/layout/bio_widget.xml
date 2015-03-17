@@ -1,7 +1,9 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent" android:layout_height="match_parent"
     android:padding="@dimen/widget_margin"
-    android:background="#00ffffff">
+    android:background="#44000000"
+    android:id="@+id/wdg_layout"
+    android:focusableInTouchMode="true">
 
     <ImageView
         android:layout_width="match_parent"
@@ -11,7 +13,6 @@
         android:contentDescription="BioDroid View"
         android:scaleType="fitXY"
         android:padding="0dp"
-        android:alpha="60"
         android:cropToPadding="true" />
 
     <TextView
@@ -71,5 +72,14 @@
         android:shadowColor="@color/wallet_hint_foreground_holo_dark"
         android:layout_alignBaseline="@+id/wdg_age"
         android:layout_toRightOf="@+id/wdg_age" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/wdg_click"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true" />
 
 </RelativeLayout>
