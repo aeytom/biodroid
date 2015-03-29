@@ -2,8 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="de.taytec.biodroid"
     android:installLocation="auto"
-    android:versionCode="15"
-    android:versionName="4.2" >
+    android:versionCode="16"
+    android:versionName="4.2.1" >
 
     <!-- Include required permissions for Google Mobile Ads to run -->
     <uses-permission android:name="android.permission.INTERNET" />
