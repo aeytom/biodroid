@@ -90,13 +90,6 @@
     </string-array>
     <string name="tab_emo">Emotional</string>
     <string name="tab_int">Intellektuell</string>
-  <string name="About">&lt;h1&gt;BioDroid VERSION&lt;/h1&gt;
-&lt;div&gt;
-von Tom Anheyer
-&lt;/div&gt;
-&lt;p&gt;
-Benutze die &lt;b&gt;Menü&lt;/b&gt; Taste, um die Einstellungen zu verändern.
-&lt;/p&gt;</string>
     <string name="button_ok">OK</string>
     <string name="button_new">Neu</string>
     <string name="label_btn_today">Für Tag</string>
@@ -180,7 +173,7 @@ Benutze die &lt;b&gt;Menü&lt;/b&gt; Taste, um die Einstellungen zu verändern.
 
     <string name="evaluation">Auswertung:</string>
     <string name="showCaseOverflowTitle">Weitere Funktionen</string>
-    <string name="showCaseOverflowText">Klicke für: Theorie der Biorhythmen, Hilfe, …</string>
+    <string name="showCaseOverflowText">Klicke für: Theorie der Biorhythmen, Hilfe, … </string>
     <string name="showCaseGraphTitle">Biorhythmus Grafik</string>
     <string name="showCaseGraphText">Die Grafik zeigt das Verhalten des Biorhythmus für den Zeitraum um das eingestellte Datum. Wische die Grafik horizontal um den dargestellen Bereich zu verschieben.</string>
     <string name="showCaseDetailTitle">Auswertung</string>
@@ -199,4 +192,12 @@ Benutze die &lt;b&gt;Menü&lt;/b&gt; Taste, um die Einstellungen zu verändern.
     <string name="title_dialog_date">Datum festlegen</string>
     <string name="lblAge">Alter:</string>
     <string name="lblDays">Tage</string>
+    <string name="news"><![CDATA[
+<h1>BioDroid %1$s</h1>
+<p>
+Wat is new?
+</p>
+<p>* add widget</p>
+<p>* minor fixes</p>
+]]></string>
 </resources>

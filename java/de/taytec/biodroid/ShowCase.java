@@ -1,7 +1,10 @@
 package de.taytec.biodroid;
 
+import android.util.Log;
+
 import com.github.amlcurran.showcaseview.OnShowcaseEventListener;
 import com.github.amlcurran.showcaseview.ShowcaseView;
+import com.github.amlcurran.showcaseview.targets.ActionItemTarget;
 import com.github.amlcurran.showcaseview.targets.Target;
 
 import java.util.ArrayList;
@@ -57,11 +60,17 @@ public class ShowCase implements OnShowcaseEventListener {
     }
 
     public void addCase(Target target, int titleId, int textId) {
-        ShowCaseElement el = new ShowCaseElement();
-        el.target = target;
-        el.title = bioDroidActivity.getString(titleId);
-        el.text = bioDroidActivity.getString(textId);
-        addCase(el);
+        try {
+            target.getPoint();
+            ShowCaseElement el = new ShowCaseElement();
+            el.target = target;
+            el.title = bioDroidActivity.getString(titleId);
+            el.text = bioDroidActivity.getString(textId);
+            addCase(el);
+        }
+        catch (NullPointerException e) {
+            Log.e(getClass().getSimpleName(), "addCase()", e);
+        }
     }
 
 

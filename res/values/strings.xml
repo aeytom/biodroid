@@ -77,13 +77,6 @@
 
     <string name="tab_emo">Emotional</string>
     <string name="tab_int">Intellectual</string>
-    <string name="About">&lt;h1>BioDroid VERSION&lt;/h1>
-&lt;div>
-by Tom Anheyer
-&lt;/div>
-&lt;p>
-Please use the &lt;b>Menu&lt;/b> key for changing the app settings.
-&lt;/p></string>
     <string name="button_ok">OK</string>
     <string name="button_new">New</string>
     <string name="label_btn_birthday">Birthday</string>
@@ -197,10 +190,18 @@ Please use the &lt;b>Menu&lt;/b> key for changing the app settings.
     <string name="showCaseDetailTitle">Detail view</string>
     <string name="showCaseDetailText">See the description for the three different rhythms (the physical, emotional and intellectual). Change the views by swiping around or clicking on the tabs.</string>
     <string name="showCaseAboutTitle">About BioDroid</string>
-    <string name="showCaseAboutText">BioDroid determines your being for any day in your life using the theory of biorhythms for the physical, emotional and intellectual strength Have Fun.</string>
+    <string name="showCaseAboutText">BioDroid determines your being for any day in your life using the theory of biorhythms for the physical, emotional and intellectual strength. Have Fun.</string>
     <string name="btnBirthdayDesc">Set birthday with date picker</string>
     <string name="btnResetDateDesc">Reset current date do today</string>
     <string name="banner_ad_unit_id" translatable="false">ca-app-pub-6913805149169253/3247631688</string>
     <string name="lblAge">Age:</string>
     <string name="lblDays">days</string>
+    <string name="news"><![CDATA[
+<h1>BioDroid  %1$s</h1>
+<p>
+Was ist neu?
+</p>
+<p>* Widget hinzugefügt</p>
+<p>* kleinere Korrekturen</p>
+]]></string>
 </resources>

@@ -194,6 +194,10 @@ public class BioDroidActivity extends FragmentActivity implements Core.ChangeLis
             {
                 showIntro();
             }
+            else if (oldVersion < pInfo.versionCode)
+            {
+                showNews();
+            }
 		}
 		catch (NameNotFoundException e)
 		{
@@ -219,32 +223,33 @@ public class BioDroidActivity extends FragmentActivity implements Core.ChangeLis
         }
     }
 
+    private void showNews() {
+        String html;
+        try {
+            PackageInfo pInfo = getPackageManager().getPackageInfo(getPackageName(), PackageManager.GET_META_DATA);
+            html = String.format(getResources().getString(R.string.news), pInfo.versionName);
+        } catch (NameNotFoundException e) {
+            html = String.format(getResources().getString(R.string.news), "1.x.y");
+        }
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder
+                .setMessage(android.text.Html.fromHtml(html))
+                .setPositiveButton(R.string.button_ok,
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                dialog.cancel();
+                            }
+                        });
+        builder.create().show();
+    }
+
     private void showIntro() {
         ShowCase showCase = new ShowCase(this);
-
-        try {
-            ActionViewTarget target = new ActionViewTarget(this, ActionViewTarget.Type.TITLE);
-            target.getPoint();
-            showCase.addCase(target, R.string.showCaseAboutTitle, R.string.showCaseAboutText);
-        }
-        catch (NullPointerException e)
-        {
-            Log.e(getClass().getSimpleName(), "show case title", e);
-        }
-
+        showCase.addCase(new ActionViewTarget(this, ActionViewTarget.Type.TITLE), R.string.showCaseAboutTitle, R.string.showCaseAboutText);
         showCase.addCase(new ViewTarget(tv_birth), R.string.showCaseBirthTitle, R.string.showCaseBirthText);
         showCase.addCase(new ViewTarget(tv_today), R.string.showCaseDateTitle, R.string.showCaseDateText);
         showCase.addCase(new ViewTarget(findViewById(R.id.dateReset)), R.string.showCaseResetTitle, R.string.showCaseResetText);
-
-        try {
-            ActionItemTarget target = new ActionItemTarget(this, R.id.menuTheory);
-            target.getPoint();
-            showCase.addCase(target, R.string.showCaseOverflowTitle, R.string.showCaseOverflowText);
-        }
-        catch (NullPointerException e) {
-            Log.e(getClass().getSimpleName(), "show case theory", e);
-        }
-
+        showCase.addCase(new ActionItemTarget(this, R.id.menuTheory), R.string.showCaseOverflowTitle, R.string.showCaseOverflowText);
         showCase.addCase(new ViewTarget(bioview), R.string.showCaseGraphTitle, R.string.showCaseGraphText);
         showCase.addCase(new ViewTarget(mViewPager), R.string.showCaseDetailTitle, R.string.showCaseDetailText);
         showCase.showDemo();
@@ -293,37 +298,6 @@ public class BioDroidActivity extends FragmentActivity implements Core.ChangeLis
 		getMenuInflater().inflate(R.menu.actionbar_buttons, menu);
         return super.onCreateOptionsMenu(menu);
 	}
-
-
-    /**
-     * 
-     * @return
-     */
-    protected AlertDialog createAboutDialog()
-	{	
-		String versionName = "";
-		try
-		{
-			PackageInfo pInfo = getPackageManager().getPackageInfo(getPackageName(), PackageManager.GET_META_DATA);
-			versionName = pInfo.versionName;
-		}
-		catch (NameNotFoundException e)
-		{
-			BioLog.e(getPackageName(), "createAboutDialog() : PackageManager.GET_META_DATA", e);
-		}	
-		AlertDialog.Builder builder = new AlertDialog.Builder(this);
-		builder
-			.setMessage(android.text.Html.fromHtml(getResources().getString(R.string.About).replace("VERSION", versionName)))
-			.setCancelable(false)
-			.setPositiveButton(R.string.button_ok,
-                    new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int id) {
-                            dialog.cancel();
-                        }
-                    });
-		AlertDialog alert = builder.create();
-		return alert;
-    }
 
     /**
      * 
