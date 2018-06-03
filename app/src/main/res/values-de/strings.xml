@@ -95,81 +95,41 @@
     <string name="label_btn_today">Für Tag</string>
     <string name="label_btn_history">Benutzte Geburtstage</string>
     <string name="label_btn_theory">Theorie</string>
-    <string name="label_btn_about">Über</string>
+    <string name="label_btn_about">Einführung</string>
     <string name="format_date">d. MMM yy</string>
     <string name="format_date_short">d. MMM</string>
     <string name="label_btn_birthday">Geburtstag</string>
-<string name="theory">&lt;h1&gt;Theorie&lt;/h1&gt;
-&lt;h2&gt;Geschichte&lt;/h2&gt;
-&lt;p&gt;
-  Im neunzehnten Jahrhundert begannen Studien bestimmter Lebensrhythmen oder Zyklen, die später &quot;Biorhythmus&quot; genannt wurden. Das Wort Biorhythmus ist eine Verbindung von zwei griechischen Wörtern, BIOS und RHYTHMOS. Diese bedeuten Leben und konstant oder periodischen schlagen. Die Theorie des Biorhythmus definiert und misst drei grundlegende und wichtige Lebenszyklen im Menschen: die physische, emotionale und intellektuelle.
-&lt;/p&gt;
-&lt;p&gt;
-  Wilhelm Fliess, ein hoch angesehener und prominenter Arzt in Berlin, leistete Pionierarbeit auf dem Gebiet der Biorhythmen in den 1890er Jahren. Fliess beobachtete 23-Tage und 28-Tage-Rhythmen bei vielen seiner Patienten. Er begann Statistiken über die periodische Auftreten von Fieber, Kinderkrankheiten zu sammeln und die Anfälligkeit für Krankheiten und Tod. Mit diesen Statistiken in der Hand glaubte Fliess, grundlegende Rhythmen im Leben des Menschen erkannt zu haben.
-&lt;/p&gt;
-&lt;p&gt;
-  Dr. Fliess entwickelte daraus zwei große Biorhythmus Theorien:
-&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;Die Natur schenkt dem Menschen &quot;Innere Uhren&quot;, welche zum Zeitpunkt der Geburt starten und ein Leben lang anhalten.&lt;/li&gt;
-&lt;li&gt;Eine dieser Uhren beeinflusst einen 23-tägigen Zyklus der männlichen Kondition und der andere regelt einen 28-Tage-Zyklus der Emotionen oder das Maß an Sensibilität beeinflusst.&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;
-  Fliess dachte darüber nach, warum diese beiden Rhythmen beherschend sind. Er glaubte, dass der Mensch eine bisexuelle Natur hat und aus männlichen und weiblichen Elementen besteht. Fliess nannte den 23-tägigen Zyklus den männlichen physischen Zyklus, weil er Kraft, Ausdauer und Vitalität beeinflusst. Er hielt den 28-tägigen Zyklus wesentlich für das weibliche Element in allen Menschen. Dieser regelt Sensibilität, Intuition, Liebe, Kreativität und das gesamte emotionale Spektrum.
-&lt;/p&gt;
-&lt;p&gt;
-  Spätere Forschungen verstärkten die Idee der 23-Tage physischen und emotionalen 28-Tage-Zyklen. Natürlich würden heute nur wenige  zustimmen, alle physikalischen Komponenten seien männlich und weiblich alle emotionalen Fragen. Stattdessen sind jetzt beide als wesentliche Merkmale beider Geschlechter erkannt.
-&lt;/p&gt;
-&lt;p&gt;
-  Wilhelm Fliess schrieb ausführlich über die Biorhythmus Theorie. Aber die Mathematik und Statistik, die er benutzte, war zu umfassend und verwirrend, so dass nur wenige Menschen versuchten diese zu prüfen oder zu verstehen. Doch die grundlegende Idee der Theorie kam an. Die Idee der periodischen Rhythmen im Menschen erzeugte erhebliche Kontroversen unter seinen Kollegen, die bis heute noch existiert. Die meisten Wissenschaftler haben die Tatsache, dass die körperlichen und emotionalen Zustände in ständiger Bewegung akzeptiert, aber viele sind  nicht damit einverstanden, dass diese Veränderungen durch regelmäßige biologischen Zyklen beeinflusst werden, die bei der Geburt beginnen.
-&lt;/p&gt;
-&lt;p&gt;
-  Einer von Fliess Zeitgenossen, die einen offenen für seine Ideen waren, war Sigmund Freud, ein Mann mit extrem revolutionären Ideen zu seiner Zeit. Am Anfang seiner Karriere zeigte Freud starkes Interesse und Bewunderung für Fliess Theorien und sie wurden bald sehr enge Freunde. 184 Briefe von Freud an Fliess sind bekannt. Leider sind die Antworten von Fliess verloren gegangen.
-&lt;/p&gt;
-&lt;p&gt;
-  Wichtige Ideen neigen dazu, sich rasch in der wissenschaftlichen Gemeinde zu verbreiten. Dr. Hermann Swoboda, Professor für Psychologie an der Universität Wien, las Fliess Arbeiten als junger Mann und zur Jahrhundertwende begann er selbst zu forschen, Vorträge zu halten und zu publizieren. Swoboda, der eine Periodizität im Auftreten von Träumen und Denken, bei Fieber, Asthma, Herzinfarkt und dem Ausbruch von Krankheiten beobachtete, bestätigte Fliess Beobachtungen über die 23-Tage-und 28-Tage-Zyklen. Swoboda trug zur Theorie den Begriff des &quot;kritischen&quot; Tag bei, wenn der Zyklus von hoch zu niedrig oder von niedrig zu hoch wechselt; ein Tag der Instabilität und stressig für die meisten Menschen.
-&lt;/p&gt;
-&lt;p&gt;
-  Der dritte Rhythmus, welcher den Intellekt beeinflusst, wurde erst in den 1920-iger Jahren entdeckt. Alfred Teltscher, ein Ingenieur und Professor in Innsbruck, wurde auf die Schwankungen in den intellektuellen Leistungen seiner Studenten aufmerksam. Teltscher entdeckte einen regelmäßigen Zyklus der sich alle 33 Tage wiederholte, Seine Studien zeigten, das mentale Leistung, die Fähigkeit sich zu konzentrieren oder neue Ideen aufzunehmen, auch von einer internen Uhr gesteuert wird.
-&lt;/p&gt;
-&lt;h2&gt;Die drei Rhythmen&lt;/h2&gt;
-&lt;h3&gt;The physische Zyklus&lt;/h3&gt;
-&lt;p&gt;
-  Die Schwankungen des 23-Tage-Zyklus beeinflussen Kraft, Ausdauer, Energie und das allgemeine körperliche Wohlbefinden. Wir alle wissen, dass unsere Energie variiert. An manchen Morgen kommen wir kaum aus dem Bett. An anderen, kaum aus dem Bett gepurzelt, sind wir ohne Tasse Kaffee bereit. Die Biorhythmus Theorie besagt, dass wir die Tage berechnen können, an denen wir leicht durch Tag kommen und die an denen wir uns dahinschleppen.
-&lt;/p&gt;
-&lt;p&gt;
-  Während der ersten Hälfte des 23-Tage-Zyklus (11½ Tage), steigt das körperliche Wohlbefinden. Dieser Teil des Zyklus wird manchmal als eine &quot;Entladung&quot; bezeichnet, analog zu dem Zeitraum in dem eine Batterie entladen wird. Während dieser ersten Hälfte des Zyklus, ist eine Person recht kräftig und scheint über eine mächtige Energiequelle zu verfügen. Einige Chirurgen, die dem Biorhythmus folgen, nutzen diese Zeit, in der Regel vom zweiten bis zum 9. oder vom dritten bis zum achten Tag, als die günstigsten für anspruchsvolle Operationen.
-&lt;/p&gt;
-&lt;p&gt;
-  Die zweite Hälfte des 23-Tage-Zyklus (auch 11½ Tage) ist eine Zeit der reduzierten Vitalität, der Erholung und die Zeit für die Sammlung neuer Energie. Dies sind die Tage, an denen die Kurve im Diagramm unterhalb der Basislinie ist. Während dieser Zeit sollte der Mensch sich ausruhen und Kraft tanken.
-&lt;/p&gt;
-&lt;p&gt;
-  Es ist wichtig zu betonen, dass die Kurve sich nicht in eine &quot;gute&quot; Hälfte und eine &quot;schlechte&quot; Hälfte teilen läßt. Keine Hälfte ist besser oder schlechter als die andere zum Glück, denn jede summiert sich auf ein halbes Leben! Die Theorie des Biorhythmus möchte Sie auf Fähigkeiten und Potenziale aufmerksam machen, die Tage, wenn Ihre grundlegende Lebenskraft (in diesem Fall die physische) hoch, niedrig oder kritisch ist. Eine schwache Zeit ist nicht schlechter als ein fast leerer Tank eines Autos. Wenn Sie den Füllstand beachten, werden Sie nicht einfach versuchen eine lange Strecke zu fahren ohne vorher zu tanken. Für die Mensch-Maschine bedeutet dies, sich ein wenig ausruhen ist gut für den Körper.
-&lt;/p&gt;
-&lt;p&gt;
-  Es gibt zwei &quot;kritische&quot; Tage in jedem kompletten 23-Tage dauernden physischen Zyklus. Dies sind die ersten Tage, an dem jede Hälfte des Zyklus beginnt.  Der Körper ist relativ instabil und weniger widerstandsfähig gegen Stress an diesen Tagen. Herzinfarkte, zum Beispiel, fallen offenbar eher auf die kritische Tage. Auch hier ist es wichtig zu bemerken, dass die Tage an sich nicht kritisch sind.
-&lt;/p&gt;
-&lt;h3&gt;Der Emotionale Zyklus&lt;/h3&gt;
-&lt;p&gt;
-  Die emotionale 28-Tage-Zyklus hat eine Kurve ähnlich dem des physischen Zyklus, mit der entspannenden ersten Hälfte (14 Tage) und der zweiten Hälfte (ebenfalls 14 Tage) für den Aufbau. Während der ersten 14 Tage, ist es wahrscheinlicher heiterer und optimistischer zu sein. Während der zweiten 14 Tage ist man etwas weniger offen, freundlich und hoffnungsvoll und an kritischen Tagen ausgesprochen mürrisch und reizbar.
-&lt;/p&gt;
-&lt;p&gt;
-  Die einzelnen Muster variieren ohne Zweifel individuell. Jemand mit einem sonnigen und sehr ruhigen Gemüt mag ein bisschen am Tiefpunkt des Zyklus trübe sein aber nicht lange. Ein leidenschaftlicher und unberechenbarer Typ können durch Perioden des Glücks fliegen und dann mit einem Wutausbruch drei Tage später überraschen
-&lt;/p&gt;
-&lt;p&gt;
-  Ein interessanter Fakt besteht im Hinblick auf den 28-Tage-Zyklus. 28 Tage sind genau vier Wochen, so dass die wichtigsten Tage immer auf den gleichen Wochentag fallen und zwar der Wochentag an dem man geboren wurde. Ein am Montag geborener weiß, dass jeden zweiten Montag ein kritischer Tag ist. Auf einen kritischen Montag folgt ein Montag der Hochstimmung, gefolgt von einem kritischen Montag und dann ein Montag in Tiefstimmung. Dieser am-selben-Wochentag Effekt stellt ein Mittel zur Kontrolle der Biorhythmus Theorie da. Sagt ihre Erfahrung, dass die emotional wacklichen Tage immer auf den gleichen Wochentag fallen? Am besten ist es, diese über einen Zeitraum von mehreren Monaten testen, es gibt immer andere Elemente zur Rechenschaft. Testen Sie es.
-&lt;/p&gt;
-&lt;h3&gt;Das Intellektuelle Zyklus&lt;/h3&gt;
-&lt;p&gt;
-  Der 33-Tage-Zyklus ist repräsentativ für Schwankungen im geistigen Leistungsvermögen. Forscher haben sich bisher weniger mit dem intellektuellen als auf anderen zwei Zyklen konzentriert. Manche Ärzte behaupten, dieser Zyklus steht eng mit der Hormonproduktion Schilddrüse in Zusammenhang. Unabhängige medizinische Studien haben eine Korrelation zwischen den Schwankungen der geistigen Leistungsfähigkeit und dem Hormonspiegel gefunden.
-&lt;/p&gt;
-&lt;p&gt;
-  Die erste Hälfte dieses Zyklus (16½ Tage) ist der Zeitraum, in dem Studenten und andere, die mit geistigen Dingen beschäftigt sind, eher in der Lage sind neue Konzepte zu verstehen und mehr Kreativität haben. Wir alle wissen, dass das Studium zu bestimmen Zeiten ein Kinderspiel ist und in anderen ein Krampf. Die erste Hälfte des Zyklus ist die Hauptzeit für kreatives Denken, für den Fortschritt in neuen Themenbereichen, für die psychische Erfolge bei denen die Gedächtnisleistung wichtig ist, und für Arbeiten, die genaue und sofortige Reaktionen. Da der Geist in diesem Zeitraum am schnellsten auf neue Herausforderungen reagiert, ist es wahrscheinlich die beste Zeit um sich in eine neue Aufgabe oder einen neuen Job einzuarbeiten
-&lt;/p&gt;
-&lt;p&gt;
-  Die zweite Hälfte dieses 33-Tage-Zyklus (auch 16½ Tage) ist eine Zeit in der die Fähigkeit logisch zu denken etwas reduziert wird. Der IQ verliert nicht automatisch 10 Punkte; das Gehirn sagt einfach, es ist nicht ganz so glücklich. Nun will der Geist ein wenig Ruhe, um wieder Energie zu speichern. Während dieser Zeit ist es etwas schwieriger, neue Ideen aufzunehmen. Diese Zeit ist wahrscheinlich am besten geeignet, um zuvor erlernten Konzepte zu überprüfen. Die kritischen Tage im geistigen 33-Tage-Zyklus sind der 1. und 17. Tag. Das sind Tage, an denen wichtige Entscheidungen am besten verschoben werden.
-&lt;/p&gt;
-</string>
+<string name="theory"><![CDATA[<h1>Theorie</h1>
+<h2>Geschichte</h2>
+<p> Im neunzehnten Jahrhundert begannen Studien bestimmter Lebensrhythmen oder Zyklen, die später Biorhythmusgenannt wurden. Das Wort Biorhythmus ist eine Verbindung von zwei griechischen Wörtern, BIOS und RHYTHMOS. Diese bedeuten Leben und konstant oder periodischen schlagen. Die Theorie des Biorhythmus definiert und misst drei grundlegende und wichtige Lebenszyklen im Menschen: die physische, emotionale und intellektuelle. </p>
+<p> Wilhelm Fliess, ein hoch angesehener und prominenter Arzt in Berlin, leistete Pionierarbeit auf dem Gebiet der Biorhythmen in den 1890er Jahren. Fliess beobachtete 23-Tage und 28-Tage-Rhythmen bei vielen seiner Patienten. Er begann Statistiken über die periodische Auftreten von Fieber, Kinderkrankheiten zu sammeln und die Anfälligkeit für Krankheiten und Tod. Mit diesen Statistiken in der Hand glaubte Fliess, grundlegende Rhythmen im Leben des Menschen erkannt zu haben. </p>
+<p> Dr. Fliess entwickelte daraus zwei große Biorhythmus Theorien: </p>
+<ol>
+  <li>Die Natur schenkt dem Menschen Innere Uhren, welche zum Zeitpunkt der Geburt starten und ein Leben lang anhalten.</li>
+  <li>Eine dieser Uhren beeinflusst einen 23-tägigen Zyklus der männlichen Kondition und der andere regelt einen 28-Tage-Zyklus der Emotionen oder das Maß an Sensibilität beeinflusst.</li>
+</ol>
+<p> Fliess dachte darüber nach, warum diese beiden Rhythmen beherschend sind. Er glaubte, dass der Mensch eine bisexuelle Natur hat und aus männlichen und weiblichen Elementen besteht. Fliess nannte den 23-tägigen Zyklus den männlichen physischen Zyklus, weil er Kraft, Ausdauer und Vitalität beeinflusst. Er hielt den 28-tägigen Zyklus wesentlich für das weibliche Element in allen Menschen. Dieser regelt Sensibilität, Intuition, Liebe, Kreativität und das gesamte emotionale Spektrum. </p>
+<p> Spätere Forschungen verstärkten die Idee der 23-Tage physischen und emotionalen 28-Tage-Zyklen. Natürlich würden heute nur wenige zustimmen, alle physikalischen Komponenten seien männlich und weiblich alle emotionalen Fragen. Stattdessen sind jetzt beide als wesentliche Merkmale beider Geschlechter erkannt. </p>
+<p> Wilhelm Fliess schrieb ausführlich über die Biorhythmus Theorie. Aber die Mathematik und Statistik, die er benutzte, war zu umfassend und verwirrend, so dass nur wenige Menschen versuchten diese zu prüfen oder zu verstehen. Doch die grundlegende Idee der Theorie kam an. Die Idee der periodischen Rhythmen im Menschen erzeugte erhebliche Kontroversen unter seinen Kollegen, die bis heute noch existiert. Die meisten Wissenschaftler haben die Tatsache, dass die körperlichen und emotionalen Zustände in ständiger Bewegung akzeptiert, aber viele sind nicht damit einverstanden, dass diese Veränderungen durch regelmäßige biologischen Zyklen beeinflusst werden, die bei der Geburt beginnen. </p>
+<p> Einer von Fliess Zeitgenossen, die einen offenen für seine Ideen waren, war Sigmund Freud, ein Mann mit extrem revolutionären Ideen zu seiner Zeit. Am Anfang seiner Karriere zeigte Freud starkes Interesse und Bewunderung für Fliess Theorien und sie wurden bald sehr enge Freunde. 184 Briefe von Freud an Fliess sind bekannt. Leider sind die Antworten von Fliess verloren gegangen. </p>
+<p> Wichtige Ideen neigen dazu, sich rasch in der wissenschaftlichen Gemeinde zu verbreiten. Dr. Hermann Swoboda, Professor für Psychologie an der Universität Wien, las Fliess Arbeiten als junger Mann und zur Jahrhundertwende begann er selbst zu forschen, Vorträge zu halten und zu publizieren. Swoboda, der eine Periodizität im Auftreten von Träumen und Denken, bei Fieber, Asthma, Herzinfarkt und dem Ausbruch von Krankheiten beobachtete, bestätigte Fliess Beobachtungen über die 23-Tage-und 28-Tage-Zyklen. Swoboda trug zur Theorie den Begriff des kritischenTag bei, wenn der Zyklus von hoch zu niedrig oder von niedrig zu hoch wechselt; ein Tag der Instabilität und stressig für die meisten Menschen. </p>
+<p> Der dritte Rhythmus, welcher den Intellekt beeinflusst, wurde erst in den 1920-iger Jahren entdeckt. Alfred Teltscher, ein Ingenieur und Professor in Innsbruck, wurde auf die Schwankungen in den intellektuellen Leistungen seiner Studenten aufmerksam. Teltscher entdeckte einen regelmäßigen Zyklus der sich alle 33 Tage wiederholte, Seine Studien zeigten, das mentale Leistung, die Fähigkeit sich zu konzentrieren oder neue Ideen aufzunehmen, auch von einer internen Uhr gesteuert wird. </p>
+<h2>Die drei Rhythmen</h2>
+<h3>The physische Zyklus</h3>
+<p> Die Schwankungen des 23-Tage-Zyklus beeinflussen Kraft, Ausdauer, Energie und das allgemeine körperliche Wohlbefinden. Wir alle wissen, dass unsere Energie variiert. An manchen Morgen kommen wir kaum aus dem Bett. An anderen, kaum aus dem Bett gepurzelt, sind wir ohne Tasse Kaffee bereit. Die Biorhythmus Theorie besagt, dass wir die Tage berechnen können, an denen wir leicht durch Tag kommen und die an denen wir uns dahinschleppen. </p>
+<p> Während der ersten Hälfte des 23-Tage-Zyklus (11½ Tage), steigt das körperliche Wohlbefinden. Dieser Teil des Zyklus wird manchmal als eine Entladungbezeichnet, analog zu dem Zeitraum in dem eine Batterie entladen wird. Während dieser ersten Hälfte des Zyklus, ist eine Person recht kräftig und scheint über eine mächtige Energiequelle zu verfügen. Einige Chirurgen, die dem Biorhythmus folgen, nutzen diese Zeit, in der Regel vom zweiten bis zum 9. oder vom dritten bis zum achten Tag, als die günstigsten für anspruchsvolle Operationen. </p>
+<p> Die zweite Hälfte des 23-Tage-Zyklus (auch 11½ Tage) ist eine Zeit der reduzierten Vitalität, der Erholung und die Zeit für die Sammlung neuer Energie. Dies sind die Tage, an denen die Kurve im Diagramm unterhalb der Basislinie ist. Während dieser Zeit sollte der Mensch sich ausruhen und Kraft tanken. </p>
+<p> Es ist wichtig zu betonen, dass die Kurve sich nicht in eine guteHälfte und eine schlechteHälfte teilen läßt. Keine Hälfte ist besser oder schlechter als die andere zum Glück, denn jede summiert sich auf ein halbes Leben! Die Theorie des Biorhythmus möchte Sie auf Fähigkeiten und Potenziale aufmerksam machen, die Tage, wenn Ihre grundlegende Lebenskraft (in diesem Fall die physische) hoch, niedrig oder kritisch ist. Eine schwache Zeit ist nicht schlechter als ein fast leerer Tank eines Autos. Wenn Sie den Füllstand beachten, werden Sie nicht einfach versuchen eine lange Strecke zu fahren ohne vorher zu tanken. Für die Mensch-Maschine bedeutet dies, sich ein wenig ausruhen ist gut für den Körper. </p>
+<p> Es gibt zwei kritischeTage in jedem kompletten 23-Tage dauernden physischen Zyklus. Dies sind die ersten Tage, an dem jede Hälfte des Zyklus beginnt. Der Körper ist relativ instabil und weniger widerstandsfähig gegen Stress an diesen Tagen. Herzinfarkte, zum Beispiel, fallen offenbar eher auf die kritische Tage. Auch hier ist es wichtig zu bemerken, dass die Tage an sich nicht kritisch sind. </p>
+<h3>Der Emotionale Zyklus</h3>
+<p> Die emotionale 28-Tage-Zyklus hat eine Kurve ähnlich dem des physischen Zyklus, mit der entspannenden ersten Hälfte (14 Tage) und der zweiten Hälfte (ebenfalls 14 Tage) für den Aufbau. Während der ersten 14 Tage, ist es wahrscheinlicher heiterer und optimistischer zu sein. Während der zweiten 14 Tage ist man etwas weniger offen, freundlich und hoffnungsvoll und an kritischen Tagen ausgesprochen mürrisch und reizbar. </p>
+<p> Die einzelnen Muster variieren ohne Zweifel individuell. Jemand mit einem sonnigen und sehr ruhigen Gemüt mag ein bisschen am Tiefpunkt des Zyklus trübe sein aber nicht lange. Ein leidenschaftlicher und unberechenbarer Typ können durch Perioden des Glücks fliegen und dann mit einem Wutausbruch drei Tage später überraschen </p>
+<p> Ein interessanter Fakt besteht im Hinblick auf den 28-Tage-Zyklus. 28 Tage sind genau vier Wochen, so dass die wichtigsten Tage immer auf den gleichen Wochentag fallen und zwar der Wochentag an dem man geboren wurde. Ein am Montag geborener weiß, dass jeden zweiten Montag ein kritischer Tag ist. Auf einen kritischen Montag folgt ein Montag der Hochstimmung, gefolgt von einem kritischen Montag und dann ein Montag in Tiefstimmung. Dieser am-selben-Wochentag Effekt stellt ein Mittel zur Kontrolle der Biorhythmus Theorie da. Sagt ihre Erfahrung, dass die emotional wacklichen Tage immer auf den gleichen Wochentag fallen? Am besten ist es, diese über einen Zeitraum von mehreren Monaten testen, es gibt immer andere Elemente zur Rechenschaft. Testen Sie es. </p>
+<h3>Das Intellektuelle Zyklus</h3>
+<p> Der 33-Tage-Zyklus ist repräsentativ für Schwankungen im geistigen Leistungsvermögen. Forscher haben sich bisher weniger mit dem intellektuellen als auf anderen zwei Zyklen konzentriert. Manche Ärzte behaupten, dieser Zyklus steht eng mit der Hormonproduktion Schilddrüse in Zusammenhang. Unabhängige medizinische Studien haben eine Korrelation zwischen den Schwankungen der geistigen Leistungsfähigkeit und dem Hormonspiegel gefunden. </p>
+<p> Die erste Hälfte dieses Zyklus (16½ Tage) ist der Zeitraum, in dem Studenten und andere, die mit geistigen Dingen beschäftigt sind, eher in der Lage sind neue Konzepte zu verstehen und mehr Kreativität haben. Wir alle wissen, dass das Studium zu bestimmen Zeiten ein Kinderspiel ist und in anderen ein Krampf. Die erste Hälfte des Zyklus ist die Hauptzeit für kreatives Denken, für den Fortschritt in neuen Themenbereichen, für die psychische Erfolge bei denen die Gedächtnisleistung wichtig ist, und für Arbeiten, die genaue und sofortige Reaktionen. Da der Geist in diesem Zeitraum am schnellsten auf neue Herausforderungen reagiert, ist es wahrscheinlich die beste Zeit um sich in eine neue Aufgabe oder einen neuen Job einzuarbeiten </p>
+<p> Die zweite Hälfte dieses 33-Tage-Zyklus (auch 16½ Tage) ist eine Zeit in der die Fähigkeit logisch zu denken etwas reduziert wird. Der IQ verliert nicht automatisch 10 Punkte; das Gehirn sagt einfach, es ist nicht ganz so glücklich. Nun will der Geist ein wenig Ruhe, um wieder Energie zu speichern. Während dieser Zeit ist es etwas schwieriger, neue Ideen aufzunehmen. Diese Zeit ist wahrscheinlich am besten geeignet, um zuvor erlernten Konzepte zu überprüfen. Die kritischen Tage im geistigen 33-Tage-Zyklus sind der 1. und 17. Tag. Das sind Tage, an denen wichtige Entscheidungen am besten verschoben werden. </p>
+]]></string>
 
     <string name="evaluation">Auswertung:</string>
     <string name="showCaseOverflowTitle">Weitere Funktionen</string>
@@ -192,12 +152,10 @@
     <string name="title_dialog_date">Datum festlegen</string>
     <string name="lblAge">Alter:</string>
     <string name="lblDays">Tage</string>
-    <string name="news"><![CDATA[
-<h1>BioDroid %1$s</h1>
-<p>
-Wat is new?
-</p>
-<p>* add widget</p>
-<p>* minor fixes</p>
+    <string name="news"><![CDATA[<h1>BioDroid %1$s</h1>
+<p> Wat is new?</p>
+<p>add widget</p>
+<p>new intro</p>
 ]]></string>
+    <string name="label_btn_version">Version</string>
 </resources>

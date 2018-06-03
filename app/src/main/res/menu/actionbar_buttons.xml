@@ -4,14 +4,21 @@
         android:id="@+id/menuTheory"
         android:alphabeticShortcut="t"
         android:icon="@drawable/ic_action_help"
-        android:numericShortcut="5"
+        android:numericShortcut="0"
         android:showAsAction="ifRoom"
         android:title="@string/label_btn_theory"></item>
     <item
         android:id="@+id/menuAbout"
         android:alphabeticShortcut="a"
         android:icon="@drawable/ic_action_about"
-        android:numericShortcut="0"
-        android:showAsAction="ifRoom"
+        android:numericShortcut="1"
+        android:showAsAction="never"
         android:title="@string/label_btn_about"></item>
+    <item
+        android:id="@+id/menuVersion"
+        android:alphabeticShortcut="v"
+        android:icon="@android:drawable/ic_dialog_info"
+        android:numericShortcut="2"
+        android:showAsAction="never"
+        android:title="@string/label_btn_version" />
 </menu>

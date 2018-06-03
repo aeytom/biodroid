@@ -62,7 +62,6 @@ public class BioDroidActivity extends FragmentActivity implements Core.ChangeLis
     public boolean debug;
 
     /** Called when the activity is first created. */
-    @Override
     public void onCreate(Bundle savedInstanceState)
 	{
         if (getPackageName().endsWith(".debug")) {
@@ -121,7 +120,7 @@ public class BioDroidActivity extends FragmentActivity implements Core.ChangeLis
         mViewPager = (ViewPager) findViewById(R.id.descPager);
         mViewPager.setAdapter(getTabAdapter());
         mViewPager
-                .setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
+                .addOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
                     @Override
                     public void onPageSelected(int position) {
                         actionBar.setSelectedNavigationItem(position);
@@ -245,7 +244,7 @@ public class BioDroidActivity extends FragmentActivity implements Core.ChangeLis
 
     private void showIntro() {
         ShowCase showCase = new ShowCase(this);
-        showCase.addCase(new ActionViewTarget(this, ActionViewTarget.Type.TITLE), R.string.showCaseAboutTitle, R.string.showCaseAboutText);
+        showCase.addCase(new ViewTarget(bioview), R.string.showCaseAboutTitle, R.string.showCaseAboutText);
         showCase.addCase(new ViewTarget(tv_birth), R.string.showCaseBirthTitle, R.string.showCaseBirthText);
         showCase.addCase(new ViewTarget(tv_today), R.string.showCaseDateTitle, R.string.showCaseDateText);
         showCase.addCase(new ViewTarget(findViewById(R.id.dateReset)), R.string.showCaseResetTitle, R.string.showCaseResetText);
@@ -334,6 +333,9 @@ public class BioDroidActivity extends FragmentActivity implements Core.ChangeLis
 			case R.id.menuTheory:
                 TheoryFragment.newInstance().show(getSupportFragmentManager(), TheoryFragment.TAG);
 				return true;
+            case R.id.menuVersion:
+                showNews();
+                return true;
 		}
 		return false;
     }

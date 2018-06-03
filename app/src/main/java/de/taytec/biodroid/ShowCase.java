@@ -1,6 +1,7 @@
 package de.taytec.biodroid;
 
 import android.util.Log;
+import android.view.MotionEvent;
 
 import com.github.amlcurran.showcaseview.OnShowcaseEventListener;
 import com.github.amlcurran.showcaseview.ShowcaseView;
@@ -17,9 +18,10 @@ public class ShowCase implements OnShowcaseEventListener {
 
     public ShowCase(BioDroidActivity bioDroidActivity) {
         this.bioDroidActivity = bioDroidActivity;
-        showcaseView = new ShowcaseView.Builder(bioDroidActivity, true)
+        showcaseView = new ShowcaseView.Builder(bioDroidActivity)
                 .hideOnTouchOutside()
                 .setShowcaseEventListener(this);
+        showcaseView.withNewStyleShowcase();
     }
 
     void showDemo() {
@@ -35,6 +37,11 @@ public class ShowCase implements OnShowcaseEventListener {
 
     @Override
     public void onShowcaseViewHide(ShowcaseView showcaseView) {
+
+    }
+
+    @Override
+    public void onShowcaseViewTouchBlocked(MotionEvent motionEvent) {
 
     }
 

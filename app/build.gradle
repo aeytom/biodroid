@@ -1,23 +1,37 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 19
+    signingConfigs {
+        aeytom {
+            keyAlias 'aeytom'
+            keyPassword 'trachudel03'
+            storeFile file('/home/tay/.android/android.keys')
+            storePassword 'trachudel03'
+        }
+    }
+    compileSdkVersion 16
     buildToolsVersion "27.0.3"
-
     defaultConfig {
         applicationId "de.taytec.biodroid"
-        minSdkVersion 14
-        targetSdkVersion 17
+        minSdkVersion 19
+        targetSdkVersion 27
+        versionCode 23
+        versionName '4.2.2'
     }
-
     buildTypes {
         release {
-            minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
         }
+        debug {
+            debuggable true
+        }
+    }
+    productFlavors {
     }
 }
 
 dependencies {
-    compile 'com.android.support:support-v4:19.1.0'
+    implementation 'com.android.support:support-v4:21.0.3'
+    implementation 'com.github.amlcurran.showcaseview:library:5.4.3'
+    implementation 'com.google.android.gms:play-services:6.+'
 }
