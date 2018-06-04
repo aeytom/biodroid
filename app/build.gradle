@@ -1,12 +1,12 @@
 apply plugin: 'com.android.application'
 
+def vcode = (int)(new Date().getTime() / (10 * 60 * 1000)) - 2546873
+
 android {
     signingConfigs {
         aeytom {
             keyAlias 'aeytom'
-            keyPassword 'trachudel03'
             storeFile file('/home/tay/.android/android.keys')
-            storePassword 'trachudel03'
         }
     }
     compileSdkVersion 16
@@ -15,7 +15,7 @@ android {
         applicationId "de.taytec.biodroid"
         minSdkVersion 19
         targetSdkVersion 27
-        versionCode 23
+        versionCode vcode
         versionName '4.2.2'
     }
     buildTypes {

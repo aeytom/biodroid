@@ -31,7 +31,7 @@ public class Core {
 
     public Core() {
         calBirth = Calendar.getInstance();
-        calBirth.set(1989, 11, 9);
+        calBirth.set(1989, 10, 9);
         calDate = Calendar.getInstance();
         ageDays = computeAge();
     }
