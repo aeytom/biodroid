@@ -153,9 +153,10 @@
     <string name="lblAge">Alter:</string>
     <string name="lblDays">Tage</string>
     <string name="news"><![CDATA[<h1>BioDroid %1$s</h1>
-<p> Wat is new?</p>
-<p>add widget</p>
-<p>new intro</p>
+<p>Neuigkeiten</p>
+<p>* neues Widget</p>
+<p>* französische Übersetzung (Y.Scholz)</p>
+<p>* Korrekturen</p>
 ]]></string>
     <string name="label_btn_version">Version</string>
 </resources>

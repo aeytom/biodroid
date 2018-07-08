@@ -9,14 +9,14 @@ android {
             storeFile file('/home/tay/.android/android.keys')
         }
     }
-    compileSdkVersion 16
+    compileSdkVersion 19
     buildToolsVersion "27.0.3"
     defaultConfig {
         applicationId "de.taytec.biodroid"
         minSdkVersion 19
-        targetSdkVersion 27
+        targetSdkVersion 19
         versionCode vcode
-        versionName '4.2.2'
+        versionName '4.2.3'
     }
     buildTypes {
         release {
@@ -31,7 +31,7 @@ android {
 }
 
 dependencies {
-    implementation 'com.android.support:support-v4:21.0.3'
+    implementation 'com.android.support:support-v4:19.0.3'
     implementation 'com.github.amlcurran.showcaseview:library:5.4.3'
     implementation 'com.google.android.gms:play-services:6.+'
 }

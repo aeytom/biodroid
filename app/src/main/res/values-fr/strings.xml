@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">BioDroid</string>
+    <string-array name="desc_phy">
+        <item>Votre énergie, votre vitalité et votre force sont à leur maximum. Votre corps résiste sans problème à des chocs, blessures et au stress. Les pulsions sexuelles sont plus prononcées que d\'habitude. En même temps, les forces physiques peuvent devenir si excessives qu\'il y a un risque de surmenage ou une certaine tendance à agir sans égard et agressif.</item>
+        <item>Vous êtes plus rapidement épuisés. Votre force et contrôle physique peuvent s’altérer. Le risque d\'accidents, de disgrâce ou de blessures augmente. Détendez-vous et récupérez. Veillez à un bon éclairage et des phases de détente régulières. Cela va faciliter votre journée. Évitez des activités fatigantes et énergivores. En cas de maladie, le risque de crise cardiaque ou d\'accident vasculaire cérébral augmente. Quant aux sportifs, il peut s’agir de leurs meilleurs ou de leurs pires journées. Soyez particulièrement attentif à votre performance physique ces jours-ci. Concentrez-vous pour contrôler et améliorer vos capacités afin d’obtenir le meilleur rendement possible.</item>
+        <item>Votre force physique est au plus mal. Vos réserves vitales et d’énergie sont sans doute épuisées. Vous êtes vite fatigué. Des pauses et phases de récupération sont maintenant particulièrement importantes. Vous avez peu d’intérêt à des activités physiques et sexuelles. Votre condition sportive est plus faible que d’habitude. Vous êtes peu enthousiaste et épuisé après un effort physique. Vous avez probablement l\'impression d\'être à bout de forces. Des tendances dépressives peuvent surgir et sont à combattre. Il y a un risque de surmenage. Prenez garde à votre alimentation. Actuellement une consommation excessive peut être dangereuse.</item>
+    </string-array>
+    <string-array name="desc_emo">
+        <item>Vos sentiments sont à leur plus haut niveau. Ce sont les moments, ou vous vous sentez le plus proche des autres. Vous appréciez la compagnie et vous soutenez et  encouragez votre entourage. Lorsque nécessaire vous vous montrez compréhensif. C\'est le temps idéal pour renforcer les liens avec vos proches et vos amis. Votre haut émotionnel permet des performances exceptionnelles. Vous êtes particulièrement créatif. Selon votre personnalité et les circonstances, prenez garde aux débordements émotionnels. Vos forts sentiments pourraient mener à des actions impulsives et précipités.</item>
+        <item>De l\'épuisement émotionnel à l\'euphorie, tout est possible. Vous pouvez être dépressif ou enthousiaste. Déception ou fatigue s’intensifient. L’instabilité émotionnelle que vous vivez est  épuisante et à l’origine de votre mauvais état. S’ajoute la possibilité de hauts émotionnels, des états d’extrême excitation ou d’anxiété ainsi qu’une grande frustration.  Dans des cas extrêmes, ces jours critiques ont mené à des suicides ou tentatives de suicides. Le stress émotionnel nuit votre santé et peut provoquer des crises cardiaques ou des accidents vasculaires cérébraux. Prenez des précautions et soyez prudents dans des situations particulièrement émotionnelles : stress au travail, problèmes familiaux, travail avec des enfants. Gardez votre calme et contrôlez vos émotions consciemment. Une journée émotionnellement difficile offre aussi l’occasion de maîtriser soi-même. Une des prémisses pour trouver son bonheur et le bien-être en général. Cette journée pourrait être un moment clé dans votre vie émotionnelle et vous ouvrir de nouveaux chemins de créativité. </item>
+        <item>Votre état émotionnel est équilibré ou en dessous de la moyenne. Cela peut être utile dans des situations exigeant un grand calme ou contrôle d\'émotions. Mais dans toutes les autres situations, vos sentiments, sensations et perceptions de votre environnement sont très faibles. Pendant ce temps, vous êtes plus introspectif et moins disposé à vous ouvrir aux autres. Vous pouvez même vous sentir dépressif ou solitaire. En général, il s\'agit plus d\'une période de passivité que d\'activité.</item>
+    </string-array>
+    <string-array name="desc_int">
+        <item>Vos compétences analytiques et logiques ainsi que votre capacité de concentration sont élevé. C\'est le moment idéal pour penser, composer, écrire ou faire prendre des décisions. C\'est aussi un bon moment pour des pensées abstraites, l’éloquence, la compréhension de nouveaux concepts, des exercices de mémoire, des nouveaux défis et des changements dans la vie professionnelle. Mais, il est possible que vous soyez frustré si vous ne pouvez pas développer vos capacités intellectuelles.</item>
+        <item>Lors d\'une journée critique dans le biorythme intellectuel, on évite des décisions nécessaires et accepte des solutions improvisés plus facilement. Cette insouciance peut aussi mener à une négligence de la sécurité personnelle et la survie. Le risque de dépression et de maladie est élevé. L’éloquence - caractéristique d\'intelligence - peut être limitée. Les capacités de penser abstrait, calculer et la mémoire en général sont également limités. La confusion et un manque de mémoire également courent. Très souvent les conséquences sont néanmoins ignorées, quelqu’un qui ne sait pas nager fait un tour en bateau et un ouvrier avec des problèmes de dos décide de déplacer le piano. Si possible, pensez avant d\'agir. Malgré ces nombreux facteurs négatifs, l’activité intellectuelle peut être prometteuse. L’attention et la vigilance sont particulièrement importantes en ce moment. Brillance intellectuelle et créative - tout est possible ce jour-là.</item>
+        <item>Vous avez des difficultés à comprendre des nouveaux domaines intellectuels. La prise de décision, l’évaluation de situation et la concentration sur des taches spécifiques sont frustrants. Vous avez tendance à agir impulsif avec des conséquences que vous allez regretter. De plus, vous êtes plus imprudent et vous protégez moins. Des états dépressifs ainsi que l’épuisement sont également possibles.</item>
+    </string-array>
+    <string name="tab_emo">Emotionnel</string>
+    <string name="tab_int">Intellectuel</string>
+    <string name="button_ok">OK</string>
+    <string name="button_new">Nouveau</string>
+    <string name="label_btn_today">Pour Jour</string>
+    <string name="label_btn_history">Utiliser anniversaires</string>
+    <string name="label_btn_theory">Théorie</string>
+    <string name="label_btn_about">Introduction</string>
+    <string name="format_date">d. MMM yy</string>
+    <string name="format_date_short">d. MMM</string>
+    <string name="label_btn_birthday">Anniversaires</string>
+    <string name="evaluation">Evaluation:</string>
+    <string name="showCaseOverflowTitle">Autres fonctions</string>
+    <string name="showCaseOverflowText">Cliquez ici pour: Théorie des bioryhthmes, Aide, … </string>
+    <string name="showCaseGraphTitle">illustrations bioryhthme</string>
+    <string name="showCaseGraphText">L’illustration montre le comportement du biorythme pour la période choisie. Décallez le graphique de droite à gauche pour élargir la zone affichée. </string>
+    <string name="showCaseDetailTitle">Evaluation</string>
+    <string name="showCaseDetailText">Evaluation détaillée des trois rythmes (physique, émotionel et intellectuel). Utilisez la barre de navigatoin pour changer de vue.</string>
+    <string name="showCaseAboutTitle">Sur BioDroid</string>
+    <string name="showCaseAboutText">BioDroid utilise votre anniversaire pour déterminer votre condition pour n\'importe quel jour de votre vie. La théorie du biorythme est utilisée pour calculer la performance physique, émotionnelle et intellectuelle. Amusez-vous bien. </string>
+    <string name="showCaseBirthText">Entrez votre anniversaire ou celui de quelqu\'un d\'autre. L\'anniversaire exact est l’information la plus importante pour déterminer le biorythme.</string>
+    <string name="showCaseBirthTitle">L‘anniversaire </string>
+    <string name="showCaseDateText">Entrez n\'importe quelle date (cible) pour déterminer les biorythmes.</string>
+    <string name="showCaseDateTitle">Date actuelle </string>
+    <string name="showCaseResetText"> La date est remise à aujourd\'hui.</string>
+    <string name="showCaseResetTitle">Entrer le jour actuel</string>
+    <string name="btnBirthdayDesc">Entrer l’anniversaire</string>
+    <string name="btnResetDateDesc">Entrer la date actuelle </string>
+    <string name="title_dialog_birthday">Confirmer l’anniversaire </string>
+    <string name="title_dialog_date">Confirmer la date </string>
+    <string name="lblAge">Age:</string>
+    <string name="lblDays">Jours</string>
+    <string name="label_btn_version">Version</string>
+
+    <string name="theory"><![CDATA[<h1>Théorie</h1>
+<h2>Histoire</h2>
+<p> Au XIXe siècle, on a commencé à étudier certains rythmes ou cycles de vie, que l\'on a appelés plus tard biorythmes. Le mot
+    biorythme est une combinaison de deux mots grecs, BIOS et RHYTHMOS. Ceux-ci signifient la vie et le battement constant
+    ou périodique. La théorie du biorythme définit et mesure trois cycles de vie fondamentaux et importants chez l\'homme
+    : le physique, l\'émotionnel et l\'intellectuel.</p>
+<p> Wilhelm Fliess, médecin très respecté et éminent à Berlin, a fait œuvre de pionnier dans le domaine des biorythmes dans les
+    années 1890. Fliess a observé des rythmes de 23 jours et 28 jours chez plusieurs de ses patients. Il a commencé à recueillir
+    des statistiques sur l\'apparition périodique de la fièvre, les maladies infantile et les prédispositions pour des maladies.
+    Avec ces statistiques en main, Fliess croyait avoir reconnu les rythmes fondamentaux de la vie humaine.</p>
+<p> Le Dr Fliess a développé deux grandes théories du biorythme :</p>
+<ol>
+    <li>La nature équpe l\'homme avec une horloge interne, qui commencent au moment de la naissance et dure toute une vie.</li>
+    <li> Une de ces montres influence un cycle de 23 jours de la condition masculine et l\'autre régule un cycle de 28 jours qui
+        affecte les émotions ou le degré de sensibilité.</li>
+</ol>
+<p> Fliess s\'est demandé pourquoi ces deux rythmes sont déterminants. Il croyait que l\'homme a une nature bisexuelle et se compose
+    d\'éléments masculins et féminins. Fliess a appelé le cycle de 23 jours le cycle physique masculin parce qu\'il affecte
+    la force, l\'endurance et la vitalité. Il considérait le cycle de 28 jours essentiel pour les éléments féminins chez tous
+    les humains. Celui-ci régule la sensibilité, l\'intuition, l\'amour, la créativité et tout le spectre émotionnel.</p>
+<p> D’ultérieures recherche ont plus tard renforcé l\'idée des cycles physiques et émotionnels de 23 jours et de 28 jours. Bien
+    sûr, aujourd\'hui, plus personne considère que toutes les composantes physiques sont masculines et toutes les questions
+    émotionnelles sont féminins. Au lieu de cela, les deux sont maintenant reconnus comme des caractéristiques essentielles
+    des deux sexes.</p>
+<p> Wilhelm Fliess a beaucoup écrit sur la théorie du biorythme. Mais les mathématiques et les statistiques qu\'il a utilisées
+    étaient trop complètes et déroutantes. C’est pourquoi peu de gens les ont testés ou essayés de les comprendre. Mais l\'idée
+    de base de la théorie a eu du succès. L\'idée de rythmes périodiques chez l\'homme a suscité une controverse considérable
+    chez ses collègues, qui existe encore aujourd\'hui. La plupart des scientifiques ont accepté le fait que les états physiques
+    et émotionnels sont en mouvement constant, mais beaucoup ne sont pas d\'accord avec le fait que ces changements sont influencés
+    par des cycles biologiques réguliers qui commenceraient à la naissance.</p>
+<p> L\'un des contemporains de Fliess qui était ouvert à ses idées était Sigmund Freud, un homme avec des idées extrêmement révolutionnaires
+    à son époque. Au début de sa carrière, Freud a manifesté un vif intérêt et une grande admiration pour les théories de
+    Fliess et ils sont devenus des amis très proches. 184 lettres de Freud à Fliess sont connues. Malheureusement, les réponses
+    de Fliess ont été perdues.</p>
+<p> Les idées importantes ont tendance à se répandre rapidement dans la communauté scientifique. Hermann Swoboda, professeur
+    de psychologie à l\'Université de Vienne, a lu le travail de Fliess quand il était un jeune homme et au tournant du siècle,
+    il a commencé à faire ses propres recherches, à donner des conférences et à publier sur le sujet. Swoboda, qui a observé
+    une périodicité dans l\'occurrence des rêves et des pensées, dans la fièvre, l\'asthme, les crises cardiaques et l\'apparition
+    de maladies, a confirmé les observations de flux sur les cycles de 23 jours et 28 jours. Swoboda a contribué à la théorie
+    du jour critique lorsque le cycle change de haut en bas ou de bas en haut; une journée d\'instabilité et très stressante
+    pour la plupart des gens.</p>
+<p> Le troisième rythme, qui influence l\'intellect, n\'a été découvert que dans les années 1920. Alfred Teltscher, ingénieur et
+    professeur à Innsbruck, a pris conscience des fluctuations dans les réalisations intellectuelles de ses élèves. Teltscher
+    a découvert un cycle régulier qui se répète tous les 33 jours. Ses études ont montré que la capacité mentale, la capacité
+    de se concentrer ou d\'apprendre de nouvelles idées, sont également influencés par une horloge interne.</p>
+<h2>Les trois rythmes</h2>
+<h3>The cycle physique </h3>
+<p> Les fluctuations du cycle de 23 jours influencent la force, l\'endurance, l\'énergie et le bien-être physique en général. Nous
+    savons tous que notre niveau d’énergie change. Certains matins, nous n’arrivons presque pas de nous lever. D\'autres jours,
+    à peine sortis du lit, nous sommes réveillés et prêts sans prendre une tasse de café. La théorie du biorythme dit que
+    nous pouvons calculer les jours où nous somme alaise et les jours qui sont plutôt dur pour nous.</p>
+<p> Pendant la première moitié du cycle de 23 jours (11½ jours), le bien-être physique monte. Cette partie du cycle est aussi
+    vue comme une sorte de décharge, comparable à la période pendant laquelle une batterie est déchargée. Pendant cette première
+    moitié du cycle, une personne est assez forte et semble avoir une grande source d\'énergie. Certains chirurgiens qui suivent
+    le biorythme profitent de ces périodes, généralement du deuxième au neuvième jour ou du troisième au huitième jour, pour
+    des opérations délicates.</p>
+<p> La deuxième moitié du cycle de 23 jours (également 11½ jours) est une période avec moins de vitalité, c’est le temps de récupérer
+    et de prendre des nouvelles énergies. Ce sont les jours où la courbe du diagramme est inférieure à la ligne de base.
+    Pendant ce temps, l\'homme doit se reposer et recharger ses batteries.</p>
+<p> Il est important de souligner que la courbe ne peut pas être divisée en une bonne moitié et une mauvaise moitié. Aucune des
+    moitiés n’est meilleure ou pire que l\'autre. Heureusement, car chacune s\'additionne à la moitié de toute une vie! La
+    théorie du biorythme veut vous sensibiliser pour vos capacités et potentiels, pour ces jours où votre force vitale de
+    base (dans ce cas, la force physique) est élevée, faible ou critique. Un temps de faiblesse n\'est pas pire qu\'un réservoir
+    presque vide d\'une voiture. Si vous faites attention au niveau, vous n’allez pas parcourir une longue distance sans faire
+    le plein. Pour l\'homme-machine, cela signifie qu\'un peu de repos est bon pour le corps.</p>
+<p>Il y a deux jours critiques dans chaque cycle physique de 23 jours. Ce sont les premiers jours de chaque moitié du cycle.
+    Le corps est relativement instable et moins résistant au stress. Les crises cardiaques, par exemple, semblent augmenter
+    lors de ces jours critiques. Encore une fois, il est important de noter que les jours en soit ne sont pas critiques.</p>
+<h3>Le cycle émotionnel </h3>
+<p> Le cycle émotionnel de 28 jours a une courbe similaire au cycle physique, avec une première moitié déchargeant (14 jours)
+    et une seconde moitié (14 jours également) pour la recharge. Pendant les 14 premiers jours, vous êtes sans doute plus
+    joyeux et optimiste. Pendant les 14 jours suivants, vous êtes un peu moins ouvert, moins amical et avez moins d\'espoir.
+    Lors des jours critiques, vous êtes de très mauvaise humeur et avez les nerfs à la fleur de peau.</p>
+<p> Les symptômes varient sans aucun doute d\'un individu à l\'autre. Quelqu\'un avec un esprit gai et calme est au bas du cycle
+    un peu triste, mais pas pour longtemps. Quelqu’un de passionné et capricieux peut passer des périodes de très bonne humeur,
+    puis surprendre par une explosion de colère trois jours plus tard.</p>
+<p> Il y a un fait intéressant en ce qui concerne le cycle de 28 jours. 28 jours sont exactement quatre semaines, de sorte que
+    les jours les plus importants tombent toujours sur le même jour de la semaine, le jour de la semaine où vous êtes né.
+    Quelqu’un qui est né le lundi sait qu\'un lundi sur deux sera un jour critique. Un lundi critique est suivi d\'un lundi
+    optimiste, suivi d\'un lundi critique et d\'un lundi de mauvaise humeur. Cet effet du même jour de semaine permet de vérifier
+    la théorie du biorythme. Votre expérience vous dit-elle que les journées émotionnellement instables tombent toujours
+    sur le même jour de la semaine ? Il est préférable de tester cela sur une période de plusieurs mois, il y a toujours
+    d\'autres éléments à prendre en compte. Testez-le.</p>
+<h3>Le cycle intellecutel</h3>
+<p>
+    Le cycle de 33 jours est représentatif des fluctuations de la performance mentale. Jusqu\'à présent, les chercheurs se sont
+    moins concentrés sur ce cycle. Certains médecins prétendent que ce cycle est étroitement lié à la production d\'hormones
+    thyroïdiennes. Des études médicales indépendantes ont établi une corrélation entre les fluctuations de la performance
+    mentale et les niveaux d\'hormones.</p>
+<p>
+    La première moitié de ce cycle (16½ jours) est la période pendant laquelle les étudiants et les personnes impliquées dans
+    des activités mentales sont plus à même de comprendre de nouveaux concepts et sont plus créatifs. Nous savons tous qu’à
+    certains moments il est plus facile d’étudier qu’à d\'autres. La première moitié du cycle est plutôt favorable à une pensée
+    créative, au progrès dans de nouveaux domaines, et aux travaux exigeant des réactions précises et immédiates. Puisque
+    l\'esprit réagit le plus rapidement aux nouveaux défis durant cette période, c\'est probablement le meilleur moment pour
+    vous familiariser avec une nouvelle tâche ou un nouvel emploi.</p>
+<p>
+    La deuxième moitié de ce cycle de 33 jours (également 16½ jours) est une période où la capacité de penser logiquement est
+    un peu réduite. Le quotient intellectuel ne perd pas automatiquement 10 points ; le cerveau vous dit tout simplement
+    qu\'il n\'est pas aussi heureux. L\'esprit demande un peu de repos pour reprendre à nouveau de l\'énergie. Pendant ce temps,
+    il est un peu plus difficile d\'adopter de nouvelles idées. Ce moment est probablement le meilleur moment pour passer
+    en revue les concepts déjà appris. Les jours critiques dans le cycle intellectuel de 33 jours sont le 1er et le 17ème
+    jour. Ce sont des jours où il vaut mieux ne pas prendre de décisions importantes.</p>]]></string>
+    <string name="tab_phy">Physique</string>
+    <string name="news"><![CDATA[<h1>BioDroid  %1$s</h1>
+<p>Nouveautés</p>
+<p>* Nouveau widget</p>
+<p>*  corrections mineures</p>
+<p>* Traduction française (Y.Scholz)</p>
+]]></string>
+</resources>
